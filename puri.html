@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <title>Peta Dakwah PHBI 1447 H</title>
+  <title>Peta Dakwah PHBI 1448 H</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Leaflet CSS -->
@@ -12,23 +12,34 @@
 
   <style>
     html, body {
-      margin: 0; padding: 0; height: 100%; font-family: Arial;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial;
     }
 
     /* HEADER */
     #header {
-      width: 100%; height: 40px;
-      background-color: #263238; color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: bold; font-size: 16px;
-      position: fixed; top: 0; left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #263238;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+      position: fixed;
+      top: 0;
+      left: 0;
       z-index: 2000;
     }
 
     /* NAVBAR */
     #navbar {
       position: fixed;
-      top: 40px; left: 0;
+      top: 40px;
+      left: 0;
       width: 100%;
       height: 60px;
       background: #37474F;
@@ -44,20 +55,31 @@
       border-radius: 4px;
     }
 
-    #menu { flex: 1; }
+    #menu {
+      flex: 1;
+    }
+
     #menu ul {
       list-style: none;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       display: flex;
     }
-    #menu ul li { position: relative; }
+
+    #menu ul li {
+      position: relative;
+    }
+
     #menu > ul > li > a {
       padding: 10px 18px;
       display: block;
       color: white;
       text-decoration: none;
     }
-    #menu ul li:hover { background: #455A64; }
+
+    #menu ul li:hover {
+      background: #455A64;
+    }
 
     /* Dropdown */
     #menu ul li ul {
@@ -69,16 +91,19 @@
       padding: 0;
       z-index: 9999;
     }
+
     #menu ul li:hover ul,
     #menu ul li:focus-within ul {
       display: block;
     }
+
     #menu ul li ul li a {
       padding: 10px;
       display: block;
       color: white;
       text-decoration: none;
     }
+
     #menu ul li ul li:hover {
       background: #546E7A;
     }
@@ -113,9 +138,9 @@
       z-index: 1500;
       font-size: 12px;
       padding: 4px 6px;
-      background:white;
-      border-radius:4px;
-      box-shadow:0 0 4px rgba(0,0,0,0.3);
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
     }
 
     /* FOOTER-BANNER BESAR */
@@ -153,31 +178,49 @@
   <div id="menu">
     <ul>
 
-      <li><a href="puri.html">Home</a></li>
+      <li>
+        <a href="puri.html">Home</a>
+      </li>
 
       <li>
         <a href="javascript:void(0)">Tentang ▼</a>
         <ul>
-          <li><a href="phbi_web/profil.html">Profil PHBI 1447 H</a></li>
+          <li>
+            <a href="phbi_web/profil.html">Profil PHBI 1447 H</a>
+          </li>
         </ul>
       </li>
 
       <li>
         <a href="javascript:void(0)">Zakat ▼</a>
         <ul>
-          <li><a href="phbi_web/mustahiq.html">Pengusulan Mustahiq</a></li>
-          <li><a href="phbi_web/penyaluran.html">Penyaluran</a></li>
-          <li><a href="phbi_web/rekap.html">Rekapitulasi</a></li>
-          <li><a href="phbi_web/zakatmal.html">Kalkulator Zakat Mal</a></li>
+          <li>
+            <a href="phbi_web/mustahiq.html">Pengusulan Mustahiq</a>
+          </li>
+          <li>
+            <a href="phbi_web/penyaluran.html">Penyaluran</a>
+          </li>
+          <li>
+            <a href="phbi_web/rekap.html">Rekapitulasi</a>
+          </li>
+          <li>
+            <a href="phbi_web/zakatmal.html">Kalkulator Zakat Mal</a>
+          </li>
         </ul>
       </li>
 
       <li>
         <a href="javascript:void(0)">Kegiatan ▼</a>
         <ul>
-          <li><a href="phbi_web/penceramah.html">Penceramah Tarawih</a></li>
-          <li><a href="phbi_web/ifthor.html">Ifthor Jama'i</a></li>
-          <li><a href="phbi_web/idulfitri.html">Idul Fitri</a></li>
+          <li>
+            <a href="phbi_web/penceramah.html">Penceramah Tarawih</a>
+          </li>
+          <li>
+            <a href="phbi_web/ifthor.html">Ifthor Jama'i</a>
+          </li>
+          <li>
+            <a href="phbi_web/idulfitri.html">Idul Fitri</a>
+          </li>
         </ul>
       </li>
 
@@ -206,127 +249,247 @@
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
 <script>
+
   // ============================
   // CENTER PETA
   // ============================
   var centerPoint = [-6.470496, 106.845458];
 
+  // ============================
+  // INISIALISASI PETA
+  // ============================
   var map = L.map("map", {
     center: centerPoint,
-    zoom: 17
+    zoom: 17,
+
+    // Tidak bisa zoom out di bawah level 17
+    minZoom: 17
   });
 
-  // Basemap
-  var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+  // ============================
+  // BASEMAP
+  // ============================
+  var osm = L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  ).addTo(map);
+
   var googleSat = L.tileLayer(
     "https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    { subdomains: ["mt0","mt1","mt2","mt3"], maxZoom: 20 }
+    {
+      subdomains: ["mt0", "mt1", "mt2", "mt3"],
+      maxZoom: 20
+    }
   );
 
+
+  // ============================
   // POI
+  // ============================
   var poiData = [
-    { name: "Masjid Ar-Ridhwan (Center)", coords: centerPoint },
-    { name: "Gerbang Puri Nirwana 1", coords: [-6.472532, 106.843382] },
-   ];
+    {
+      name: "Masjid Ar-Ridhwan (Center)",
+      coords: centerPoint
+    },
+    {
+      name: "Gerbang Puri Nirwana 1",
+      coords: [-6.472532, 106.843382]
+    }
+  ];
 
   var poiLayer = L.layerGroup();
+
   poiData.forEach(pt => {
-    L.marker(pt.coords).bindPopup("<b>"+pt.name+"</b>").addTo(poiLayer);
+    L.marker(pt.coords)
+      .bindPopup("<b>" + pt.name + "</b>")
+      .addTo(poiLayer);
   });
+
   poiLayer.addTo(map);
 
-  // Jalan utama
-  var jalanLayer = L.geoJSON({
-    "type":"FeatureCollection",
-    "features":[{
-      "type":"Feature",
-      "properties":{"Name":"Jalan Utama Puri Nirwana 1"},
-      "geometry":{
-        "type":"LineString",
-        "coordinates":[
-          [106.845399, -6.468588],
-          [106.844814, -6.471434],
-          [106.844707, -6.472452],
-          [106.843988, -6.472441],
-          [106.843382, -6.472532]
-        ]
-      }
-    }]
-  },{
-    style:{ color:"#f44336", weight:4 }
-  }).addTo(map);
 
-  // Polygon perumahan
-  var puriLayer = L.geoJSON({
-    "type":"FeatureCollection",
-    "features":[{
-      "type":"Feature",
-      "properties":{"Name":"Puri Nirwana 1"},
-      "geometry":{
-        "type":"Polygon",
-        "coordinates":[[
-          [106.844112, -6.468311],
-          [106.845764, -6.468657],
-          [106.845839, -6.469051], 
-          [106.847062, -6.469350],
-          [106.846810, -6.470426],
-          [106.846622, -6.470373],
-          [106.845742, -6.473069],
-          [106.844949, -6.473479],
-          [106.844814, -6.475003],
-          [106.844380, -6.474876],
-          [106.844262, -6.472717],
-          [106.843286, -6.472627],
-          [106.843243, -6.472243],
-          [106.844552, -6.472105],
-          [106.844670, -6.470528],
-          [106.843940, -6.470145],
-          [106.844112, -6.468311]
-        ]]
+  // ============================
+  // JALAN UTAMA
+  // ============================
+  var jalanLayer = L.geoJSON({
+    "type": "FeatureCollection",
+
+    "features": [
+      {
+        "type": "Feature",
+
+        "properties": {
+          "Name": "Jalan Utama Puri Nirwana 1"
+        },
+
+        "geometry": {
+          "type": "LineString",
+
+          "coordinates": [
+            [106.845399, -6.468588],
+            [106.844814, -6.471434],
+            [106.844707, -6.472452],
+            [106.843988, -6.472441],
+            [106.843382, -6.472532]
+          ]
+        }
       }
-    }]
-  },{
-    style:{
-      color:"#1b5e20",
-      weight:3,
-      fillColor:"#66bb6a",
-      fillOpacity:0.35
+    ]
+
+  }, {
+    style: {
+      color: "#f44336",
+      weight: 4
     }
   }).addTo(map);
 
-  // Layer control
+
+  // ============================
+  // POLYGON PERUMAHAN
+  // ============================
+  var puriLayer = L.geoJSON({
+    "type": "FeatureCollection",
+
+    "features": [
+      {
+        "type": "Feature",
+
+        "properties": {
+          "Name": "Puri Nirwana 1"
+        },
+
+        "geometry": {
+          "type": "Polygon",
+
+          "coordinates": [
+            [
+              [106.844112, -6.468311],
+              [106.845764, -6.468657],
+              [106.845839, -6.469051],
+              [106.847062, -6.469350],
+              [106.846810, -6.470426],
+              [106.846622, -6.470373],
+              [106.845742, -6.473069],
+              [106.844949, -6.473479],
+              [106.844814, -6.475003],
+              [106.844380, -6.474876],
+              [106.844262, -6.472717],
+              [106.843286, -6.472627],
+              [106.843243, -6.472243],
+              [106.844552, -6.472105],
+              [106.844670, -6.470528],
+              [106.843940, -6.470145],
+              [106.844112, -6.468311]
+            ]
+          ]
+        }
+      }
+    ]
+
+  }, {
+    style: {
+      color: "#1b5e20",
+      weight: 3,
+      fillColor: "#66bb6a",
+      fillOpacity: 0.35
+    }
+  }).addTo(map);
+
+
+  // ============================
+  // LAYER CONTROL
+  // ============================
   L.control.layers(
-    { "OpenStreetMap": osm, "Google Satellite": googleSat },
-    { "Puri Nirwana 1": puriLayer, "Jalan Utama": jalanLayer },
-    { collapsed:false }
+
+    {
+      "OpenStreetMap": osm,
+      "Google Satellite": googleSat
+    },
+
+    {
+      "Puri Nirwana 1": puriLayer,
+      "Jalan Utama": jalanLayer
+    },
+
+    {
+      collapsed: false
+    }
+
   ).addTo(map);
 
-  // Scale
+
+  // ============================
+  // SCALE
+  // ============================
   L.control.scale().addTo(map);
 
-  // Inset
+
+  // ============================
+  // INSET / MINIMAP
+  // ============================
   new L.Control.MiniMap(
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
-    { toggleDisplay:true }
+
+    L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    ),
+
+    {
+      toggleDisplay: true
+    }
+
   ).addTo(map);
 
-  // Search bar
-  var geocoder = L.Control.geocoder({ defaultMarkGeocode:true });
-  geocoder.addTo(map);
 
-  var searchElement = document.querySelector(".leaflet-control-geocoder");
-  document.getElementById("searchContainer").appendChild(searchElement);
-
-  // Klik koordinat
-  map.on("click", e=>{
-    L.popup()
-      .setLatLng(e.latlng)
-      .setContent("Lat: "+e.latlng.lat.toFixed(6)+"<br>Lng: "+e.latlng.lng.toFixed(6))
-      .openOn(map);
+  // ============================
+  // SEARCH BAR
+  // ============================
+  var geocoder = L.Control.geocoder({
+    defaultMarkGeocode: true
   });
 
-  // Popup default
-  L.marker(centerPoint).bindPopup("<b>Masjid Ar Ridhwan</b>").addTo(map).openPopup();
+  geocoder.addTo(map);
+
+  var searchElement =
+    document.querySelector(".leaflet-control-geocoder");
+
+  document
+    .getElementById("searchContainer")
+    .appendChild(searchElement);
+
+
+  // ============================
+  // KLIK KOORDINAT
+  // ============================
+  map.on("click", e => {
+
+    L.popup()
+
+      .setLatLng(e.latlng)
+
+      .setContent(
+        "Lat: " +
+        e.latlng.lat.toFixed(6) +
+        "<br>Lng: " +
+        e.latlng.lng.toFixed(6)
+      )
+
+      .openOn(map);
+
+  });
+
+
+  // ============================
+  // POPUP DEFAULT
+  // ============================
+  L.marker(centerPoint)
+
+    .bindPopup(
+      "<b>Masjid Ar Ridhwan</b>"
+    )
+
+    .addTo(map)
+
+    .openPopup();
 
 </script>
 
