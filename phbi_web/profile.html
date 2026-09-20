@@ -1,314 +1,408 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Daftar Imam dan Penceramah Tarawih — PHBI 1447 H</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Leaflet (untuk search bar seperti di puri.html) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+<html lang="id"> <head> <meta charset="utf-8" /> <title>Profil Panitia Ramadhan dan Idul Fitri 1448 H - Masjid Ar Ridhwan</title> <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-    }
+<style> * { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f5f7f5; color: #263238; line-height: 1.6; } /* ========================================================= HEADER ========================================================= */ #header { width: 100%; height: 40px; background: #263238; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; position: fixed; top: 0; left: 0; z-index: 2000; } /* ========================================================= NAVBAR ========================================================= */ #navbar { position: fixed; top: 40px; left: 0; width: 100%; min-height: 60px; background: #37474F; display: flex; align-items: center; padding: 0 10px; z-index: 1800; } #logo img { height: 40px; margin-right: 20px; border-radius: 4px; } #menu { flex: 1; } #menu ul { list-style: none; margin: 0; padding: 0; display: flex; } #menu ul li { position: relative; } #menu > ul > li > a { padding: 10px 18px; display: block; color: white; text-decoration: none; } #menu ul li:hover { background: #455A64; } /* Dropdown */ #menu ul li ul { display: none; position: absolute; top: 60px; left: 0; background: #455A64; min-width: 210px; padding: 0; z-index: 9999; } #menu ul li:hover ul, #menu ul li:focus-within ul { display: block; } #menu ul li ul li { width: 100%; } #menu ul li ul li a { padding: 10px 14px; display: block; color: white; text-decoration: none; white-space: nowrap; } #menu ul li ul li:hover { background: #546E7A; } /* ========================================================= MAIN ========================================================= */ main { padding-top: 100px; padding-bottom: 70px; } /* ========================================================= HERO ========================================================= */ .hero { min-height: 380px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 20px; background: linear-gradient( rgba(7, 54, 27, 0.88), rgba(11, 61, 11, 0.92) ); color: white; position: relative; overflow: hidden; } .hero::before { content: "☪"; position: absolute; font-size: 260px; opacity: 0.05; right: 5%; top: 20px; } .hero-content { max-width: 900px; position: relative; z-index: 2; } .arabic { font-size: 28px; margin-bottom: 12px; direction: rtl; } .hero h1 { margin: 5px 0; font-size: 36px; letter-spacing: 0.5px; } .hero h2 { margin: 5px 0 20px; font-size: 22px; font-weight: normal; } .hero p { max-width: 700px; margin: auto; font-size: 16px; opacity: 0.95; } .badge { display: inline-block; margin-top: 25px; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.6); border-radius: 30px; font-size: 14px; } /* ========================================================= CONTAINER ========================================================= */ .container { max-width: 1100px; margin: auto; padding: 45px 20px; } .section-title { text-align: center; margin-bottom: 35px; } .section-title h2 { margin: 0; color: #1b5e20; font-size: 28px; } .section-title p { margin-top: 8px; color: #607d8b; } /* ========================================================= INTRO ========================================================= */ .intro { background: white; border-radius: 14px; padding: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); text-align: center; } .intro .arabic { color: #1b5e20; font-size: 24px; } /* ========================================================= VISI MISI ========================================================= */ .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; } .card { background: white; border-radius: 14px; padding: 28px; box-shadow: 0 3px 15px rgba(0,0,0,0.07); border-top: 4px solid #2e7d32; } .card h3 { color: #1b5e20; margin-top: 0; font-size: 21px; } .card p { color: #455A64; } .card ul { padding-left: 20px; } .card li { margin-bottom: 8px; } /* ========================================================= NILAI RAMADHAN ========================================================= */ .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; } .value { background: white; text-align: center; padding: 25px 15px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.06); transition: transform 0.2s ease; } .value:hover { transform: translateY(-5px); } .value-icon { font-size: 34px; margin-bottom: 10px; } .value h3 { margin: 5px 0; color: #1b5e20; } .value p { font-size: 14px; color: #607d8b; } /* ========================================================= PROGRAM ========================================================= */ .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; } .program { background: white; border-radius: 14px; padding: 25px; box-shadow: 0 3px 12px rgba(0,0,0,0.07); position: relative; overflow: hidden; } .program::after { content: "رمضان"; position: absolute; right: -10px; bottom: -20px; font-size: 65px; color: #1b5e20; opacity: 0.05; direction: rtl; } .program h3 { color: #1b5e20; margin-top: 0; } .program p { color: #546E7A; font-size: 14px; } /* ========================================================= STRUKTUR ========================================================= */ .structure { background: white; border-radius: 14px; padding: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.07); } .structure-table { width: 100%; border-collapse: collapse; } .structure-table th, .structure-table td { padding: 13px; border-bottom: 1px solid #e0e0e0; text-align: left; } .structure-table th { background: #1b5e20; color: white; } .structure-table tr:last-child td { border-bottom: none; } /* ========================================================= QUOTE ========================================================= */ .quote-section { background: #e8f5e9; padding: 55px 20px; text-align: center; } #quote { max-width: 800px; margin: auto; color: #1b5e20; font-size: 21px; font-style: italic; min-height: 70px; transition: opacity 0.4s ease; } #quote-source { margin-top: 10px; color: #607d8b; font-size: 14px; } /* ========================================================= FOOTER ========================================================= */ #credit { position: fixed; bottom: 42px; right: 10px; z-index: 1500; font-size: 12px; padding: 4px 6px; background: white; border-radius: 4px; box-shadow: 0 0 4px rgba(0,0,0,0.3); } #footer-banner { width: 100%; background: #0b3d0b; color: white; text-align: center; padding: 12px 0; font-size: 16px; position: fixed; bottom: 0; left: 0; z-index: 2000; } /* ========================================================= RESPONSIVE ========================================================= */ @media (max-width: 800px) { #navbar { height: auto; min-height: 60px; flex-wrap: wrap; } #logo { padding: 8px 0; } #menu { width: 100%; flex-basis: 100%; } #menu ul { flex-wrap: wrap; } #menu > ul > li > a { padding: 9px 10px; font-size: 14px; } #menu ul li ul { top: 100%; } main { padding-top: 120px; } .hero h1 { font-size: 28px; } .hero h2 { font-size: 18px; } .cards { grid-template-columns: 1fr; } .values { grid-template-columns: repeat(2, 1fr); } .program-grid { grid-template-columns: 1fr; } .structure { overflow-x: auto; } .structure-table { min-width: 600px; } } @media (max-width: 480px) { .hero { min-height: 350px; } .hero h1 { font-size: 24px; } .arabic { font-size: 22px; } .values { grid-template-columns: 1fr; } #footer-banner { font-size: 13px; } } </style>
 
-    /* HEADER ATAS */
-    #header {
-      width: 100%;
-      height: 40px;
-      background-color: #263238;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 16px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 2000;
-    }
-
-    /* NAVBAR MENU + SEARCH */
-    #navbar {
-      position: fixed;
-      top: 40px;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: #37474F;
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-      z-index: 1800;
-    }
-
-    /* LOGO */
-    #logo img {
-      height: 40px;
-      margin-right: 20px;
-      border-radius: 4px;
-    }
-
-    /* MENU (SAMA DENGAN puri.html, HANYA PATH DIBEDAKAN) */
-    #menu {
-      flex: 1;
-    }
-
-    #menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    #menu ul li {
-      position: relative;
-    }
-
-    #menu > ul > li > a {
-      display: block;
-      padding: 10px 18px;
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    #menu ul li:hover {
-      background: #455A64;
-    }
-
-    #menu ul li ul {
-      display: none;
-      position: absolute;
-      top: 60px; /* setara tinggi navbar */
-      background: #455A64;
-      padding: 0;
-      min-width: 200px;
-      z-index: 9999;
-    }
-
-    #menu ul li ul li a {
-      display: block;
-      padding: 10px;
-      color: white;
-      text-decoration: none;
-    }
-
-    #menu ul li ul li:hover {
-      background: #546E7A;
-    }
-
-    /* Dropdown muncul saat hover atau fokus */
-    #menu ul li:hover ul,
-    #menu ul li:focus-within ul {
-      display: block;
-    }
-
-    /* SEARCH DI KANAN (SAMA POSISI DENGAN puri.html) */
-    #searchContainer {
-      width: 280px;
-      margin-right: 10px;
-    }
-
-    #searchContainer .leaflet-control-geocoder {
-      width: 100% !important;
-      margin: 0 !important;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
-
-    /* KONTEN UTAMA HALAMAN */
-    #content {
-      margin-top: 120px; /* 40 header + 60 navbar + sedikit jarak */
-      padding: 20px;
-      margin-bottom: 80px; /* supaya tidak ketutup footer-banner */
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #263238;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-    }
-
-    th, td {
-      border: 1px solid #999;
-      padding: 10px;
-    }
-
-    th {
-      background: #37474F;
-      color: white;
-      text-align: center;
-    }
-
-    tr:nth-child(even) {
-      background: #f0f0f0;
-    }
-
-    /* FOOTER KECIL KANAN BAWAH */
-    #credit {
-      position: fixed;
-      bottom: 40px;     /* di atas footer-banner */
-      right: 10px;
-      z-index: 1500;
-      font-size: 12px;
-      padding: 4px 6px;
-      background: white;
-      border-radius: 4px;
-      box-shadow: 0 0 4px rgba(0,0,0,0.3);
-    }
-
-    /* FOOTER-BANNER BESAR */
-    #footer-banner {
-      width: 100%;
-      background: #0b3d0b;  /* hijau tua */
-      color: white;
-      text-align: center;
-      padding: 12px 0;
-      font-size: 16px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      z-index: 2000;
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <div id="header">Peta Dakwah PHBI 1447 H</div>
+<!-- ========================================================= HEADER ========================================================= -->
 
-  <!-- NAVBAR -->
-  <div id="navbar">
+<div id="header"> Panitia Ramadhan dan Idul Fitri 1448 H </div>
 
-    <!-- LOGO -->
-    <div id="logo">
-      <!-- path relatif dari phbi_web ke phbi_images -->
-      <img src="./logo_arridhwan.jpg" alt="Logo Ar Ridhwan">
-    </div>
+<!-- ========================================================= NAVBAR ========================================================= -->
 
-    <!-- MENU (SAMA STRUKTUR DENGAN puri.html) -->
-    <div id="menu">
-      <ul>
-        <li><a href="../puri.html">Home</a></li>
+<div id="navbar">
 
-        <li>
-          <a href="javascript:void(0)">Tentang ▼</a>
-          <ul>
-            <li><a href="#">PHBI 1447 H</a></li>
-          </ul>
-        </li>
+<!-- LOGO -->
 
-        <li>
-          <a href="javascript:void(0)">Zakat ▼</a>
-          <ul>
-            <li><a href="mustahiq.html">Pengusulan Mustahiq</a></li>
-            <li><a href="#">Penyaluran</a></li>
-            <li><a href="#">Rekapitulasi</a></li>
-            <li><a href="#">Kalkulator Zakat Mal</a></li>
-          </ul>
-        </li>
+<div id="logo"> <img src="logo_arridhwan.jpg" alt="Logo Masjid Ar Ridhwan"> </div>
 
-        <li>
-          <a href="javascript:void(0)">Kegiatan ▼</a>
-          <ul>
-            <li><a href="penceramah.html">Penceramah Tarawih</a></li>
-            <li><a href="#">Ifthor Jama'i</a></li>
-            <li><a href="#">Idul Fitri</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+<!-- MENU -->
 
-    <!-- SEARCH -->
-    <div id="searchContainer"></div>
+<div id="menu"> <ul>
+
+  <li>
+    <a href="../puri.html">Home</a>
+  </li>
+
+  <li>
+    <a href="javascript:void(0)">Tentang ▼</a>
+    <ul>
+      <li>
+        <a href="profil.html">Profil PHBI 1448 H</a>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="javascript:void(0)">Zakat ▼</a>
+    <ul>
+      <li>
+        <a href="mustahiq.html">Pengusulan Mustahiq</a>
+      </li>
+      <li>
+        <a href="penyaluran.html">Penyaluran</a>
+      </li>
+      <li>
+        <a href="rekap.html">Rekapitulasi</a>
+      </li>
+      <li>
+        <a href="zakatmal.html">Kalkulator Zakat Mal</a>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="javascript:void(0)">Kegiatan ▼</a>
+    <ul>
+      <li>
+        <a href="penceramah.html">Penceramah Tarawih</a>
+      </li>
+      <li>
+        <a href="ifthor.html">Ifthor Jama'i</a>
+      </li>
+      <li>
+        <a href="idulfitri.html">Idul Fitri</a>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- ========================================================= MAIN CONTENT ========================================================= -->
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+  <div class="arabic">
+    رَمَضَانُ شَهْرُ الْقُرْآنِ
+  </div>
+
+  <h1>Panitia Ramadhan & Idul Fitri 1448 H</h1>
+
+  <h2>Masjid Ar Ridhwan · Puri Nirwana 1</h2>
+
+  <p>
+    Bersama menyambut bulan suci Ramadhan dengan semangat
+    ibadah, kepedulian, kebersamaan, dan pelayanan umat.
+  </p>
+
+  <div class="badge">
+    Menjalin Ukhuwah · Menggapai Mardhatillah
+  </div>
+
+</div>
+
+</section>
+
+<!-- PROFIL -->
+
+<section class="container">
+
+<div class="section-title">
+  <h2>Tentang Panitia</h2>
+  <p>Khidmat untuk umat, ikhlas dalam pelayanan</p>
+</div>
+
+<div class="intro">
+
+  <div class="arabic">
+    وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَى
+  </div>
+
+  <p>
+    Panitia Ramadhan dan Idul Fitri 1448 H Masjid Ar Ridhwan
+    merupakan wadah bersama warga dan jamaah untuk mempersiapkan,
+    mengelola, dan menyukseskan rangkaian kegiatan keagamaan
+    selama bulan suci Ramadhan hingga pelaksanaan Idul Fitri.
+  </p>
+
+  <p>
+    Dengan semangat <b>ukhuwah Islamiyah</b>, kepedulian sosial,
+    dan pelayanan kepada jamaah, seluruh rangkaian kegiatan
+    diharapkan dapat menjadi sarana meningkatkan kualitas
+    ibadah sekaligus mempererat silaturahmi antarwarga.
+  </p>
+
+  <p>
+    <i>
+      "Bekerja bersama dalam kebaikan, melayani dengan keikhlasan,
+      dan menjadikan setiap langkah sebagai amal ibadah."
+    </i>
+  </p>
+
+</div>
+
+</section>
+
+<!-- VISI MISI -->
+
+<section class="container">
+
+<div class="section-title">
+  <h2>Visi & Misi</h2>
+  <p>Landasan dalam menjalankan amanah kepanitiaan</p>
+</div>
+
+<div class="cards">
+
+  <div class="card">
+
+    <h3>🌙 Visi</h3>
+
+    <p>
+      Mewujudkan rangkaian Ramadhan dan Idul Fitri yang
+      <b>khidmat, tertib, inklusif, dan penuh keberkahan</b>
+      sebagai sarana meningkatkan ketakwaan dan mempererat
+      ukhuwah jamaah Masjid Ar Ridhwan.
+    </p>
 
   </div>
 
-  <!-- KONTEN HALAMAN -->
-  <div id="content">
-    <h2>Daftar Imam dan Penceramah Tarawih</h2>
+  <div class="card">
 
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 180px;">Tanggal</th>
-          <th>Imam</th>
-          <th>Penceramah</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 8 Feb 2027 – 28 Feb 2027 -->
-        <tr><td>8 Februari 2027</td><td>Panitia</td><td>Panitia</td></tr>
-        <tr><td>9 Februari 2027</td><td>Ust. Azmi</td><td>Ust. Agus Salim, Lc.</td></tr>
-        <tr><td>10 Februari 2027</td><td>Ust. Azmi</td><td>Ir. H. Zulkarnaen</td></tr>
-        <tr><td>11 Februari 2027</td><td>Ust. Azmi</td><td>Sri Mulyono</td></tr>
-        <tr><td>12 Februari 2027</td><td>Ust. E. Faridl, M.M.</td><td>Ust. E. Faridl, M.M.</td></tr>
-        <tr><td>13 Februari 2027</td><td>Ust. Zaenal Abidin, M.Pd.</td><td>Ust. Zaenal Abidin, M.Pd.</td></tr>
-        <tr><td>14 Februari 2027</td><td>Ust. Ali Tamam, M.Pd.I</td>Ust. Ali Tamam, M.Pd.I<td></td></tr>
-        <tr><td>15 Februari 2027</td><td>Ust. Azmi</td><td>Ust. Azmi</td></tr>
-        <tr><td>16 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>17 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>18 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>19 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>20 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>21 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>22 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>23 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>24 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>25 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>26 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>27 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>28 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>1 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>2 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>3 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>4 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>5 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>6 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>7 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>8 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>9 Maret 2027</td><td></td><td></td></tr>
-      </tbody>
-    </table>
+    <h3>🤲 Misi</h3>
+
+    <ul>
+      <li>Menyelenggarakan kegiatan ibadah Ramadhan secara tertib dan nyaman.</li>
+      <li>Mendorong peningkatan kepedulian sosial dan berbagi kepada sesama.</li>
+      <li>Memfasilitasi kegiatan keagamaan dan edukasi Islam bagi jamaah.</li>
+      <li>Mengelola zakat dan kegiatan sosial secara amanah dan transparan.</li>
+      <li>Memperkuat silaturahmi dan ukhuwah antarwarga.</li>
+      <li>Mempersiapkan pelaksanaan Idul Fitri dengan penuh kebersamaan.</li>
+    </ul>
+
   </div>
 
-  <!-- FOOTERS -->
-  <div id="credit">phbi1447@2025</div>
-  <div id="footer-banner">
-    <b><i>Menjalin Ukhuwah, Menggapai Mardhatillah</i></b>
+</div>
+
+</section>
+
+<!-- NILAI -->
+
+<section class="container">
+
+<div class="section-title">
+  <h2>Nilai yang Kami Jaga</h2>
+  <p>Empat semangat dalam setiap pelayanan</p>
+</div>
+
+<div class="values">
+
+  <div class="value">
+    <div class="value-icon">🤲</div>
+    <h3>Ikhlas</h3>
+    <p>
+      Melayani jamaah dengan niat ibadah dan mengharap ridha Allah SWT.
+    </p>
   </div>
 
-  <!-- JS: Leaflet + Geocoder untuk search bar -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <div class="value">
+    <div class="value-icon">🕌</div>
+    <h3>Amanah</h3>
+    <p>
+      Menjalankan tugas dengan penuh tanggung jawab dan kejujuran.
+    </p>
+  </div>
 
-  <script>
-    // Membuat map "dummy" tak terlihat hanya untuk inisialisasi geocoder
-    var tempDiv = document.createElement('div');
-    tempDiv.style.display = 'none';
-    document.body.appendChild(tempDiv);
+  <div class="value">
+    <div class="value-icon">🤝</div>
+    <h3>Ukhuwah</h3>
+    <p>
+      Membangun kebersamaan dan mempererat silaturahmi antarjamaah.
+    </p>
+  </div>
 
-    var tempMap = L.map(tempDiv).setView([0, 0], 1);
-    var geocoderControl = L.Control.geocoder({ defaultMarkGeocode: true }).addTo(tempMap);
+  <div class="value">
+    <div class="value-icon">❤️</div>
+    <h3>Peduli</h3>
+    <p>
+      Menghadirkan manfaat dan kepedulian bagi sesama.
+    </p>
+  </div>
 
-    // Pindahkan elemen geocoder ke searchContainer
-    var searchElement = geocoderControl.getContainer();
-    document.getElementById("searchContainer").appendChild(searchElement);
-  </script>
+</div>
 
-</body>
-</html>
+</section>
 
+<!-- PROGRAM -->
+
+<section class="container">
+
+<div class="section-title">
+  <h2>Rangkaian Program</h2>
+  <p>Semarak Ramadhan dan Idul Fitri 1448 H</p>
+</div>
+
+<div class="program-grid">
+
+  <div class="program">
+    <h3>🕌 Tarawih & Kultum</h3>
+    <p>
+      Pelaksanaan shalat Tarawih dan rangkaian kajian singkat
+      untuk meningkatkan pemahaman dan kualitas ibadah jamaah.
+    </p>
+  </div>
+
+  <div class="program">
+    <h3>🍲 Ifthor Jama'i</h3>
+    <p>
+      Berbuka puasa bersama sebagai momentum mempererat
+      silaturahmi dan berbagi kebahagiaan dengan jamaah.
+    </p>
+  </div>
+
+  <div class="program">
+    <h3>💰 Zakat & Sedekah</h3>
+    <p>
+      Fasilitasi pengumpulan dan penyaluran zakat serta bantuan
+      sosial kepada masyarakat yang berhak menerimanya.
+    </p>
+  </div>
+
+  <div class="program">
+    <h3>📖 Kajian Ramadhan</h3>
+    <p>
+      Kegiatan pembinaan keislaman untuk menambah ilmu,
+      memperkuat iman, dan menghidupkan suasana Ramadhan.
+    </p>
+  </div>
+
+  <div class="program">
+    <h3>🌙 Malam Lailatul Qadar</h3>
+    <p>
+      Menghidupkan sepuluh malam terakhir Ramadhan dengan
+      berbagai kegiatan ibadah dan peningkatan amal.
+    </p>
+  </div>
+
+  <div class="program">
+    <h3>🎉 Idul Fitri</h3>
+    <p>
+      Mempersiapkan pelaksanaan Shalat Idul Fitri serta
+      kegiatan silaturahmi dan kebersamaan warga.
+    </p>
+  </div>
+
+</div>
+
+</section>
+
+<!-- STRUKTUR -->
+
+<section class="container">
+
+<div class="section-title">
+  <h2>Struktur Kepanitiaan</h2>
+  <p>Susunan pengurus dapat disesuaikan dengan kepanitiaan aktual</p>
+</div>
+
+<div class="structure">
+
+  <table class="structure-table">
+
+    <thead>
+      <tr>
+        <th>Jabatan</th>
+        <th>Nama</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>Pembina</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Ketua Panitia</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Wakil Ketua</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Sekretaris</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Bendahara</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Seksi Peribadatan</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Seksi Zakat & Sosial</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Seksi Konsumsi</td>
+        <td>........................................</td>
+      </tr>
+
+      <tr>
+        <td>Seksi Dokumentasi & Publikasi</td>
+        <td>........................................</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+</section>
+
+<!-- QUOTE DINAMIS -->
+
+<section class="quote-section">
+
+<div class="arabic">
+  إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ
+</div>
+
+<div id="quote">
+  Setiap amal bergantung pada niatnya.
+</div>
+
+<div id="quote-source">
+  — Hadis Riwayat Bukhari dan Muslim
+</div>
+
+</section>
+
+</main>
+
+<!-- ========================================================= FOOTER ========================================================= -->
+
+<div id="credit"> phbi1448@2026 </div>
+
+<div id="footer-banner"> <b><i>Menjalin Ukhuwah, Menggapai Mardhatillah</i></b> </div>
+
+<!-- ========================================================= JAVASCRIPT ========================================================= -->
+
+<script> // ========================================================= // QUOTE DINAMIS // ========================================================= const quotes = [ { text: "Setiap amal bergantung pada niatnya.", source: "Hadis Riwayat Bukhari dan Muslim" }, { text: "Barangsiapa berpuasa Ramadhan karena iman dan mengharap pahala, niscaya diampuni dosa-dosanya yang telah lalu.", source: "Hadis Riwayat Bukhari dan Muslim" }, { text: "Dan berbuat baiklah. Sesungguhnya Allah menyukai orang-orang yang berbuat baik.", source: "QS. Al-Baqarah: 195" }, { text: "Sesungguhnya orang-orang yang beriman itu bersaudara.", source: "QS. Al-Hujurat: 10" }, { text: "Dan barangsiapa yang mengerjakan kebaikan seberat zarrah, niscaya dia akan melihat balasannya.", source: "QS. Az-Zalzalah: 7" }, { text: "Bulan Ramadhan adalah kesempatan untuk memperbanyak ibadah, memperkuat ukhuwah, dan memperluas manfaat.", source: "Semangat Ramadhan Masjid Ar Ridhwan" } ]; let quoteIndex = 0; const quoteElement = document.getElementById("quote"); const sourceElement = document.getElementById("quote-source"); function changeQuote() { quoteElement.style.opacity = 0; setTimeout(function() { quoteIndex++; if (quoteIndex >= quotes.length) { quoteIndex = 0; } quoteElement.textContent = quotes[quoteIndex].text; sourceElement.textContent = "— " + quotes[quoteIndex].source; quoteElement.style.opacity = 1; }, 400); } setInterval(changeQuote, 5000); </script>
+
+</body> </html>
