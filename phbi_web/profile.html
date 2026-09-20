@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Imam dan Penceramah Tarawih — PHBI 1447 H</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet (untuk search bar seperti di puri.html) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    /* HEADER ATAS */
+    #header {
+      width: 100%;
+      height: 40px;
+      background-color: #263238;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2000;
+    }
+
+    /* NAVBAR MENU + SEARCH */
+    #navbar {
+      position: fixed;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #37474F;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 1800;
+    }
+
+    /* LOGO */
+    #logo img {
+      height: 40px;
+      margin-right: 20px;
+      border-radius: 4px;
+    }
+
+    /* MENU (SAMA DENGAN puri.html, HANYA PATH DIBEDAKAN) */
+    #menu {
+      flex: 1;
+    }
+
+    #menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #menu ul li {
+      position: relative;
+    }
+
+    #menu > ul > li > a {
+      display: block;
+      padding: 10px 18px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    #menu ul li:hover {
+      background: #455A64;
+    }
+
+    #menu ul li ul {
+      display: none;
+      position: absolute;
+      top: 60px; /* setara tinggi navbar */
+      background: #455A64;
+      padding: 0;
+      min-width: 200px;
+      z-index: 9999;
+    }
+
+    #menu ul li ul li a {
+      display: block;
+      padding: 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    #menu ul li ul li:hover {
+      background: #546E7A;
+    }
+
+    /* Dropdown muncul saat hover atau fokus */
+    #menu ul li:hover ul,
+    #menu ul li:focus-within ul {
+      display: block;
+    }
+
+    /* SEARCH DI KANAN (SAMA POSISI DENGAN puri.html) */
+    #searchContainer {
+      width: 280px;
+      margin-right: 10px;
+    }
+
+    #searchContainer .leaflet-control-geocoder {
+      width: 100% !important;
+      margin: 0 !important;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+
+    /* KONTEN UTAMA HALAMAN */
+    #content {
+      margin-top: 120px; /* 40 header + 60 navbar + sedikit jarak */
+      padding: 20px;
+      margin-bottom: 80px; /* supaya tidak ketutup footer-banner */
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #263238;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+    }
+
+    th {
+      background: #37474F;
+      color: white;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background: #f0f0f0;
+    }
+
+    /* FOOTER KECIL KANAN BAWAH */
+    #credit {
+      position: fixed;
+      bottom: 40px;     /* di atas footer-banner */
+      right: 10px;
+      z-index: 1500;
+      font-size: 12px;
+      padding: 4px 6px;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    }
+
+    /* FOOTER-BANNER BESAR */
+    #footer-banner {
+      width: 100%;
+      background: #0b3d0b;  /* hijau tua */
+      color: white;
+      text-align: center;
+      padding: 12px 0;
+      font-size: 16px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 2000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div id="header">Peta Dakwah PHBI 1447 H</div>
+
+  <!-- NAVBAR -->
+  <div id="navbar">
+
+    <!-- LOGO -->
+    <div id="logo">
+      <!-- path relatif dari phbi_web ke phbi_images -->
+      <img src="./logo_arridhwan.jpg" alt="Logo Ar Ridhwan">
+    </div>
+
+    <!-- MENU (SAMA STRUKTUR DENGAN puri.html) -->
+    <div id="menu">
+      <ul>
+        <li><a href="../puri.html">Home</a></li>
+
+        <li>
+          <a href="javascript:void(0)">Tentang ▼</a>
+          <ul>
+            <li><a href="#">PHBI 1447 H</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0)">Zakat ▼</a>
+          <ul>
+            <li><a href="mustahiq.html">Pengusulan Mustahiq</a></li>
+            <li><a href="#">Penyaluran</a></li>
+            <li><a href="#">Rekapitulasi</a></li>
+            <li><a href="#">Kalkulator Zakat Mal</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript:void(0)">Kegiatan ▼</a>
+          <ul>
+            <li><a href="penceramah.html">Penceramah Tarawih</a></li>
+            <li><a href="#">Ifthor Jama'i</a></li>
+            <li><a href="#">Idul Fitri</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SEARCH -->
+    <div id="searchContainer"></div>
+
+  </div>
+
+  <!-- KONTEN HALAMAN -->
+  <div id="content">
+    <h2>Daftar Imam dan Penceramah Tarawih</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 180px;">Tanggal</th>
+          <th>Imam</th>
+          <th>Penceramah</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 8 Feb 2027 – 28 Feb 2027 -->
+        <tr><td>8 Februari 2027</td><td>Panitia</td><td>Panitia</td></tr>
+        <tr><td>9 Februari 2027</td><td>Ust. Azmi</td><td>Ust. Agus Salim, Lc.</td></tr>
+        <tr><td>10 Februari 2027</td><td>Ust. Azmi</td><td>Ir. H. Zulkarnaen</td></tr>
+        <tr><td>11 Februari 2027</td><td>Ust. Azmi</td><td>Sri Mulyono</td></tr>
+        <tr><td>12 Februari 2027</td><td>Ust. E. Faridl, M.M.</td><td>Ust. E. Faridl, M.M.</td></tr>
+        <tr><td>13 Februari 2027</td><td>Ust. Zaenal Abidin, M.Pd.</td><td>Ust. Zaenal Abidin, M.Pd.</td></tr>
+        <tr><td>14 Februari 2027</td><td>Ust. Ali Tamam, M.Pd.I</td>Ust. Ali Tamam, M.Pd.I<td></td></tr>
+        <tr><td>15 Februari 2027</td><td>Ust. Azmi</td><td>Ust. Azmi</td></tr>
+        <tr><td>16 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>17 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>18 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>19 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>20 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>21 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>22 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>23 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>24 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>25 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>26 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>27 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>28 Februari 2027</td><td></td><td></td></tr>
+        <tr><td>1 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>2 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>3 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>4 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>5 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>6 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>7 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>8 Maret 2027</td><td></td><td></td></tr>
+        <tr><td>9 Maret 2027</td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTERS -->
+  <div id="credit">phbi1447@2025</div>
+  <div id="footer-banner">
+    <b><i>Menjalin Ukhuwah, Menggapai Mardhatillah</i></b>
+  </div>
+
+  <!-- JS: Leaflet + Geocoder untuk search bar -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+  <script>
+    // Membuat map "dummy" tak terlihat hanya untuk inisialisasi geocoder
+    var tempDiv = document.createElement('div');
+    tempDiv.style.display = 'none';
+    document.body.appendChild(tempDiv);
+
+    var tempMap = L.map(tempDiv).setView([0, 0], 1);
+    var geocoderControl = L.Control.geocoder({ defaultMarkGeocode: true }).addTo(tempMap);
+
+    // Pindahkan elemen geocoder ke searchContainer
+    var searchElement = geocoderControl.getContainer();
+    document.getElementById("searchContainer").appendChild(searchElement);
+  </script>
+
+</body>
+</html>
+
