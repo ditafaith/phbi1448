@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wakaf Renovasi Masjid | PHBI 1448 H</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9f6, #e8f3ec);
+      color: #24352b;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+    header {
+      background: linear-gradient(135deg, #0b5d3b, #087f4f);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    header .arabic {
+      font-size: 30px;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    header h1 {
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+    nav {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 35px;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #0b5d3b;
+      white-space: nowrap;
+    }
+
+    .logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #24543b;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: 0.3s;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: #e5f3eb;
+      color: #087f4f;
+    }
+
+    /* =====================================================
+       KONTEN UTAMA
+       ===================================================== */
+    main {
+      flex: 1;
+      max-width: 950px;
+      width: 92%;
+      margin: 35px auto 50px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .page-title h2 {
+      font-size: 26px;
+      color: #0b5d3b;
+      margin-bottom: 6px;
+    }
+
+    .page-title p {
+      color: #607268;
+      font-size: 15px;
+    }
+
+    /* =====================================================
+       KARTU INFORMASI & TIMELINE WAKAF
+       ===================================================== */
+    .info-guideline {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      border: 1px solid #dceede;
+    }
+
+    .guideline-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .guideline-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0b5d3b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .guideline-header .verse-quote {
+      font-size: 13.5px;
+      color: #53645a;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .timeline-item {
+      background: #f7faf8;
+      border: 1px solid #e3efe7;
+      border-radius: 12px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .timeline-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #dff1e7;
+      color: #0b5d3b;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .timeline-period {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0b5d3b;
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 13px;
+      color: #4b5e53;
+      line-height: 1.45;
+    }
+
+    /* =====================================================
+       PILIHAN PAKET WAKAF
+       ===================================================== */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 25px;
+    }
+
+    .package-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 22px 18px;
+      text-align: center;
+      border: 1px solid #dceede;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .package-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .package-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0b5d3b;
+      margin-bottom: 4px;
+    }
+
+    .package-amount {
+      font-size: 18px;
+      font-weight: 800;
+      color: #24543b;
+      margin: 8px 0;
+    }
+
+    .package-desc {
+      font-size: 12.5px;
+      color: #607268;
+      line-height: 1.4;
+    }
+
+    /* =====================================================
+       KOTAK REKENING & KONFIRMASI DONASI
+       ===================================================== */
+    .donation-box {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #dceede;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .donation-box h3 {
+      font-size: 18px;
+      color: #0b5d3b;
+      margin-bottom: 12px;
+    }
+
+    .bank-card {
+      background: #f4f9f6;
+      border: 1px dashed #0b5d3b;
+      border-radius: 12px;
+      padding: 16px;
+      display: inline-block;
+      margin: 10px auto 16px;
+      min-width: 280px;
+    }
+
+    .bank-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #607268;
+      text-transform: uppercase;
+    }
+
+    .account-number {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0b5d3b;
+      letter-spacing: 1.5px;
+      margin: 4px 0;
+    }
+
+    .account-holder {
+      font-size: 13px;
+      color: #24352b;
+      font-weight: 600;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.3s;
+      margin-top: 8px;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+    }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+    footer {
+      background: #0b5d3b;
+      color: white;
+      text-align: center;
+      padding: 35px 20px 25px;
+      margin-top: 30px;
+    }
+
+    footer h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+
+    footer .footer-subtitle {
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: white;
+      text-decoration: none;
+      padding: 9px 16px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.08);
+      transition: 0.3s;
+      font-size: 13.5px;
+    }
+
+    .social-link:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
+    }
+
+    /* Logo Instagram */
+    .instagram-icon {
+      width: 25px;
+      height: 25px;
+      border: 2px solid white;
+      border-radius: 7px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .instagram-icon::before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border: 2px solid white;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    .instagram-icon::after {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      top: 3px;
+      right: 3px;
+    }
+
+    /* Logo YouTube */
+    .youtube-icon {
+      width: 30px;
+      height: 21px;
+      background: white;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .youtube-icon::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-left: 9px solid #0b5d3b;
+      margin-left: 2px;
+    }
+
+    /* Logo Email */
+    .email-icon {
+      width: 27px;
+      height: 20px;
+      border: 2px solid white;
+      border-radius: 4px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .email-icon::after,
+    .email-icon::before {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 2px;
+      background: white;
+      top: 6px;
+    }
+
+    .email-icon::before {
+      left: 0;
+      transform: rotate(31deg);
+      transform-origin: left;
+    }
+
+    .email-icon::after {
+      right: 0;
+      transform: rotate(-31deg);
+      transform-origin: right;
+    }
+
+    footer .copyright {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* =====================================================
+       RESPONSIF
+       ===================================================== */
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 10px; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .bank-card { width: 100%; min-width: auto; }
+      .social-links { flex-direction: column; }
+      .social-link { width: 240px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="arabic">رَمَضَانُ شَهْرُ الْقُرْآنِ</div>
+    <h1>Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H</h1>
+    <p>Masjid Ar Ridhwan · Puri Nirwana 1</p>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo_arridhwan.jpg" alt="Logo Masjid Ar Ridhwan">
+        <span>PHBI 1448 H</span>
+      </div>
+
+      <div class="nav-links">
+        <!-- 1. HOME -->
+        <a href="../puri.html">Home</a>
+        <!-- 2. TENTANG -->
+        <a href="profile.html">Tentang</a>
+        <!-- 3. PENCERAMAH -->
+        <a href="penceramah.html">Penceramah</a>
+        <!-- 4. IFTHOR -->
+        <a href="ifthor.html">Ifthor</a>
+        <!-- 5. PENGAJUAN MUSTAHIQ -->
+        <a href="mustahiq.html">Pengajuan Mustahiq</a>
+        <!-- 6. PENYALURAN ZAKAT / QURBAN -->
+        <a href="penyaluran.html">Penyaluran Zakat / Qurban</a>
+        <!-- 7. LAPORAN -->
+        <a href="rekap.html">Laporan</a>
+        <!-- 8. IDUL FITRI / IDUL ADHA -->
+        <a href="fitri.html">Idul Fitri / Idul Adha</a>
+        <!-- 9. WAKAF -->
+        <a href="wakaf.html" class="active">Wakaf</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- KONTEN UTAMA -->
+  <main>
+    <div class="page-title">
+      <h2>Program Wakaf Renovasi & Pengembangan Masjid</h2>
+      <p>Masjid Ar Ridhwan · Menabung Amal Jariyah yang Tiada Terputus</p>
+    </div>
+
+    <!-- KOTAK INFORMASI TIMELINE & DASAR WAKAF -->
+    <section class="info-guideline">
+      <div class="guideline-header">
+        <h3>✨ Sedekah Jariyah: Investasi Akhirat</h3>
+        <p class="verse-quote">"Jika seseorang meninggal dunia, maka terputuslah amalannya kecuali tiga perkara: sedekah jariyah (wakaf), ilmu yang bermanfaat, dan anak saleh yang mendoakannya." (HR. Muslim)</p>
+      </div>
+
+      <div class="timeline-grid">
+        <!-- Tahap 1: Pengumpulan -->
+        <div class="timeline-item">
+          <span class="timeline-badge">Tahap 1: Penggalangan Dana</span>
+          <div class="timeline-period">November 2026 – Mei 2027</div>
+          <div class="timeline-desc">
+            Penghimpunan komitmen dan setoran dana wakaf dari para jamaah, muhsinin, serta warga Puri Nirwana 1 dan sekitarnya.
+          </div>
+        </div>
+
+        <!-- Tahap 2: Eksekusi Renovasi -->
+        <div class="timeline-item">
+          <span class="timeline-badge">Tahap 2: Realisasi Proyek</span>
+          <div class="timeline-period">Muharram 1449 H</div>
+          <div class="timeline-desc">
+            Pelaksanaan pekerjaan fisik renovasi masjid mencakup perluasan serambi ibadah, perbaikan atap, serta sarana wudhu & sanitasi.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILIHAN PAKET WAKAF -->
+    <div class="packages-grid">
+      <div class="package-card">
+        <div>
+          <div class="package-icon">🧱</div>
+          <div class="package-title">Paket Material / Semen</div>
+          <div class="package-amount">Rp 100.000 / paket</div>
+          <div class="package-desc">Alokasi untuk pengadaan semen, pasir, dan material pondasi renovasi serambi.</div>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <div>
+          <div class="package-icon">📐</div>
+          <div class="package-title">Paket Keramik & Lantai</div>
+          <div class="package-amount">Rp 250.000 / m²</div>
+          <div class="package-desc">Penyediaan granit/keramik ruang shalat utama dan selasar masjid yang nyaman.</div>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <div>
+          <div class="package-icon">🌟</div>
+          <div class="package-title">Paket Wakaf Bebas</div>
+          <div class="package-amount">Nominal Bebas</div>
+          <div class="package-desc">Menerima donasi wakaf dengan nominal sukarela sesuai keikhlasan dan kemampuan jamaah.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REKENING & KONFIRMASI -->
+    <section class="donation-box">
+      <h3>Rekening Penampungan Wakaf</h3>
+      <p style="color: #607268; font-size: 14px;">Salurkan wakaf terbaik Bapak/Ibu melalui transfer ke rekening resmi DKM:</p>
+
+      <div class="bank-card">
+        <div class="bank-name">Bank Syariah Indonesia (BSI)</div>
+        <div class="account-number">714-480-1234</div>
+        <div class="account-holder">a.n. DKM Masjid Ar Ridhwan (Wakaf)</div>
+      </div>
+
+      <p style="font-size: 13px; color: #607268;">
+        Mohon konfirmasi transfer melalui WhatsApp Panitia untuk pencatatan buku amanah wakaf:
+      </p>
+
+      <a class="whatsapp-btn" href="https://wa.me/628561448878?text=Konfirmasi%20Wakaf%20Renovasi%20Masjid%20Ar%20Ridhwan" target="_blank" rel="noopener noreferrer">
+        <span>📱</span> Konfirmasi via WhatsApp
+      </a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h3>
+      Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H
+    </h3>
+
+    <p class="footer-subtitle">
+      Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="social-links">
+
+      <!-- INSTAGRAM -->
+      <a
+        class="social-link"
+        href="https://www.instagram.com/arridhwandkm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="instagram-icon"></span>
+        <span>
+          @arridhwandkm
+        </span>
+      </a>
+
+      <!-- YOUTUBE -->
+      <a
+        class="social-link"
+        href="https://www.youtube.com/@dakwaharridhwan4872"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="youtube-icon"></span>
+        <span>
+          Dakwah Ar Ridhwan
+        </span>
+      </a>
+
+      <!-- EMAIL -->
+      <a
+        class="social-link"
+        href="mailto:arridhwan.dkm@gmail.com"
+      >
+        <span class="email-icon"></span>
+        <span>
+          arridhwan.dkm@gmail.com
+        </span>
+      </a>
+
+    </div>
+
+    <p>
+      Menjalin Ukhuwah · Menggapai Mardhatillah
+    </p>
+
+    <div class="copyright">
+      © 2026/2027 Panitia Ramadhan, Idul Fitri, dan Idul Adha
+      Masjid Ar Ridhwan
+    </div>
+
+  </footer>
+
+</body>
+</html>
