@@ -2,313 +2,426 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Daftar Imam dan Penceramah Tarawih — PHBI 1448 H</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Leaflet (untuk search bar seperti di puri.html) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+  <title>Daftar Imam & Penceramah Tarawih | PHBI 1448 H</title>
 
   <style>
-    html, body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
     }
 
-    /* HEADER ATAS */
-    #header {
-      width: 100%;
-      height: 40px;
-      background-color: #263238;
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9f6, #e8f3ec);
+      color: #24352b;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+    header {
+      background: linear-gradient(135deg, #0b5d3b, #087f4f);
       color: white;
+      text-align: center;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    header .arabic {
+      font-size: 30px;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    header h1 {
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+    nav {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 16px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 2000;
+      gap: 35px;
+      padding: 10px 20px;
     }
 
-    /* NAVBAR MENU + SEARCH */
-    #navbar {
-      position: fixed;
-      top: 40px;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: #37474F;
+    .logo {
       display: flex;
       align-items: center;
-      padding: 0 10px;
-      z-index: 1800;
+      gap: 10px;
+      font-weight: bold;
+      color: #0b5d3b;
+      white-space: nowrap;
     }
 
-    /* LOGO */
-    #logo img {
-      height: 40px;
-      margin-right: 20px;
-      border-radius: 4px;
+    .logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 50%;
     }
 
-    /* MENU (SAMA DENGAN puri.html, HANYA PATH DIBEDAKAN) */
-    #menu {
-      flex: 1;
-    }
-
-    #menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .nav-links {
       display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
     }
 
-    #menu ul li {
-      position: relative;
-    }
-
-    #menu > ul > li > a {
-      display: block;
-      padding: 10px 18px;
-      color: white;
+    .nav-links a {
       text-decoration: none;
+      color: #24543b;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: 0.3s;
+      white-space: nowrap;
       font-size: 14px;
     }
 
-    #menu ul li:hover {
-      background: #455A64;
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: #e5f3eb;
+      color: #087f4f;
     }
 
-    #menu ul li ul {
-      display: none;
-      position: absolute;
-      top: 60px; /* setara tinggi navbar */
-      background: #455A64;
-      padding: 0;
-      min-width: 200px;
-      z-index: 9999;
+    /* =====================================================
+       KONTEN UTAMA & TABEL PROPORSIONAL
+       ===================================================== */
+    main {
+      flex: 1;
+      max-width: 900px; /* Lebar dibatasi agar proporsional & nyaman dibaca */
+      width: 92%;
+      margin: 35px auto 50px;
     }
 
-    #menu ul li ul li a {
-      display: block;
-      padding: 10px;
-      color: white;
-      text-decoration: none;
-    }
-
-    #menu ul li ul li:hover {
-      background: #546E7A;
-    }
-
-    /* Dropdown muncul saat hover atau fokus */
-    #menu ul li:hover ul,
-    #menu ul li:focus-within ul {
-      display: block;
-    }
-
-    /* SEARCH DI KANAN (SAMA POSISI DENGAN puri.html) */
-    #searchContainer {
-      width: 280px;
-      margin-right: 10px;
-    }
-
-    #searchContainer .leaflet-control-geocoder {
-      width: 100% !important;
-      margin: 0 !important;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
-
-    /* KONTEN UTAMA HALAMAN */
-    #content {
-      margin-top: 120px; /* 40 header + 60 navbar + sedikit jarak */
-      padding: 20px;
-      margin-bottom: 80px; /* supaya tidak ketutup footer-banner */
-    }
-
-    h2 {
+    .page-title {
       text-align: center;
-      margin-bottom: 20px;
-      color: #263238;
+      margin-bottom: 25px;
+    }
+
+    .page-title h2 {
+      font-size: 26px;
+      color: #0b5d3b;
+      margin-bottom: 6px;
+    }
+
+    .page-title p {
+      color: #607268;
+      font-size: 15px;
+    }
+
+    /* Wrapper Tabel Modern Card */
+    .table-container {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+      border: 1px solid #e1eee6;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: white;
-    }
-
-    th, td {
-      border: 1px solid #999;
-      padding: 10px;
+      text-align: left;
     }
 
     th {
-      background: #37474F;
+      background: #0b5d3b;
+      color: #ffffff;
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    th.col-no { width: 8%; text-align: center; }
+    th.col-tanggal { width: 32%; }
+    th.col-imam { width: 30%; }
+    th.col-penceramah { width: 30%; }
+
+    td {
+      padding: 13px 18px;
+      border-bottom: 1px solid #edf4f0;
+      font-size: 14px;
+      color: #2b3d32;
+    }
+
+    td.text-center {
+      text-align: center;
+      color: #7d8e84;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f9fcfb;
+    }
+
+    tr:hover td {
+      background-color: #f0f8f3;
+    }
+
+    /* Indikator Status Sinkronisasi */
+    #status-loading {
+      text-align: center;
+      padding: 30px;
+      color: #557060;
+      font-size: 14px;
+    }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+    footer {
+      background: #0b5d3b;
       color: white;
       text-align: center;
+      padding: 35px 20px 25px;
     }
 
-    tr:nth-child(even) {
-      background: #f0f0f0;
+    footer h3 {
+      margin-bottom: 6px;
+      font-size: 20px;
     }
 
-    /* FOOTER KECIL KANAN BAWAH */
-    #credit {
-      position: fixed;
-      bottom: 40px;     /* di atas footer-banner */
-      right: 10px;
-      z-index: 1500;
-      font-size: 12px;
-      padding: 4px 6px;
-      background: white;
-      border-radius: 4px;
-      box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    footer .footer-subtitle {
+      opacity: 0.9;
+      margin-bottom: 18px;
+      font-size: 14px;
     }
 
-    /* FOOTER-BANNER BESAR */
-    #footer-banner {
-      width: 100%;
-      background: #0b3d0b;  /* hijau tua */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       color: white;
-      text-align: center;
-      padding: 12px 0;
-      font-size: 16px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      z-index: 2000;
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.08);
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    footer .copyright {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 10px; }
+      th, td { padding: 10px 12px; font-size: 13px; }
     }
   </style>
 </head>
-
 <body>
 
   <!-- HEADER -->
-  <div id="header">Peta Dakwah PHBI 1448 H</div>
+  <header>
+    <div class="arabic">رَمَضَانُ شَهْرُ الْقُرْآنِ</div>
+    <h1>Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H</h1>
+    <p>Masjid Ar Ridhwan · Puri Nirwana 1</p>
+  </header>
 
-  <!-- NAVBAR -->
-  <div id="navbar">
+  <!-- NAVBAR (Identik dengan ifthor.html) -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo_arridhwan.jpg" alt="Logo Masjid Ar Ridhwan">
+        <span>PHBI 1448 H</span>
+      </div>
 
-    <!-- LOGO -->
-    <div id="logo">
-      <!-- path relatif dari phbi_web ke phbi_images -->
-      <img src="./logo_arridhwan.jpg" alt="Logo Ar Ridhwan">
+      <div class="nav-links">
+        <a href="../puri.html">Home</a>
+        <a href="profile.html">Tentang</a>
+        <a href="penceramah.html" class="active">Penceramah</a>
+        <a href="ifthor.html">Ifthor</a>
+        <a href="mustahiq.html">Pengajuan Mustahiq</a>
+        <a href="penyaluran.html">Penyaluran Zakat / Qurban</a>
+        <a href="rekap.html">Laporan</a>
+        <a href="fitri.html">Idul Fitri / Idul Adha</a>
+        <a href="wakaf.html">Wakaf</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- KONTEN -->
+  <main>
+    <div class="page-title">
+      <h2>Daftar Imam & Penceramah Tarawih</h2>
+      <p>Ramadhan 1448 H · Masjid Ar Ridhwan</p>
     </div>
 
-    <!-- MENU (SAMA STRUKTUR DENGAN puri.html) -->
-    <div id="menu">
-      <ul>
-        <li><a href="../puri.html">Home</a></li>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-no">No</th>
+            <th class="col-tanggal">Hari / Tanggal</th>
+            <th class="col-imam">Imam</th>
+            <th class="col-penceramah">Penceramah</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <tr>
+            <td colspan="4" id="status-loading">
+              ⏳ Memuat jadwal terkini dari Google Sheets...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
 
-        <li>
-          <a href="javascript:void(0)">Tentang ▼</a>
-          <ul>
-            <li><a href="#">PHBI 1448 H</a></li>
-          </ul>
-        </li>
+  <!-- FOOTER -->
+  <footer>
+    <h3>Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H</h3>
+    <p class="footer-subtitle">Masjid Ar Ridhwan · Puri Nirwana 1</p>
 
-        <li>
-          <a href="javascript:void(0)">Zakat ▼</a>
-          <ul>
-            <li><a href="mustahiq.html">Pengusulan Mustahiq</a></li>
-            <li><a href="#">Penyaluran</a></li>
-            <li><a href="#">Rekapitulasi</a></li>
-            <li><a href="#">Kalkulator Zakat Mal</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="javascript:void(0)">Kegiatan ▼</a>
-          <ul>
-            <li><a href="penceramah.html">Penceramah Tarawih</a></li>
-            <li><a href="#">Ifthor Jama'i</a></li>
-            <li><a href="#">Idul Fitri</a></li>
-          </ul>
-        </li>
-      </ul>
+    <div class="social-links">
+      <a class="social-link" href="https://www.instagram.com/arridhwandkm" target="_blank" rel="noopener noreferrer">
+        Instagram: @arridhwandkm
+      </a>
+      <a class="social-link" href="https://www.youtube.com/@dakwaharridhwan4872" target="_blank" rel="noopener noreferrer">
+        YouTube: Dakwah Ar Ridhwan
+      </a>
+      <a class="social-link" href="mailto:arridhwan.dkm@gmail.com">
+        arridhwan.dkm@gmail.com
+      </a>
     </div>
 
-    <!-- SEARCH -->
-    <div id="searchContainer"></div>
+    <p style="font-size: 14px; margin-top: 10px;">
+      Menjalin Ukhuwah · Menggapai Mardhatillah
+    </p>
 
-  </div>
+    <div class="copyright">
+      © 2026/2027 Panitia Ramadhan, Idul Fitri, dan Idul Adha Masjid Ar Ridhwan
+    </div>
+  </footer>
 
-  <!-- KONTEN HALAMAN -->
-  <div id="content">
-    <h2>Daftar Imam dan Penceramah Tarawih</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 180px;">Tanggal</th>
-          <th>Imam</th>
-          <th>Penceramah</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 8 Feb 2027 – 28 Feb 2027 -->
-        <tr><td>8 Februari 2027</td><td>Panitia</td><td>Panitia</td></tr>
-        <tr><td>9 Februari 2027</td><td>Ust. Azmi</td><td>Ust. Agus Salim, Lc.</td></tr>
-        <tr><td>10 Februari 2027</td><td>Ust. Azmi</td><td>Ir. H. Zulkarnaen</td></tr>
-        <tr><td>11 Februari 2027</td><td>Ust. H. Suyadi</td><td>Ust. H. Suyadi</td></tr>
-        <tr><td>12 Februari 2027</td><td>Ust. E. Faridl, M.M.</td><td>Ust. E. Faridl, M.M.</td></tr>
-        <tr><td>13 Februari 2027</td><td>Ust. Zaenal Abidin, M.Pd.</td><td>Ust. Zaenal Abidin, M.Pd.</td></tr>
-        <tr><td>14 Februari 2027</td><td>Ust. Ali Tamam, M.Pd.I</td><td>Ust. Ali Tamam, M.Pd.I</td></tr>
-        <tr><td>15 Februari 2027</td><td>Ust. Azmi</td><td>Ust. Azmi</td></tr>
-        <tr><td>16 Februari 2027</td><td>Ust. Sri Mulyono</td><td>Ust. Sri Mulyono</td></tr>
-        <tr><td>17 Februari 2027</td><td>Ust. Turaikhan, M.H.I.</td><td>Ust. Turaikhan, M.H.I.</td></tr>
-        <tr><td>18 Februari 2027</td><td>Ust. Azmi</td><td>Ust. H. Sugeng Widodo</td></tr>
-        <tr><td>19 Februari 2027</td><td>Ust. Azmi</td><td>Ust. H. Agus Sobar, S.E.</td></tr>
-        <tr><td>20 Februari 2027</td><td>Ust. Uu Wahyudin, S.Pd.I.</td><td>Ust. Uu Wahyudin, S.Pd.I.</td></tr>
-        <tr><td>21 Februari 2027</td><td>Ust. Taufik Hidayat</td><td>Ust. Taufik Hidayat</td></tr>
-        <tr><td>22 Februari 2027</td><td>Ust. Taufiqurahman, Lc.</td><td>Ust. Taufiqurahman, Lc.</td></tr>
-        <tr><td>23 Februari 2027</td><td>Ust. Nurman, S.Pd.</td><td>Ust. Nurman, S.Pd.</td></tr>
-        <tr><td>24 Februari 2027</td><td>Ust. Azmi</td><td>Ust. Pandu</td></tr>
-        <tr><td>25 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>26 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>27 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>28 Februari 2027</td><td></td><td></td></tr>
-        <tr><td>1 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>2 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>3 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>4 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>5 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>6 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>7 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>8 Maret 2027</td><td></td><td></td></tr>
-        <tr><td>9 Maret 2027</td><td></td><td></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- FOOTERS -->
-  <div id="credit">phbi1448@2025</div>
-  <div id="footer-banner">
-    <b><i>Menjalin Ukhuwah, Menggapai Mardhatillah</i></b>
-  </div>
-
-  <!-- JS: Leaflet + Geocoder untuk search bar -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
+  <!-- JAVASCRIPT: Auto Fetch Data dari Google Spreadsheet -->
   <script>
-    // Membuat map "dummy" tak terlihat hanya untuk inisialisasi geocoder
-    var tempDiv = document.createElement('div');
-    tempDiv.style.display = 'none';
-    document.body.appendChild(tempDiv);
+    // ID Spreadsheet Anda
+    const SHEET_ID = '1gmvreFPqiqHygszT3SgGsnIX4Y8Xm619LKZe1M7qGU0';
+    // Endpoint Google Visualization API untuk export format CSV
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
 
-    var tempMap = L.map(tempDiv).setView([0, 0], 1);
-    var geocoderControl = L.Control.geocoder({ defaultMarkGeocode: true }).addTo(tempMap);
+    async function loadJadwalFromSheet() {
+      const tbody = document.getElementById('table-body');
 
-    // Pindahkan elemen geocoder ke searchContainer
-    var searchElement = geocoderControl.getContainer();
-    document.getElementById("searchContainer").appendChild(searchElement);
+      try {
+        const response = await fetch(CSV_URL);
+        if (!response.ok) throw new Error("Gagal mengambil data dari Google Sheets.");
+
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        // Jika data kosong
+        if (rows.length <= 1) {
+          tbody.innerHTML = '<tr><td colspan="4" class="text-center">Belum ada jadwal yang diinput.</td></tr>';
+          return;
+        }
+
+        // Kosongkan baris loading
+        tbody.innerHTML = '';
+
+        // Looping mulai indeks ke-1 (melewati baris judul header spreadsheet)
+        let nomor = 1;
+        for (let i = 1; i < rows.length; i++) {
+          const row = rows[i];
+          if (!row || row.length === 0 || !row[0].trim()) continue;
+
+          // Asumsi urutan kolom: Kolom 0 = Tanggal, Kolom 1 = Imam, Kolom 2 = Penceramah
+          const tanggal = row[0] ? row[0].trim() : '-';
+          const imam = row[1] ? row[1].trim() : '-';
+          const penceramah = row[2] ? row[2].trim() : '-';
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="text-center">${nomor++}</td>
+            <td><strong>${tanggal}</strong></td>
+            <td>${imam || '-'}</td>
+            <td>${penceramah || '-'}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+      } catch (err) {
+        console.error(err);
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" style="text-align:center; color:red; padding:20px;">
+              Gagal memuat jadwal otomatis. Pastikan link Google Sheet disetel 
+              <b>"Anyone with the link can view" (Siapa saja yang memiliki link dapat melihat)</b>.
+            </td>
+          </tr>`;
+      }
+    }
+
+    // Helper Parser CSV sederhana & aman menangani tanda kutip
+    function parseCSV(text) {
+      const lines = text.split(/\r\n|\n/);
+      return lines.map(line => {
+        const regex = /(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))/g;
+        const row = [];
+        let match;
+        while ((match = regex.exec(line)) && match[0] !== "") {
+          let val = match[1] || "";
+          if (val.startsWith('"') && val.endsWith('"')) {
+            val = val.slice(1, -1).replace(/""/g, '"');
+          }
+          row.push(val);
+        }
+        return row;
+      }).filter(r => r.length > 1);
+    }
+
+    // Eksekusi otomatis saat halaman dibuka
+    document.addEventListener('DOMContentLoaded', loadJadwalFromSheet);
   </script>
 
 </body>
 </html>
-
