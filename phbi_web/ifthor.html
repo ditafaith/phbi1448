@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ifthor Jama'i & Kajian Tematik | PHBI 1448 H</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9f6, #e8f3ec);
+      color: #24352b;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    header {
+      background: linear-gradient(135deg, #0b5d3b, #087f4f);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    header .arabic {
+      font-size: 32px;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    /* =========================
+       NAVBAR
+       ========================= */
+
+    nav {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #0b5d3b;
+    }
+
+    .logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #24543b;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #e5f3eb;
+      color: #087f4f;
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+      max-width: 1100px;
+      margin: 45px auto 30px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .hero .arabic {
+      font-size: 30px;
+      color: #0b5d3b;
+      direction: rtl;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      font-size: 34px;
+      color: #0b5d3b;
+      margin-bottom: 8px;
+    }
+
+    .hero .subtitle {
+      font-size: 18px;
+      color: #607268;
+    }
+
+    .location {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 18px;
+      background: #dff1e7;
+      color: #0b5d3b;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       INTRO
+       ========================= */
+
+    .intro {
+      max-width: 900px;
+      margin: 0 auto 35px;
+      padding: 25px;
+      text-align: center;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    .intro p {
+      color: #53645a;
+    }
+
+    /* =========================
+       SCHEDULE
+       ========================= */
+
+    .schedule {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h3 {
+      font-size: 27px;
+      color: #0b5d3b;
+      margin-bottom: 5px;
+    }
+
+    .section-title p {
+      color: #718078;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    .date {
+      background: linear-gradient(135deg, #0b5d3b, #0a8150);
+      color: white;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .date .day {
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .date .month {
+      font-size: 16px;
+      margin-top: 3px;
+    }
+
+    .card-content {
+      padding: 23px;
+    }
+
+    .card-content h4 {
+      color: #0b5d3b;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      margin-bottom: 12px;
+    }
+
+    .info strong {
+      display: block;
+      color: #617066;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info span {
+      color: #263c30;
+      font-weight: 600;
+    }
+
+    .theme {
+      margin-top: 18px;
+      padding: 15px;
+      background: #f0f8f3;
+      border-left: 4px solid #0b5d3b;
+      border-radius: 8px;
+    }
+
+    .theme strong {
+      display: block;
+      color: #0b5d3b;
+      margin-bottom: 5px;
+    }
+
+    .theme span {
+      font-size: 17px;
+      font-weight: 600;
+      color: #344e3e;
+    }
+
+    /* =========================
+       NOTE
+       ========================= */
+
+    .note {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 25px;
+      background: #fffdf4;
+      border: 1px solid #eadfb5;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .note h3 {
+      color: #806c22;
+      margin-bottom: 8px;
+    }
+
+    .note p {
+      color: #685f3d;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      background: #0b5d3b;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      margin: 4px 0;
+      opacity: 0.95;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 700px) {
+
+      header h1 {
+        font-size: 22px;
+      }
+
+      header .arabic {
+        font-size: 25px;
+      }
+
+      .hero h2 {
+        font-size: 27px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        gap: 3px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+        padding: 6px 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+       ========================= -->
+
+  <header>
+
+    <div class="arabic">
+      رَمَضَانُ شَهْرُ الْقُرْآنِ
+    </div>
+
+    <h1>Panitia Ramadhan & Idul Fitri 1448 H</h1>
+
+    <p>Masjid Ar Ridhwan · Puri Nirwana 1</p>
+
+  </header>
+
+
+  <!-- =========================
+       NAVBAR
+       ========================= -->
+
+  <nav>
+
+    <div class="nav-container">
+
+      <div class="logo">
+
+        <img src="logo_arridhwan.jpg" alt="Logo Masjid Ar Ridhwan">
+
+        <span>PHBI 1448 H</span>
+
+      </div>
+
+      <div class="nav-links">
+
+        <a href="../puri.html">Home</a>
+
+        <a href="profile.html">Tentang</a>
+
+        <a href="mustahiq.html">Mustahiq</a>
+
+        <a href="penyaluran.html">Penyaluran</a>
+
+        <a href="rekap.html">Rekap</a>
+
+        <a href="zakatmal.html">Zakat Mal</a>
+
+        <a href="penceramah.html">Penceramah</a>
+
+        <a href="ifthor.html">Ifthor</a>
+
+        <a href="idulfitri.html">Idul Fitri</a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+       ========================= -->
+
+  <section class="hero">
+
+    <div class="arabic">
+      إِفْطَارٌ وَعِلْمٌ وَأُخُوَّةٌ
+    </div>
+
+    <h2>Ifthor & Kajian Tematik</h2>
+
+    <p class="subtitle">
+      Ramadhan 1448 H · Masjid Ar Ridhwan
+    </p>
+
+    <div class="location">
+      📍 Serambi Masjid Ar Ridhwan
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       INTRO
+       ========================= -->
+
+  <section class="intro">
+
+    <p>
+      Kegiatan <strong>Ifthor dan Kajian Tematik</strong> merupakan
+      rangkaian kegiatan Ramadhan 1448 H yang diselenggarakan
+      oleh Panitia Ramadhan dan Idul Fitri Masjid Ar Ridhwan.
+    </p>
+
+    <p style="margin-top: 10px;">
+      Kegiatan dilaksanakan dalam suasana kebersamaan,
+      berbagi hidangan berbuka puasa, serta memperdalam
+      pemahaman keislaman melalui kajian tematik.
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       JADWAL
+       ========================= -->
+
+  <section class="schedule">
+
+    <div class="section-title">
+
+      <h3>Jadwal Ifthor & Kajian Tematik</h3>
+
+      <p>
+        Februari – Maret 2027
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+      <!-- 14 FEBRUARI -->
+
+      <div class="card">
+
+        <div class="date">
+
+          <div class="day">14</div>
+
+          <div class="month">FEBRUARI 2027</div>
+
+        </div>
+
+        <div class="card-content">
+
+          <h4>Ahad, 14 Februari 2027</h4>
+
+          <div class="info">
+
+            <strong>Tempat</strong>
+
+            <span>Serambi Masjid Ar Ridhwan</span>
+
+          </div>
+
+          <div class="info">
+
+            <strong>Narasumber</strong>
+
+            <span>dr. Fitriani</span>
+
+          </div>
+
+          <div class="theme">
+
+            <strong>Kajian Tematik</strong>
+
+            <span>
+              “Badan Sehat, Ibadah Nikmat”
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 21 FEBRUARI -->
+
+      <div class="card">
+
+        <div class="date">
+
+          <div class="day">21</div>
+
+          <div class="month">FEBRUARI 2027</div>
+
+        </div>
+
+        <div class="card-content">
+
+          <h4>Ahad, 21 Februari 2027</h4>
+
+          <div class="info">
+
+            <strong>Tempat</strong>
+
+            <span>Serambi Masjid Ar Ridhwan</span>
+
+          </div>
+
+          <div class="info">
+
+            <strong>Narasumber</strong>
+
+            <span>Dr. Hepi Andi Bastoni, M.A</span>
+
+          </div>
+
+          <div class="theme">
+
+            <strong>Kajian Tematik</strong>
+
+            <span>
+              “Ramadhan Era Nabi Muhammad ﷺ”
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 28 FEBRUARI -->
+
+      <div class="card">
+
+        <div class="date">
+
+          <div class="day">28</div>
+
+          <div class="month">FEBRUARI 2027</div>
+
+        </div>
+
+        <div class="card-content">
+
+          <h4>Ahad, 28 Februari 2027</h4>
+
+          <div class="info">
+
+            <strong>Tempat</strong>
+
+            <span>Serambi Masjid Ar Ridhwan</span>
+
+          </div>
+
+          <div class="info">
+
+            <strong>Narasumber</strong>
+
+            <span>Dr. Sofwan Jauhari, Lc., M.Ag.</span>
+
+          </div>
+
+          <div class="theme">
+
+            <strong>Kajian Tematik</strong>
+
+            <span>
+              “Fiqih Zakat”
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 6 MARET -->
+
+      <div class="card">
+
+        <div class="date">
+
+          <div class="day">6</div>
+
+          <div class="month">MARET 2027</div>
+
+        </div>
+
+        <div class="card-content">
+
+          <h4>Sabtu, 6 Maret 2027</h4>
+
+          <div class="info">
+
+            <strong>Tempat</strong>
+
+            <span>Serambi Masjid Ar Ridhwan</span>
+
+          </div>
+
+          <div class="info">
+
+            <strong>Narasumber</strong>
+
+            <span>Dr. Samsul Bahri</span>
+
+          </div>
+
+          <div class="theme">
+
+            <strong>Kajian Tematik</strong>
+
+            <span>
+              “Kita Semua Masuk Surga, asal...”
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CATATAN
+       ========================= -->
+
+  <section class="note">
+
+    <h3>🌙 Ramadhan 1448 H</h3>
+
+    <p>
+      Mari jadikan momentum berbuka bersama sebagai
+      sarana mempererat ukhuwah, meningkatkan kepedulian,
+      dan menambah ilmu untuk menyempurnakan ibadah
+      di bulan Ramadhan.
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+
+  <footer>
+
+    <p>
+      <strong>Panitia Ramadhan & Idul Fitri 1448 H</strong>
+    </p>
+
+    <p>
+      Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
+
+    <p>
+      Menjalin Ukhuwah · Menggapai Mardhatillah
+    </p>
+
+  </footer>
+
+
+</body>
+</html>
