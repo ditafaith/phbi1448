@@ -1,432 +1,2292 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <title>Peta Dakwah PHBI 1448 H</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Peta Dakwah PHBI 1448 H | Masjid Ar Ridhwan</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+
+  <!-- =====================================================
+       LEAFLET CSS
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"
+  >
+
+
+  <!-- =====================================================
+       STYLE
+       ===================================================== -->
 
   <style>
-    html, body {
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: Arial;
     }
 
-    /* HEADER */
-    #header {
-      width: 100%;
-      height: 40px;
-      background-color: #263238;
+
+    body {
+
+      font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f5f9f6,
+          #e8f3ec
+        );
+
+      color: #24352b;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =====================================================
+       HEADER / HERO
+       ===================================================== */
+
+    header {
+
+      background:
+        linear-gradient(
+          135deg,
+          #0b5d3b,
+          #087f4f
+        );
+
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 16px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 2000;
-    }
 
-    /* NAVBAR */
-    #navbar {
-      position: fixed;
-      top: 40px;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: #37474F;
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-      z-index: 1800;
-    }
-
-    #logo img {
-      height: 40px;
-      margin-right: 20px;
-      border-radius: 4px;
-    }
-
-    #menu {
-      flex: 1;
-    }
-
-    #menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    #menu ul li {
-      position: relative;
-    }
-
-    #menu > ul > li > a {
-      padding: 10px 18px;
-      display: block;
-      color: white;
-      text-decoration: none;
-    }
-
-    #menu ul li:hover {
-      background: #455A64;
-    }
-
-    /* Dropdown */
-    #menu ul li ul {
-      display: none;
-      position: absolute;
-      top: 60px;
-      background: #455A64;
-      min-width: 200px;
-      padding: 0;
-      z-index: 9999;
-    }
-
-    #menu ul li:hover ul,
-    #menu ul li:focus-within ul {
-      display: block;
-    }
-
-    #menu ul li ul li a {
-      padding: 10px;
-      display: block;
-      color: white;
-      text-decoration: none;
-    }
-
-    #menu ul li ul li:hover {
-      background: #546E7A;
-    }
-
-    /* SEARCH */
-    #searchContainer {
-      width: 280px;
-      margin-right: 10px;
-    }
-
-    #searchContainer .leaflet-control-geocoder {
-      width: 100% !important;
-      margin: 0 !important;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
-
-    /* MAP AREA */
-    #map {
-      position: absolute;
-      top: 100px;
-      bottom: 0;
-      width: 100%;
-      min-height: calc(100% - 100px);
-      z-index: 1;
-    }
-
-    /* FOOTER KECIL */
-    #credit {
-      position: fixed;
-      bottom: 42px;
-      right: 10px;
-      z-index: 1500;
-      font-size: 12px;
-      padding: 4px 6px;
-      background: white;
-      border-radius: 4px;
-      box-shadow: 0 0 4px rgba(0,0,0,0.3);
-    }
-
-    /* FOOTER-BANNER BESAR */
-    #footer-banner {
-      width: 100%;
-      background: #0b3d0b;
-      color: white;
       text-align: center;
-      padding: 12px 0;
+
+      padding: 30px 20px;
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,0.15);
+
+    }
+
+
+    header .arabic {
+
+      font-size: 32px;
+
+      margin-bottom: 8px;
+
+      direction: rtl;
+
+    }
+
+
+    header h1 {
+
+      font-size: 28px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    header p {
+
       font-size: 16px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
+
+      opacity: 0.95;
+
+    }
+
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    nav {
+
+      background: #ffffff;
+
+      box-shadow:
+        0 3px 10px rgba(0,0,0,0.08);
+
+      position: sticky;
+
+      top: 0;
+
       z-index: 2000;
+
+    }
+
+
+    .nav-container {
+
+      max-width: 1450px;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 30px;
+
+      padding: 10px 20px;
+
+    }
+
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-weight: bold;
+
+      color: #0b5d3b;
+
+      white-space: nowrap;
+
+    }
+
+
+    .logo img {
+
+      width: 48px;
+
+      height: 48px;
+
+      object-fit: contain;
+
+      border-radius: 50%;
+
+    }
+
+
+    .nav-links {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 4px;
+
+      justify-content: center;
+
+      align-items: center;
+
+    }
+
+
+    .nav-links a {
+
+      text-decoration: none;
+
+      color: #24543b;
+
+      font-weight: 600;
+
+      padding: 8px 11px;
+
+      border-radius: 8px;
+
+      transition: 0.3s;
+
+      white-space: nowrap;
+
+      font-size: 15px;
+
+    }
+
+
+    .nav-links a:hover {
+
+      background: #e5f3eb;
+
+      color: #087f4f;
+
+    }
+
+
+    .nav-links a.active {
+
+      background: #e5f3eb;
+
+      color: #087f4f;
+
+    }
+
+
+    /* =====================================================
+       COUNTDOWN AREA
+       ===================================================== */
+
+    .countdown-section {
+
+      max-width: 1250px;
+
+      margin: 28px auto 20px;
+
+      padding: 0 20px;
+
+    }
+
+
+    .countdown-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 20px;
+
+    }
+
+
+    .countdown-card {
+
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 20px;
+
+      text-align: center;
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+
+      border-top:
+        4px solid #0b5d3b;
+
+    }
+
+
+    .countdown-card h3 {
+
+      color: #0b5d3b;
+
+      font-size: 20px;
+
+      margin-bottom: 3px;
+
+    }
+
+
+    .countdown-card .date {
+
+      color: #718078;
+
+      font-size: 14px;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .countdown {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+    }
+
+
+    .time-box {
+
+      min-width: 70px;
+
+      padding: 10px 8px;
+
+      background: #eef7f1;
+
+      border-radius: 10px;
+
+    }
+
+
+    .time-number {
+
+      display: block;
+
+      font-size: 25px;
+
+      font-weight: bold;
+
+      color: #0b5d3b;
+
+      line-height: 1.2;
+
+    }
+
+
+    .time-label {
+
+      display: block;
+
+      font-size: 11px;
+
+      color: #68766d;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .tentative {
+
+      margin-top: 10px;
+
+      font-size: 12px;
+
+      color: #856f22;
+
+    }
+
+
+    /* =====================================================
+       MAP HEADER
+       ===================================================== */
+
+    .map-section {
+
+      max-width: 1450px;
+
+      margin: 25px auto 20px;
+
+      padding: 0 20px;
+
+    }
+
+
+    .map-title {
+
+      text-align: center;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .map-title h2 {
+
+      color: #0b5d3b;
+
+      font-size: 27px;
+
+    }
+
+
+    .map-title p {
+
+      color: #718078;
+
+    }
+
+
+    /* =====================================================
+       MAP TOOLBAR
+       ===================================================== */
+
+    .map-toolbar {
+
+      background: white;
+
+      padding: 12px 15px;
+
+      border-radius: 12px 12px 0 0;
+
+      box-shadow:
+        0 3px 12px rgba(0,0,0,0.06);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+    }
+
+
+    .map-info {
+
+      color: #53645a;
+
+      font-size: 14px;
+
+    }
+
+
+    .map-button {
+
+      border: none;
+
+      background: #0b5d3b;
+
+      color: white;
+
+      padding: 9px 15px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-weight: 600;
+
+      transition: 0.3s;
+
+    }
+
+
+    .map-button:hover {
+
+      background: #087f4f;
+
+      transform: translateY(-1px);
+
+    }
+
+
+    /* =====================================================
+       MAP
+       ===================================================== */
+
+    #map {
+
+      width: 100%;
+
+      height: 620px;
+
+      border-radius:
+        0 0 15px 15px;
+
+      box-shadow:
+        0 6px 20px rgba(0,0,0,0.10);
+
+      z-index: 1;
+
+    }
+
+
+    /* =====================================================
+       QUICK EVENT INFO
+       ===================================================== */
+
+    .events-section {
+
+      max-width: 1250px;
+
+      margin: 35px auto 50px;
+
+      padding: 0 20px;
+
+    }
+
+
+    .section-title {
+
+      text-align: center;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .section-title h2 {
+
+      color: #0b5d3b;
+
+      font-size: 26px;
+
+    }
+
+
+    .section-title p {
+
+      color: #718078;
+
+    }
+
+
+    .event-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+
+    }
+
+
+    .event-card {
+
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 20px;
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,0.07);
+
+      border-left:
+        4px solid #0b5d3b;
+
+      transition: 0.3s;
+
+    }
+
+
+    .event-card:hover {
+
+      transform: translateY(-4px);
+
+    }
+
+
+    .event-date {
+
+      font-size: 15px;
+
+      font-weight: bold;
+
+      color: #0b5d3b;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .event-speaker {
+
+      font-size: 14px;
+
+      color: #52635a;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .event-theme {
+
+      font-weight: 600;
+
+      color: #263c30;
+
+    }
+
+
+    /* =====================================================
+       CONTACT
+       ===================================================== */
+
+    .contact-box {
+
+      max-width: 900px;
+
+      margin: 0 auto 50px;
+
+      padding: 28px 30px;
+
+      background: white;
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+
+      text-align: center;
+
+    }
+
+
+    .contact-box h3 {
+
+      color: #0b5d3b;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .contact-box p {
+
+      color: #65746b;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .whatsapp-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      background: #25D366;
+
+      color: white;
+
+      padding: 11px 22px;
+
+      border-radius: 30px;
+
+      text-decoration: none;
+
+      font-weight: 700;
+
+    }
+
+
+    .whatsapp-link:hover {
+
+      box-shadow:
+        0 5px 15px
+        rgba(37,211,102,0.3);
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+
+      background: #0b5d3b;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 35px 20px 25px;
+
+    }
+
+
+    footer h3 {
+
+      margin-bottom: 8px;
+
+      font-size: 21px;
+
+    }
+
+
+    .footer-subtitle {
+
+      opacity: 0.9;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .social-links {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+
+      margin: 20px 0;
+
+    }
+
+
+    .social-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color: white;
+
+      text-decoration: none;
+
+      padding: 9px 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+      border-radius: 30px;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      transition: 0.3s;
+
+    }
+
+
+    .social-link:hover {
+
+      background:
+        rgba(255,255,255,0.18);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* Instagram */
+
+    .instagram-icon {
+
+      width: 25px;
+
+      height: 25px;
+
+      border: 2px solid white;
+
+      border-radius: 7px;
+
+      position: relative;
+
+    }
+
+
+    .instagram-icon::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 9px;
+
+      height: 9px;
+
+      border: 2px solid white;
+
+      border-radius: 50%;
+
+      top: 5px;
+
+      left: 5px;
+
+    }
+
+
+    .instagram-icon::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 3px;
+
+      height: 3px;
+
+      background: white;
+
+      border-radius: 50%;
+
+      top: 3px;
+
+      right: 3px;
+
+    }
+
+
+    /* YouTube */
+
+    .youtube-icon {
+
+      width: 30px;
+
+      height: 21px;
+
+      background: white;
+
+      border-radius: 6px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    .youtube-icon::after {
+
+      content: "";
+
+      width: 0;
+
+      height: 0;
+
+      border-top:
+        6px solid transparent;
+
+      border-bottom:
+        6px solid transparent;
+
+      border-left:
+        9px solid #0b5d3b;
+
+      margin-left: 2px;
+
+    }
+
+
+    /* Email */
+
+    .email-icon {
+
+      width: 27px;
+
+      height: 20px;
+
+      border: 2px solid white;
+
+      border-radius: 4px;
+
+      display: inline-block;
+
+      position: relative;
+
+    }
+
+
+    .email-icon::after,
+    .email-icon::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 13px;
+
+      height: 2px;
+
+      background: white;
+
+      top: 6px;
+
+    }
+
+
+    .email-icon::before {
+
+      left: 0;
+
+      transform:
+        rotate(31deg);
+
+      transform-origin:
+        left;
+
+    }
+
+
+    .email-icon::after {
+
+      right: 0;
+
+      transform:
+        rotate(-31deg);
+
+      transform-origin:
+        right;
+
+    }
+
+
+    .copyright {
+
+      margin-top: 20px;
+
+      padding-top: 15px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.2);
+
+      font-size: 14px;
+
+      opacity: 0.8;
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1200px) {
+
+      .nav-container {
+
+        gap: 15px;
+
+      }
+
+
+      .nav-links a {
+
+        font-size: 14px;
+
+        padding:
+          7px 8px;
+
+      }
+
+
+      .event-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .countdown-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      #map {
+
+        height: 520px;
+
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      header h1 {
+
+        font-size: 22px;
+
+      }
+
+
+      header .arabic {
+
+        font-size: 25px;
+
+      }
+
+
+      .nav-container {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+      }
+
+
+      .nav-links {
+
+        gap: 3px;
+
+      }
+
+
+      .nav-links a {
+
+        font-size: 13px;
+
+        padding:
+          6px 7px;
+
+      }
+
+
+      .event-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      #map {
+
+        height: 450px;
+
+      }
+
+
+      .time-box {
+
+        min-width: 62px;
+
+      }
+
+
+      .time-number {
+
+        font-size: 21px;
+
+      }
+
+
+      .social-links {
+
+        flex-direction: column;
+
+      }
+
+
+      .social-link {
+
+        width: 240px;
+
+        justify-content: center;
+
+      }
+
     }
 
   </style>
 
 </head>
 
+
 <body>
 
-<!-- HEADER -->
-<div id="header">Peta Dakwah PHBI 1448 H</div>
 
-<!-- NAVBAR -->
-<div id="navbar">
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
 
-  <!-- LOGO -->
-  <div id="logo">
-    <img src="phbi_web/logo_arridhwan.jpg" alt="Logo Ar Ridhwan">
+<header>
+
+  <div class="arabic">
+  رَمَضان المُبارَك
   </div>
 
-  <!-- MENU -->
-  <div id="menu">
-    <ul>
+  <h1>
+    Panitia Ramadhan & Idul Fitri 1448 H
+  </h1>
 
-      <li>
-        <a href="puri.html">Home</a>
-      </li>
+  <p>
+    Masjid Ar Ridhwan · Puri Nirwana 1
+  </p>
 
-      <li>
-        <a href="javascript:void(0)">Tentang ▼</a>
-        <ul>
-          <li>
-            <a href="phbi_web/profile.html">Profil PHBI 1448 H</a>
-          </li>
-        </ul>
-      </li>
+</header>
 
-      <li>
-        <a href="javascript:void(0)">Zakat ▼</a>
-        <ul>
-          <li>
-            <a href="phbi_web/mustahiq.html">Pengusulan Mustahiq</a>
-          </li>
-          <li>
-            <a href="phbi_web/penyaluran.html">Penyaluran</a>
-          </li>
-          <li>
-            <a href="phbi_web/rekap.html">Rekapitulasi</a>
-          </li>
-          <li>
-            <a href="phbi_web/zakatmal.html">Kalkulator Zakat Mal</a>
-          </li>
-        </ul>
-      </li>
 
-      <li>
-        <a href="javascript:void(0)">Kegiatan ▼</a>
-        <ul>
-          <li>
-            <a href="phbi_web/penceramah.html">Penceramah Tarawih</a>
-          </li>
-          <li>
-            <a href="phbi_web/ifthor.html">Ifthor Jama'i</a>
-          </li>
-          <li>
-            <a href="phbi_web/idulfitri.html">Idul Fitri</a>
-          </li>
-        </ul>
-      </li>
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
 
-    </ul>
+<nav>
+
+  <div class="nav-container">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+      <img
+        src="phbi_web/logo_arridhwan.jpg"
+        alt="Logo Masjid Ar Ridhwan"
+      >
+
+      <span>
+        PHBI 1448 H
+      </span>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <div class="nav-links">
+
+
+      <a
+        href="puri.html"
+        class="active"
+      >
+        Home
+      </a>
+
+
+      <a href="phbi_web/profile.html">
+        Tentang
+      </a>
+
+
+      <a href="phbi_web/penceramah.html">
+        Penceramah
+      </a>
+
+
+      <a href="phbi_web/ifthor.html">
+        Ifthor
+      </a>
+
+
+      <a href="phbi_web/mustahiq.html">
+        Pengajuan Mustahiq
+      </a>
+
+
+      <a href="phbi_web/penyaluran.html">
+        Penyaluran Zakat / Qurban
+      </a>
+
+
+      <a href="phbi_web/rekap.html">
+        Laporan
+      </a>
+
+
+      <a href="phbi_web/idulfitri.html">
+        Idul Fitri / Idul Adha
+      </a>
+
+
+    </div>
+
   </div>
 
-  <!-- SEARCH -->
-  <div id="searchContainer"></div>
+</nav>
 
-</div>
 
-<!-- MAP -->
-<div id="map"></div>
 
-<!-- FOOTER KECIL -->
-<div id="credit">phbi1448@2025</div>
+<!-- =====================================================
+     COUNTDOWN
+     ===================================================== -->
 
-<!-- FOOTER-BANNER -->
-<div id="footer-banner">
-  <b><i>Menjalin Ukhuwah, Menggapai Mardhatillah</i></b>
-</div>
+<section class="countdown-section">
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
-<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <div class="countdown-grid">
+
+
+    <!-- RAMADHAN -->
+
+    <div class="countdown-card">
+
+      <h3>
+        🌙 Menuju Ramadhan 1448 H
+      </h3>
+
+      <div class="date">
+        Perkiraan 1 Ramadan 1448 H · 9 Februari 2027
+      </div>
+
+
+      <div
+        class="countdown"
+        id="ramadanCountdown"
+      >
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ramadanDays"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Hari
+          </span>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ramadanHours"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Jam
+          </span>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ramadanMinutes"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Menit
+          </span>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ramadanSeconds"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Detik
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="tentative">
+
+        * Tanggal 1 Ramadan menunggu penetapan resmi.
+
+      </div>
+
+    </div>
+
+
+
+    <!-- IFTHOR -->
+
+    <div class="countdown-card">
+
+      <h3>
+        🍽️ Menuju Ifthor Perdana
+      </h3>
+
+      <div class="date">
+        Ahad, 14 Februari 2027
+      </div>
+
+
+      <div
+        class="countdown"
+        id="ifthorCountdown"
+      >
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ifthorDays"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Hari
+          </span>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ifthorHours"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Jam
+          </span>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ifthorMinutes"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Menit
+          </span>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <span
+            class="time-number"
+            id="ifthorSeconds"
+          >
+            0
+          </span>
+
+          <span class="time-label">
+            Detik
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAP SECTION
+     ===================================================== -->
+
+<section class="map-section">
+
+
+  <div class="map-title">
+
+    <h2>
+      Peta Dakwah PHBI 1448 H
+    </h2>
+
+    <p>
+      Lokasi Masjid Ar Ridhwan dan kawasan Puri Nirwana 1
+    </p>
+
+  </div>
+
+
+  <!-- TOOLBAR -->
+
+  <div class="map-toolbar">
+
+    <div class="map-info">
+
+      📍
+      <strong>Masjid Ar Ridhwan</strong>
+      · Puri Nirwana 1
+
+    </div>
+
+
+    <button
+      class="map-button"
+      onclick="resetMap()"
+    >
+
+      📍 Kembali ke Masjid
+
+    </button>
+
+  </div>
+
+
+  <!-- MAP -->
+
+  <div id="map"></div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     JADWAL IFTHOR
+     ===================================================== -->
+
+<section class="events-section">
+
+
+  <div class="section-title">
+
+    <h2>
+      Jadwal Ifthor & Kajian Tematik
+    </h2>
+
+    <p>
+      Ramadhan 1448 H · Serambi Masjid Ar Ridhwan
+    </p>
+
+  </div>
+
+
+  <div class="event-grid">
+
+
+    <!-- 14 FEBRUARI -->
+
+    <div class="event-card">
+
+      <div class="event-date">
+        Ahad, 14 Februari 2027
+      </div>
+
+      <div class="event-speaker">
+        Narasumber: <strong>dr. Fitriani</strong>
+      </div>
+
+      <div class="event-theme">
+        “Badan Sehat, Ibadah Nikmat”
+      </div>
+
+    </div>
+
+
+    <!-- 21 FEBRUARI -->
+
+    <div class="event-card">
+
+      <div class="event-date">
+        Ahad, 21 Februari 2027
+      </div>
+
+      <div class="event-speaker">
+        Narasumber:
+        <strong>
+          Dr. Hepi Andi Bastoni, M.A
+        </strong>
+      </div>
+
+      <div class="event-theme">
+        “Ramadhan Era Nabi Muhammad ﷺ”
+      </div>
+
+    </div>
+
+
+    <!-- 28 FEBRUARI -->
+
+    <div class="event-card">
+
+      <div class="event-date">
+        Ahad, 28 Februari 2027
+      </div>
+
+      <div class="event-speaker">
+        Narasumber:
+        <strong>
+          Dr. Sofwan Jauhari, Lc., M.Ag.
+        </strong>
+      </div>
+
+      <div class="event-theme">
+        “Fiqih Zakat”
+      </div>
+
+    </div>
+
+
+    <!-- 6 MARET -->
+
+    <div class="event-card">
+
+      <div class="event-date">
+        Sabtu, 6 Maret 2027
+      </div>
+
+      <div class="event-speaker">
+        Narasumber:
+        <strong>
+          Dr. Samsul Bahri
+        </strong>
+      </div>
+
+      <div class="event-theme">
+        “Kita Semua Masuk Surga, asal...”
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     KONTAK IFTHOR
+     ===================================================== -->
+
+<section class="contact-box">
+
+  <h3>
+    📱 Informasi Kegiatan Ifthor
+  </h3>
+
+  <p>
+    Koordinator Bidang Ifthor:
+    <strong>
+      Bu Hj. Hasmunah
+    </strong>
+  </p>
+
+
+  <a
+    class="whatsapp-link"
+    href="https://wa.me/628561448878"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+
+    💬 WhatsApp
+    +62 856-1448-878
+
+  </a>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer>
+
+  <h3>
+    Panitia Ramadhan & Idul Fitri 1448 H
+  </h3>
+
+  <p class="footer-subtitle">
+    Masjid Ar Ridhwan · Puri Nirwana 1
+  </p>
+
+
+  <div class="social-links">
+
+
+    <!-- INSTAGRAM -->
+
+    <a
+      class="social-link"
+      href="https://www.instagram.com/arridhwandkm"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <span class="instagram-icon"></span>
+
+      @arridhwandkm
+
+    </a>
+
+
+    <!-- YOUTUBE -->
+
+    <a
+      class="social-link"
+      href="https://www.youtube.com/@dakwaharridhwan4872"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <span class="youtube-icon"></span>
+
+      Dakwah Ar Ridhwan
+
+    </a>
+
+
+    <!-- EMAIL -->
+
+    <a
+      class="social-link"
+      href="mailto:arridhwan.dkm@gmail.com"
+    >
+
+      <span class="email-icon"></span>
+
+      arridhwan.dkm@gmail.com
+
+    </a>
+
+
+  </div>
+
+
+  <p>
+    Menjalin Ukhuwah · Menggapai Mardhatillah
+  </p>
+
+
+  <div class="copyright">
+
+    © 2027 Panitia Ramadhan & Idul Fitri
+    Masjid Ar Ridhwan
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     LEAFLET JS
+     ===================================================== -->
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script
+  src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js">
+</script>
+
+<script
+  src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js">
+</script>
+
+
 
 <script>
 
-  // ============================
-  // CENTER PETA
-  // ============================
-  var centerPoint = [-6.470496, 106.845458];
 
-  // ============================
-  // INISIALISASI PETA
-  // ============================
-  var map = L.map("map", {
-    center: centerPoint,
-    zoom: 17,
+  /* =====================================================
+     COUNTDOWN
+     ===================================================== */
 
-    // Tidak bisa zoom out di bawah level 17
-    minZoom: 17
-  });
+  /*
+     Perkiraan 1 Ramadan 1448 H:
+     9 Februari 2027, 00:00 WIB
+
+     Catatan:
+     tanggal resmi menunggu penetapan.
+  */
+
+  const ramadanDate =
+    new Date(
+      "2027-02-09T00:00:00+07:00"
+    );
 
 
-  // ============================
-  // BASEMAP
-  // ============================
-  var osm = L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  ).addTo(map);
+  /*
+     Ifthor pertama:
+     Ahad, 14 Februari 2027
+  */
 
-  var googleSat = L.tileLayer(
-    "https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+  const ifthorDate =
+    new Date(
+      "2027-02-14T00:00:00+07:00"
+    );
+
+
+  function updateCountdown(
+    targetDate,
+    prefix,
+    finishedText
+  ) {
+
+    const now =
+      new Date();
+
+    let difference =
+      targetDate - now;
+
+
+    if (difference <= 0) {
+
+      document.getElementById(
+        prefix + "Days"
+      ).textContent = "0";
+
+      document.getElementById(
+        prefix + "Hours"
+      ).textContent = "0";
+
+      document.getElementById(
+        prefix + "Minutes"
+      ).textContent = "0";
+
+      document.getElementById(
+        prefix + "Seconds"
+      ).textContent = "0";
+
+      return;
+
+    }
+
+
+    const days =
+      Math.floor(
+        difference /
+        (1000 * 60 * 60 * 24)
+      );
+
+
+    difference %=
+      (1000 * 60 * 60 * 24);
+
+
+    const hours =
+      Math.floor(
+        difference /
+        (1000 * 60 * 60)
+      );
+
+
+    difference %=
+      (1000 * 60 * 60);
+
+
+    const minutes =
+      Math.floor(
+        difference /
+        (1000 * 60)
+      );
+
+
+    difference %=
+      (1000 * 60);
+
+
+    const seconds =
+      Math.floor(
+        difference /
+        1000
+      );
+
+
+    document.getElementById(
+      prefix + "Days"
+    ).textContent =
+      days;
+
+
+    document.getElementById(
+      prefix + "Hours"
+    ).textContent =
+      String(hours).padStart(2, "0");
+
+
+    document.getElementById(
+      prefix + "Minutes"
+    ).textContent =
+      String(minutes).padStart(2, "0");
+
+
+    document.getElementById(
+      prefix + "Seconds"
+    ).textContent =
+      String(seconds).padStart(2, "0");
+
+  }
+
+
+  function updateAllCountdowns() {
+
+    updateCountdown(
+      ramadanDate,
+      "ramadan",
+      "Ramadhan telah tiba"
+    );
+
+
+    updateCountdown(
+      ifthorDate,
+      "ifthor",
+      "Kegiatan Ifthor telah dimulai"
+    );
+
+  }
+
+
+  updateAllCountdowns();
+
+
+  setInterval(
+    updateAllCountdowns,
+    1000
+  );
+
+
+
+  /* =====================================================
+     CENTER PETA
+     ===================================================== */
+
+  var centerPoint =
+    [-6.470496, 106.845458];
+
+
+
+  /* =====================================================
+     INISIALISASI PETA
+     ===================================================== */
+
+  var map =
+    L.map("map", {
+
+      center: centerPoint,
+
+      zoom: 17,
+
+      /*
+         Tidak dapat zoom out
+         di bawah level 17
+      */
+
+      minZoom: 17
+
+    });
+
+
+
+  /* =====================================================
+     BASEMAP
+     ===================================================== */
+
+  var osm =
+    L.tileLayer(
+
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+    ).addTo(map);
+
+
+  var googleSat =
+    L.tileLayer(
+
+      "https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+
+      {
+
+        subdomains:
+          ["mt0", "mt1", "mt2", "mt3"],
+
+        maxZoom: 20
+
+      }
+
+    );
+
+
+
+  /* =====================================================
+     POI
+     ===================================================== */
+
+  var poiData = [
+
     {
-      subdomains: ["mt0", "mt1", "mt2", "mt3"],
-      maxZoom: 20
+
+      name:
+        "Masjid Ar Ridhwan",
+
+      coords:
+        centerPoint
+
+    },
+
+    {
+
+      name:
+        "Gerbang Puri Nirwana 1",
+
+      coords:
+        [-6.472532, 106.843382]
+
+    }
+
+  ];
+
+
+  var poiLayer =
+    L.layerGroup();
+
+
+  poiData.forEach(
+    pt => {
+
+      L.marker(pt.coords)
+
+        .bindPopup(
+          "<b>" +
+          pt.name +
+          "</b>"
+        )
+
+        .addTo(poiLayer);
+
     }
   );
 
 
-  // ============================
-  // POI
-  // ============================
-  var poiData = [
-    {
-      name: "Masjid Ar-Ridhwan (Center)",
-      coords: centerPoint
-    },
-    {
-      name: "Gerbang Puri Nirwana 1",
-      coords: [-6.472532, 106.843382]
-    }
-  ];
-
-  var poiLayer = L.layerGroup();
-
-  poiData.forEach(pt => {
-    L.marker(pt.coords)
-      .bindPopup("<b>" + pt.name + "</b>")
-      .addTo(poiLayer);
-  });
-
   poiLayer.addTo(map);
 
 
-  // ============================
-  // JALAN UTAMA
-  // ============================
-  var jalanLayer = L.geoJSON({
-    "type": "FeatureCollection",
 
-    "features": [
+  /* =====================================================
+     JALAN UTAMA
+     ===================================================== */
+
+  var jalanLayer =
+
+    L.geoJSON(
+
       {
-        "type": "Feature",
 
-        "properties": {
-          "Name": "Jalan Utama Puri Nirwana 1"
-        },
+        "type":
+          "FeatureCollection",
 
-        "geometry": {
-          "type": "LineString",
+        "features": [
 
-          "coordinates": [
-            [106.845399, -6.468588],
-            [106.844814, -6.471434],
-            [106.844707, -6.472452],
-            [106.843988, -6.472441],
-            [106.843382, -6.472532]
-          ]
-        }
-      }
-    ]
+          {
 
-  }, {
-    style: {
-      color: "#f44336",
-      weight: 4
-    }
-  }).addTo(map);
+            "type":
+              "Feature",
 
+            "properties": {
 
-  // ============================
-  // POLYGON PERUMAHAN
-  // ============================
-  var puriLayer = L.geoJSON({
-    "type": "FeatureCollection",
+              "Name":
+                "Jalan Utama Puri Nirwana 1"
 
-    "features": [
+            },
+
+            "geometry": {
+
+              "type":
+                "LineString",
+
+              "coordinates": [
+
+                [
+                  106.845399,
+                  -6.468588
+                ],
+
+                [
+                  106.844814,
+                  -6.471434
+                ],
+
+                [
+                  106.844707,
+                  -6.472452
+                ],
+
+                [
+                  106.843988,
+                  -6.472441
+                ],
+
+                [
+                  106.843382,
+                  -6.472532
+                ]
+
+              ]
+
+            }
+
+          }
+
+        ]
+
+      },
+
       {
-        "type": "Feature",
 
-        "properties": {
-          "Name": "Puri Nirwana 1"
-        },
+        style: {
 
-        "geometry": {
-          "type": "Polygon",
+          color:
+            "#f44336",
 
-          "coordinates": [
-            [
-              [106.844112, -6.468311],
-              [106.845764, -6.468657],
-              [106.845839, -6.469051],
-              [106.847062, -6.469350],
-              [106.846810, -6.470426],
-              [106.846622, -6.470373],
-              [106.845742, -6.473069],
-              [106.844949, -6.473479],
-              [106.844814, -6.475003],
-              [106.844380, -6.474876],
-              [106.844262, -6.472717],
-              [106.843286, -6.472627],
-              [106.843243, -6.472243],
-              [106.844552, -6.472105],
-              [106.844670, -6.470528],
-              [106.843940, -6.470145],
-              [106.844112, -6.468311]
-            ]
-          ]
+          weight:
+            4
+
         }
+
       }
-    ]
 
-  }, {
-    style: {
-      color: "#1b5e20",
-      weight: 3,
-      fillColor: "#66bb6a",
-      fillOpacity: 0.35
-    }
-  }).addTo(map);
+    )
+
+    .addTo(map);
 
 
-  // ============================
-  // LAYER CONTROL
-  // ============================
+
+  /* =====================================================
+     POLYGON PURI NIRWANA 1
+     ===================================================== */
+
+  var puriLayer =
+
+    L.geoJSON(
+
+      {
+
+        "type":
+          "FeatureCollection",
+
+        "features": [
+
+          {
+
+            "type":
+              "Feature",
+
+            "properties": {
+
+              "Name":
+                "Puri Nirwana 1"
+
+            },
+
+            "geometry": {
+
+              "type":
+                "Polygon",
+
+              "coordinates": [
+
+                [
+
+                  [
+                    106.844112,
+                    -6.468311
+                  ],
+
+                  [
+                    106.845764,
+                    -6.468657
+                  ],
+
+                  [
+                    106.845839,
+                    -6.469051
+                  ],
+
+                  [
+                    106.847062,
+                    -6.469350
+                  ],
+
+                  [
+                    106.846810,
+                    -6.470426
+                  ],
+
+                  [
+                    106.846622,
+                    -6.470373
+                  ],
+
+                  [
+                    106.845742,
+                    -6.473069
+                  ],
+
+                  [
+                    106.844949,
+                    -6.473479
+                  ],
+
+                  [
+                    106.844814,
+                    -6.475003
+                  ],
+
+                  [
+                    106.844380,
+                    -6.474876
+                  ],
+
+                  [
+                    106.844262,
+                    -6.472717
+                  ],
+
+                  [
+                    106.843286,
+                    -6.472627
+                  ],
+
+                  [
+                    106.843243,
+                    -6.472243
+                  ],
+
+                  [
+                    106.844552,
+                    -6.472105
+                  ],
+
+                  [
+                    106.844670,
+                    -6.470528
+                  ],
+
+                  [
+                    106.843940,
+                    -6.470145
+                  ],
+
+                  [
+                    106.844112,
+                    -6.468311
+                  ]
+
+                ]
+
+              ]
+
+            }
+
+          }
+
+        ]
+
+      },
+
+      {
+
+        style: {
+
+          color:
+            "#1b5e20",
+
+          weight:
+            3,
+
+          fillColor:
+            "#66bb6a",
+
+          fillOpacity:
+            0.35
+
+        }
+
+      }
+
+    )
+
+    .addTo(map);
+
+
+
+  /* =====================================================
+     LAYER CONTROL
+     ===================================================== */
+
   L.control.layers(
 
     {
-      "OpenStreetMap": osm,
-      "Google Satellite": googleSat
+
+      "OpenStreetMap":
+        osm,
+
+      "Google Satellite":
+        googleSat
+
     },
 
     {
-      "Puri Nirwana 1": puriLayer,
-      "Jalan Utama": jalanLayer
+
+      "Puri Nirwana 1":
+        puriLayer,
+
+      "Jalan Utama":
+        jalanLayer
+
     },
 
     {
-      collapsed: false
+
+      collapsed:
+        false
+
     }
 
   ).addTo(map);
 
 
-  // ============================
-  // SCALE
-  // ============================
-  L.control.scale().addTo(map);
+
+  /* =====================================================
+     SCALE
+     ===================================================== */
+
+  L.control
+    .scale()
+    .addTo(map);
 
 
-  // ============================
-  // INSET / MINIMAP
-  // ============================
+
+  /* =====================================================
+     MINIMAP
+     ===================================================== */
+
   new L.Control.MiniMap(
 
     L.tileLayer(
@@ -434,64 +2294,128 @@
     ),
 
     {
-      toggleDisplay: true
+
+      toggleDisplay:
+        true
+
     }
 
   ).addTo(map);
 
 
-  // ============================
-  // SEARCH BAR
-  // ============================
-  var geocoder = L.Control.geocoder({
-    defaultMarkGeocode: true
-  });
+
+  /* =====================================================
+     SEARCH BAR
+     ===================================================== */
+
+  var geocoder =
+    L.Control.geocoder({
+
+      defaultMarkGeocode:
+        true
+
+    });
+
 
   geocoder.addTo(map);
 
+
   var searchElement =
-    document.querySelector(".leaflet-control-geocoder");
-
-  document
-    .getElementById("searchContainer")
-    .appendChild(searchElement);
+    document.querySelector(
+      ".leaflet-control-geocoder"
+    );
 
 
-  // ============================
-  // KLIK KOORDINAT
-  // ============================
-  map.on("click", e => {
+  /*
+     Search dipindahkan
+     ke toolbar Leaflet.
+  */
 
-    L.popup()
+  if (searchElement) {
 
-      .setLatLng(e.latlng)
+    var searchBox =
+      document.createElement("div");
 
-      .setContent(
-        "Lat: " +
-        e.latlng.lat.toFixed(6) +
-        "<br>Lng: " +
-        e.latlng.lng.toFixed(6)
-      )
+    searchBox.style.position =
+      "absolute";
 
-      .openOn(map);
-
-  });
+  }
 
 
-  // ============================
-  // POPUP DEFAULT
-  // ============================
+
+  /* =====================================================
+     KLIK KOORDINAT
+     ===================================================== */
+
+  map.on(
+    "click",
+    e => {
+
+      L.popup()
+
+        .setLatLng(
+          e.latlng
+        )
+
+        .setContent(
+
+          "Lat: " +
+          e.latlng.lat.toFixed(6) +
+
+          "<br>Lng: " +
+          e.latlng.lng.toFixed(6)
+
+        )
+
+        .openOn(map);
+
+    }
+  );
+
+
+
+  /* =====================================================
+     POPUP MASJID
+     ===================================================== */
+
   L.marker(centerPoint)
 
     .bindPopup(
-      "<b>Masjid Ar Ridhwan</b>"
+
+      "<b>Masjid Ar Ridhwan</b>" +
+
+      "<br>" +
+
+      "Puri Nirwana 1"
+
     )
 
     .addTo(map)
 
     .openPopup();
 
+
+
+  /* =====================================================
+     RESET / KEMBALI KE MASJID
+     ===================================================== */
+
+  function resetMap() {
+
+    map.setView(
+
+      centerPoint,
+
+      17
+
+    );
+
+  }
+
+
 </script>
 
+
 </body>
+
 </html>
