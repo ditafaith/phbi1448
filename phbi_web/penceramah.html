@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daftar Imam & Penceramah Tarawih | PHBI 1448 H</title>
+  <title>Imam & Ceramah Tarawih | PHBI 1448 H</title>
 
   <style>
     * {
@@ -112,11 +112,11 @@
     }
 
     /* =====================================================
-       KONTEN UTAMA & TABEL PROPORSIONAL
+       KONTEN UTAMA
        ===================================================== */
     main {
       flex: 1;
-      max-width: 900px; /* Lebar dibatasi agar proporsional & nyaman dibaca */
+      max-width: 920px;
       width: 92%;
       margin: 35px auto 50px;
     }
@@ -137,7 +137,75 @@
       font-size: 15px;
     }
 
-    /* Wrapper Tabel Modern Card */
+    /* =====================================================
+       KOTAK INFORMASI & TATA TERTIB ELEGAN
+       ===================================================== */
+    .info-guideline {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      border: 1px solid #dceede;
+    }
+
+    .guideline-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0b5d3b;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .guideline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .guideline-item {
+      background: #f7faf8;
+      border: 1px solid #e3efe7;
+      border-radius: 12px;
+      padding: 16px 14px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .guideline-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11, 93, 59, 0.08);
+    }
+
+    .guideline-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .guideline-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0b5d3b;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .guideline-desc {
+      font-size: 13px;
+      color: #4b5e53;
+      line-height: 1.45;
+    }
+
+    /* =====================================================
+       TABEL PROPORSIONAL
+       ===================================================== */
     .table-container {
       background: #ffffff;
       border-radius: 16px;
@@ -163,9 +231,9 @@
     }
 
     th.col-no { width: 8%; text-align: center; }
-    th.col-tanggal { width: 32%; }
-    th.col-imam { width: 30%; }
-    th.col-penceramah { width: 30%; }
+    th.col-tanggal { width: 34%; }
+    th.col-imam { width: 29%; }
+    th.col-penceramah { width: 29%; }
 
     td {
       padding: 13px 18px;
@@ -187,7 +255,6 @@
       background-color: #f0f8f3;
     }
 
-    /* Indikator Status Sinkronisasi */
     #status-loading {
       text-align: center;
       padding: 30px;
@@ -254,6 +321,7 @@
 
     @media (max-width: 768px) {
       .nav-container { flex-direction: column; gap: 10px; }
+      .guideline-grid { grid-template-columns: 1fr; }
       th, td { padding: 10px 12px; font-size: 13px; }
     }
   </style>
@@ -267,7 +335,7 @@
     <p>Masjid Ar Ridhwan · Puri Nirwana 1</p>
   </header>
 
-  <!-- NAVBAR (Identik dengan ifthor.html) -->
+  <!-- NAVBAR -->
   <nav>
     <div class="nav-container">
       <div class="logo">
@@ -296,6 +364,43 @@
       <p>Ramadhan 1448 H · Masjid Ar Ridhwan</p>
     </div>
 
+    <!-- INFORMASI UMUM / TATA TERTIB CERAMAH -->
+    <section class="info-guideline">
+      <div class="guideline-header">
+        <span>📋</span> Informasi & Ketentuan Kajian
+      </div>
+
+      <div class="guideline-grid">
+        <!-- Poin 1: Waktu Kehadiran -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🕌</div>
+          <div class="guideline-title">Kehadiran</div>
+          <div class="guideline-desc">
+            Dimohon para Asatidz & Jamaah berkenan hadir di masjid <strong>sebelum adzan Isya</strong> berkumandang.
+          </div>
+        </div>
+
+        <!-- Poin 2: Durasi Ceramah -->
+        <div class="guideline-item">
+          <div class="guideline-icon">⏱️</div>
+          <div class="guideline-title">Durasi Ceramah</div>
+          <div class="guideline-desc">
+            Kultum Tarawih disampaikan secara ringkas dan padat berkisar <strong>10 – 15 menit</strong>.
+          </div>
+        </div>
+
+        <!-- Poin 3: Materi Sejuk / Tanpa SARA -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🤝</div>
+          <div class="guideline-title">Materi Dakwah</div>
+          <div class="guideline-desc">
+            Materi mengedepankan ukhuwah islamiyah, sejuk, serta <strong>bebas dari muatan SARA</strong> & politik praktis.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABEL JADWAL -->
     <div class="table-container">
       <table>
         <thead>
@@ -345,9 +450,7 @@
 
   <!-- JAVASCRIPT: Auto Fetch Data dari Google Spreadsheet -->
   <script>
-    // ID Spreadsheet Anda
     const SHEET_ID = '1gmvreFPqiqHygszT3SgGsnIX4Y8Xm619LKZe1M7qGU0';
-    // Endpoint Google Visualization API untuk export format CSV
     const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`;
 
     async function loadJadwalFromSheet() {
@@ -360,27 +463,19 @@
         const csvText = await response.text();
         const rows = parseCSV(csvText);
 
-        // Jika data kosong
         if (rows.length <= 1) {
           tbody.innerHTML = '<tr><td colspan="4" class="text-center">Belum ada jadwal yang diinput.</td></tr>';
           return;
         }
 
-        // Kosongkan baris loading
         tbody.innerHTML = '';
 
-        // Looping mulai indeks ke-1 (melewati baris judul header spreadsheet)
         let nomor = 1;
         for (let i = 1; i < rows.length; i++) {
           const row = rows[i];
           if (!row || row.length === 0 || !row[0].trim()) continue;
 
-          // Asumsi Spreadsheet:
-          // Kolom A (index 0) = Hari (contoh: Senin)
-          // Kolom B (index 1) = Tanggal (contoh: 8 Februari 2027)
-          // Kolom C (index 2) = Imam (contoh: Ust. Azmi)
-          // Kolom D (index 3) = Penceramah (contoh: Ust. Agus Salim, Lc.)
-          
+          // Kolom A: Hari | Kolom B: Tanggal | Kolom C: Imam | Kolom D: Penceramah
           const hari = row[0] ? row[0].trim() : '';
           const tgl = row[1] ? row[1].trim() : '';
           const hariTanggal = hari && tgl ? `${hari}, ${tgl}` : (hari || tgl || '-');
@@ -409,7 +504,6 @@
       }
     }
 
-    // Helper Parser CSV sederhana & aman menangani tanda kutip
     function parseCSV(text) {
       const lines = text.split(/\r\n|\n/);
       return lines.map(line => {
@@ -427,7 +521,6 @@
       }).filter(r => r.length > 1);
     }
 
-    // Eksekusi otomatis saat halaman dibuka
     document.addEventListener('DOMContentLoaded', loadJadwalFromSheet);
   </script>
 
