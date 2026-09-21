@@ -221,7 +221,7 @@
     }
 
     /* =====================================================
-       TABEL LAPORAN
+       TABEL LAPORAN (STYLE PERSIS DAFTAR PENCERAMAH)
        ===================================================== */
     .table-container {
       background: #ffffff;
@@ -230,18 +230,6 @@
       box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
       border: 1px solid #e1eee6;
       margin-bottom: 20px;
-    }
-
-    .table-header-title {
-      background: #f1f8f4;
-      padding: 13px 18px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #0b5d3b;
-      border-bottom: 1px solid #e1eee6;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
     table {
@@ -253,7 +241,7 @@
     th {
       background: #0b5d3b;
       color: #ffffff;
-      padding: 12px 16px;
+      padding: 14px 16px;
       font-size: 13px;
       font-weight: 600;
       text-transform: uppercase;
@@ -261,7 +249,7 @@
     }
 
     td {
-      padding: 12px 16px;
+      padding: 13px 16px;
       border-bottom: 1px solid #edf4f0;
       font-size: 13.5px;
       color: #2b3d32;
@@ -274,10 +262,15 @@
       background-color: #f9fcfb;
     }
 
-    tfoot tr td {
-      background: #f1f8f4;
-      font-weight: 700;
-      color: #0b5d3b;
+    tr:hover td {
+      background-color: #f0f8f3;
+    }
+
+    #status-loading {
+      text-align: center;
+      padding: 30px;
+      color: #557060;
+      font-size: 14px;
     }
 
     /* Placeholder Box Idul Adha */
@@ -368,7 +361,7 @@
     @media (max-width: 768px) {
       .nav-container { flex-direction: column; gap: 10px; }
       .summary-grid { grid-template-columns: 1fr; }
-      th, td { padding: 9px 10px; font-size: 12.5px; }
+      th, td { padding: 9px 10px; font-size: 12px; }
     }
   </style>
 </head>
@@ -413,16 +406,16 @@
     <!-- METRICS CARDS RINGKASAN -->
     <div class="summary-grid">
       <div class="summary-card">
-        <div class="num">Rp 28.450.000 (dummy)</div>
-        <div class="label">Operasional Ramadhan & Ifthor</div>
+        <div class="num" id="metric-ramadhan">-</div>
+        <div class="label">Total Kas Masuk Ramadhan</div>
       </div>
       <div class="summary-card">
         <div class="num">210 Paket Beras</div>
         <div class="label">Penyaluran Zakat Fitrah</div>
       </div>
       <div class="summary-card">
-        <div class="num">Rp 14.820.000 (dummy)</div>
-        <div class="label">Infaq Shalat Idul Fitri</div>
+        <div class="num" id="metric-saldo">-</div>
+        <div class="label">Sisa Saldo Kas Ramadhan</div>
       </div>
     </div>
 
@@ -434,59 +427,27 @@
       <button class="tab-btn" onclick="switchTab('iduladha', this)">🐑 Idul Adha</button>
     </div>
 
-    <!-- TAB 1: RAMADHAN & IFTHOR -->
+    <!-- TAB 1: RAMADHAN & IFTHOR (DYNAMIC GOOGLE SPREADSHEET) -->
     <div id="tab-ramadhan" class="tab-content active">
       <div class="table-container">
-        <div class="table-header-title">
-          <span>Laporan Kas Operasional Ramadhan 1448 H</span>
-          <span style="font-size: 12px; font-weight: normal; color: #526b5c;">Status: Final</span>
-        </div>
         <table>
           <thead>
             <tr>
-              <th style="width: 10%; text-align: center;">No</th>
-              <th style="width: 50%;">Uraian Kegiatan / Sumber Dana</th>
-              <th style="width: 20%; text-align: right;">Penerimaan</th>
-              <th style="width: 20%; text-align: right;">Pengeluaran</th>
+              <th style="width: 6%; text-align: center;">No</th>
+              <th style="width: 20%;">Tanggal</th>
+              <th style="width: 32%;">Uraian</th>
+              <th style="width: 14%; text-align: right;">Penerimaan</th>
+              <th style="width: 14%; text-align: right;">Pengeluaran</th>
+              <th style="width: 14%; text-align: right;">Saldo</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table-ramadhan-body">
             <tr>
-              <td class="text-center">1</td>
-              <td>Infaq Pembukaan & Kajian Tematik Ifthor Jama'i</td>
-              <td class="text-right">Rp 12.500.000 (dummy)</td>
-              <td class="text-right">Rp 11.850.000</td>
-            </tr>
-            <tr>
-              <td class="text-center">2</td>
-              <td>Honorarium Asatidz / Penceramah & Imam Tarawih</td>
-              <td class="text-right">-</td>
-              <td class="text-right">Rp 9.000.000</td>
-            </tr>
-            <tr>
-              <td class="text-center">3</td>
-              <td>Konsumsi Tadarus, Snack & Peringatan Nuzulul Qur'an</td>
-              <td class="text-right">Rp 8.200.000 (dummy)</td>
-              <td class="text-right">Rp 6.100.000 (dummy)</td>
-            </tr>
-            <tr>
-              <td class="text-center">4</td>
-              <td>Infaq Tromol Tarawih Malam ke-1 s.d ke-29</td>
-              <td class="text-right">Rp 16.400.000 (dummy)</td>
-              <td class="text-right">-</td>
+              <td colspan="6" id="status-loading">
+                ⏳ Memuat laporan kas Ramadhan & Ifthor dari Google Sheets...
+              </td>
             </tr>
           </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="2" style="text-align: right; padding-right: 15px;">Total</td>
-              <td class="text-right">Rp 37.100.000 (dummy)</td>
-              <td class="text-right">Rp 26.950.000 (dummy)</td>
-            </tr>
-            <tr>
-              <td colspan="2" style="text-align: right; padding-right: 15px; color: #0b5d3b;">Saldo Kas Ramadhan</td>
-              <td colspan="2" class="text-right" style="color: #0b5d3b;">Rp 10.150.000 (dummy)</td>
-            </tr>
-          </tfoot>
         </table>
       </div>
     </div>
@@ -494,10 +455,6 @@
     <!-- TAB 2: ZIS & FIDYAH -->
     <div id="tab-zis" class="tab-content">
       <div class="table-container">
-        <div class="table-header-title">
-          <span>Rekapitulasi Penerimaan & Penyaluran ZIS</span>
-          <span style="font-size: 12px; font-weight: normal; color: #526b5c;">Status: Tuntas Tersalurkan</span>
-        </div>
         <table>
           <thead>
             <tr>
@@ -511,31 +468,31 @@
             <tr>
               <td class="text-center">1</td>
               <td><strong>Zakat Fitrah Beras</strong></td>
-              <td class="text-center">450 Liter / 180 Paket (dummy)</td>
-              <td class="text-center">100% (210 Paket) (dummy)</td>
+              <td class="text-center">450 Liter / 180 Paket</td>
+              <td class="text-center">100% (210 Paket)</td>
             </tr>
             <tr>
               <td class="text-center">2</td>
               <td><strong>Zakat Fitrah Uang</strong></td>
-              <td class="text-center">Rp 15.600.000 (dummy)</td>
+              <td class="text-center">Rp 15.600.000</td>
               <td class="text-center">Dikonversi Beras</td>
             </tr>
             <tr>
               <td class="text-center">3</td>
               <td><strong>Zakat Mal</strong></td>
-              <td class="text-center">Rp 24.300.000 (dummy)</td>
+              <td class="text-center">Rp 24.300.000</td>
               <td class="text-center">Santunan Mustahiq</td>
             </tr>
             <tr>
               <td class="text-center">4</td>
               <td><strong>Fidyah & Infaq Shadaqah</strong></td>
-              <td class="text-center">Rp 4.750.000 (dummy)</td>
+              <td class="text-center">Rp 4.750.000</td>
               <td class="text-center">Paket Sembako</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="4" class="text-center" style="color: #0b5d3b;">
+              <td colspan="4" class="text-center" style="color: #0b5d3b; font-weight: bold; padding: 14px; background: #f1f8f4;">
                 Alhamdulillah, seluruh hak asnaf telah ditunaikan sebelum pelaksanaan Shalat Idul Fitri.
               </td>
             </tr>
@@ -547,10 +504,6 @@
     <!-- TAB 3: IDUL FITRI -->
     <div id="tab-idulfitri" class="tab-content">
       <div class="table-container">
-        <div class="table-header-title">
-          <span>Laporan Pelaksanaan Shalat Idul Fitri 1448 H</span>
-          <span style="font-size: 12px; font-weight: normal; color: #526b5c;">Status: Selesai</span>
-        </div>
         <table>
           <thead>
             <tr>
@@ -564,26 +517,26 @@
             <tr>
               <td class="text-center">1</td>
               <td>Infaq Kotak Shalat Idul Fitri</td>
-              <td class="text-right">Rp 14.820.000 (dummy)</td>
+              <td class="text-right">Rp 14.820.000</td>
               <td class="text-right">-</td>
             </tr>
             <tr>
               <td class="text-center">2</td>
               <td>Pemasangan Tenda, Sound System & Kebersihan Lapangan</td>
               <td class="text-right">-</td>
-              <td class="text-right">Rp 4.200.000 (dummy)</td>
+              <td class="text-right">Rp 4.200.000</td>
             </tr>
             <tr>
               <td class="text-center">3</td>
               <td>Bisyarah Imam & Khatib Shalat Idul Fitri</td>
               <td class="text-right">-</td>
-              <td class="text-right">Rp 2.000.000 (dummy)</td>
+              <td class="text-right">Rp 2.000.000</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="2" style="text-align: right; padding-right: 15px;">Sisa Kas Idul Fitri</td>
-              <td colspan="2" class="text-right" style="color: #0b5d3b;">Rp 8.620.000 (Diserahkan ke Kas DKM)</td>
+              <td colspan="2" style="text-align: right; padding-right: 15px; font-weight: bold; background: #f1f8f4;">Sisa Kas Idul Fitri</td>
+              <td colspan="2" class="text-right" style="color: #0b5d3b; font-weight: bold; background: #f1f8f4;">Rp 8.620.000 (Diserahkan ke Kas DKM)</td>
             </tr>
           </tfoot>
         </table>
@@ -667,21 +620,121 @@
 
   </footer>
 
-  <!-- SCRIPT SWITCH TAB -->
+  <!-- SCRIPT SWITCH TAB & GOOGLE SHEET FETCHER -->
   <script>
+    // ID Spreadsheet Laporan Kas Ramadhan
+    const RAMADHAN_SHEET_ID = '1rUaNO0kGbMf-Eh__jq7O9f1Q2tGwELvmN_oFTr7T_68';
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${RAMADHAN_SHEET_ID}/gviz/tq?tqx=out:csv`;
+
+    let isRamadhanLoaded = false;
+
+    // Fungsi Switch Tab
     function switchTab(tabId, btn) {
-      // Hilangkan class active dari semua tombol tab
       const buttons = document.querySelectorAll('.tab-btn');
       buttons.forEach(b => b.classList.remove('active'));
 
-      // Sembunyikan semua isi tab
       const contents = document.querySelectorAll('.tab-content');
       contents.forEach(c => c.classList.remove('active'));
 
-      // Tampilkan tab yang dipilih
       btn.classList.add('active');
       document.getElementById('tab-' + tabId).classList.add('active');
+
+      // Muat data jika tab ramadhan dipilih
+      if (tabId === 'ramadhan' && !isRamadhanLoaded) {
+        loadRamadhanFromSheet();
+      }
     }
+
+    // Fungsi Pengambil Data Spreadsheet
+    async function loadRamadhanFromSheet() {
+      const tbody = document.getElementById('table-ramadhan-body');
+
+      try {
+        const response = await fetch(CSV_URL);
+        if (!response.ok) throw new Error("Gagal mengambil data dari Google Sheets.");
+
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        if (rows.length <= 1) {
+          tbody.innerHTML = '<tr><td colspan="6" class="text-center">Belum ada data laporan yang diinput.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = '';
+
+        let nomor = 1;
+        let lastSaldo = '-';
+        let totalPenerimaan = 0;
+
+        // Looping data (melewati baris header index 0)
+        for (let i = 1; i < rows.length; i++) {
+          const row = rows[i];
+          if (!row || row.length === 0 || !row.some(val => val.trim() !== '')) continue;
+
+          // Mapping 5 Kolom:
+          // Kolom 0: Tanggal | Kolom 1: Uraian | Kolom 2: Penerimaan | Kolom 3: Pengeluaran | Kolom 4: Saldo
+          const tanggal = row[0] ? row[0].trim() : '-';
+          const uraian = row[1] ? row[1].trim() : '-';
+          const penerimaan = row[2] ? row[2].trim() : '-';
+          const pengeluaran = row[3] ? row[3].trim() : '-';
+          const saldo = row[4] ? row[4].trim() : '-';
+
+          if (saldo !== '-') lastSaldo = saldo;
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="text-center">${nomor++}</td>
+            <td><strong>${tanggal}</strong></td>
+            <td>${uraian}</td>
+            <td class="text-right">${penerimaan}</td>
+            <td class="text-right">${pengeluaran}</td>
+            <td class="text-right" style="font-weight: 600; color: #0b5d3b;">${saldo}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+
+        // Update ringkasan metric card di atas
+        if (lastSaldo !== '-') {
+          document.getElementById('metric-saldo').innerText = lastSaldo;
+        }
+        document.getElementById('metric-ramadhan').innerText = "Tersinkron";
+
+        isRamadhanLoaded = true;
+      } catch (err) {
+        console.error(err);
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align:center; color:red; padding:20px;">
+              Gagal memuat data dari Google Sheets. Pastikan link Google Sheet disetel 
+              <b>"Anyone with the link can view" (Siapa saja yang memiliki link dapat melihat)</b>.
+            </td>
+          </tr>`;
+      }
+    }
+
+    // Parser CSV dengan handling tanda kutip
+    function parseCSV(text) {
+      const lines = text.split(/\r\n|\n/);
+      return lines.map(line => {
+        const regex = /(?:,|\n|^)("(?:(?:"")*[^"]*)*"|[^",\n]*|(?:\n|$))/g;
+        const row = [];
+        let match;
+        while ((match = regex.exec(line)) && match[0] !== "") {
+          let val = match[1] || "";
+          if (val.startsWith('"') && val.endsWith('"')) {
+            val = val.slice(1, -1).replace(/""/g, '"');
+          }
+          row.push(val);
+        }
+        return row;
+      }).filter(r => r.length > 0);
+    }
+
+    // Muat langsung saat halaman pertama kali dibuka karena tab default adalah Ramadhan & Ifthor
+    document.addEventListener('DOMContentLoaded', () => {
+      loadRamadhanFromSheet();
+    });
   </script>
 
 </body>
