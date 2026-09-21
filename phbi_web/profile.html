@@ -1,80 +1,793 @@
 <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html lang="id"> <head> <meta charset="utf-8" /> <title>Profil Panitia Ramadhan dan Idul Fitri 1448 H - Masjid Ar Ridhwan</title> <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Panitia Ramadhan & Idul Fitri 1448 H | PHBI 1448 H</title>
 
-<style> * { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f5f7f5; color: #263238; line-height: 1.6; } /* ========================================================= HEADER ========================================================= */ #header { width: 100%; height: 40px; background: #263238; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; position: fixed; top: 0; left: 0; z-index: 2000; } /* ========================================================= NAVBAR ========================================================= */ #navbar { position: fixed; top: 40px; left: 0; width: 100%; min-height: 60px; background: #37474F; display: flex; align-items: center; padding: 0 10px; z-index: 1800; } #logo img { height: 40px; margin-right: 20px; border-radius: 4px; } #menu { flex: 1; } #menu ul { list-style: none; margin: 0; padding: 0; display: flex; } #menu ul li { position: relative; } #menu > ul > li > a { padding: 10px 18px; display: block; color: white; text-decoration: none; } #menu ul li:hover { background: #455A64; } /* Dropdown */ #menu ul li ul { display: none; position: absolute; top: 60px; left: 0; background: #455A64; min-width: 210px; padding: 0; z-index: 9999; } #menu ul li:hover ul, #menu ul li:focus-within ul { display: block; } #menu ul li ul li { width: 100%; } #menu ul li ul li a { padding: 10px 14px; display: block; color: white; text-decoration: none; white-space: nowrap; } #menu ul li ul li:hover { background: #546E7A; } /* ========================================================= MAIN ========================================================= */ main { padding-top: 100px; padding-bottom: 70px; } /* ========================================================= HERO ========================================================= */ .hero { min-height: 380px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 20px; background: linear-gradient( rgba(7, 54, 27, 0.88), rgba(11, 61, 11, 0.92) ); color: white; position: relative; overflow: hidden; } .hero::before { content: "☪"; position: absolute; font-size: 260px; opacity: 0.05; right: 5%; top: 20px; } .hero-content { max-width: 900px; position: relative; z-index: 2; } .arabic { font-size: 28px; margin-bottom: 12px; direction: rtl; } .hero h1 { margin: 5px 0; font-size: 36px; letter-spacing: 0.5px; } .hero h2 { margin: 5px 0 20px; font-size: 22px; font-weight: normal; } .hero p { max-width: 700px; margin: auto; font-size: 16px; opacity: 0.95; } .badge { display: inline-block; margin-top: 25px; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.6); border-radius: 30px; font-size: 14px; } /* ========================================================= CONTAINER ========================================================= */ .container { max-width: 1100px; margin: auto; padding: 45px 20px; } .section-title { text-align: center; margin-bottom: 35px; } .section-title h2 { margin: 0; color: #1b5e20; font-size: 28px; } .section-title p { margin-top: 8px; color: #607d8b; } /* ========================================================= INTRO ========================================================= */ .intro { background: white; border-radius: 14px; padding: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); text-align: center; } .intro .arabic { color: #1b5e20; font-size: 24px; } /* ========================================================= VISI MISI ========================================================= */ .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; } .card { background: white; border-radius: 14px; padding: 28px; box-shadow: 0 3px 15px rgba(0,0,0,0.07); border-top: 4px solid #2e7d32; } .card h3 { color: #1b5e20; margin-top: 0; font-size: 21px; } .card p { color: #455A64; } .card ul { padding-left: 20px; } .card li { margin-bottom: 8px; } /* ========================================================= NILAI RAMADHAN ========================================================= */ .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; } .value { background: white; text-align: center; padding: 25px 15px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.06); transition: transform 0.2s ease; } .value:hover { transform: translateY(-5px); } .value-icon { font-size: 34px; margin-bottom: 10px; } .value h3 { margin: 5px 0; color: #1b5e20; } .value p { font-size: 14px; color: #607d8b; } /* ========================================================= PROGRAM ========================================================= */ .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; } .program { background: white; border-radius: 14px; padding: 25px; box-shadow: 0 3px 12px rgba(0,0,0,0.07); position: relative; overflow: hidden; } .program::after { content: "رمضان"; position: absolute; right: -10px; bottom: -20px; font-size: 65px; color: #1b5e20; opacity: 0.05; direction: rtl; } .program h3 { color: #1b5e20; margin-top: 0; } .program p { color: #546E7A; font-size: 14px; } /* ========================================================= STRUKTUR ========================================================= */ .structure { background: white; border-radius: 14px; padding: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.07); } .structure-table { width: 100%; border-collapse: collapse; } .structure-table th, .structure-table td { padding: 13px; border-bottom: 1px solid #e0e0e0; text-align: left; } .structure-table th { background: #1b5e20; color: white; } .structure-table tr:last-child td { border-bottom: none; } /* ========================================================= QUOTE ========================================================= */ .quote-section { background: #e8f5e9; padding: 55px 20px; text-align: center; } #quote { max-width: 800px; margin: auto; color: #1b5e20; font-size: 21px; font-style: italic; min-height: 70px; transition: opacity 0.4s ease; } #quote-source { margin-top: 10px; color: #607d8b; font-size: 14px; } /* ========================================================= FOOTER ========================================================= */ #credit { position: fixed; bottom: 42px; right: 10px; z-index: 1500; font-size: 12px; padding: 4px 6px; background: white; border-radius: 4px; box-shadow: 0 0 4px rgba(0,0,0,0.3); } #footer-banner { width: 100%; background: #0b3d0b; color: white; text-align: center; padding: 12px 0; font-size: 16px; position: fixed; bottom: 0; left: 0; z-index: 2000; } /* ========================================================= RESPONSIVE ========================================================= */ @media (max-width: 800px) { #navbar { height: auto; min-height: 60px; flex-wrap: wrap; } #logo { padding: 8px 0; } #menu { width: 100%; flex-basis: 100%; } #menu ul { flex-wrap: wrap; } #menu > ul > li > a { padding: 9px 10px; font-size: 14px; } #menu ul li ul { top: 100%; } main { padding-top: 120px; } .hero h1 { font-size: 28px; } .hero h2 { font-size: 18px; } .cards { grid-template-columns: 1fr; } .values { grid-template-columns: repeat(2, 1fr); } .program-grid { grid-template-columns: 1fr; } .structure { overflow-x: auto; } .structure-table { min-width: 600px; } } @media (max-width: 480px) { .hero { min-height: 350px; } .hero h1 { font-size: 24px; } .arabic { font-size: 22px; } .values { grid-template-columns: 1fr; } #footer-banner { font-size: 13px; } } </style>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9f6, #e8f3ec);
+      color: #24352b;
+      line-height: 1.7;
+    }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    header {
+      background: linear-gradient(135deg, #0b5d3b, #087f4f);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    header .arabic {
+      font-size: 32px;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    nav {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 35px;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #0b5d3b;
+      white-space: nowrap;
+    }
+
+    .logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #24543b;
+      font-weight: 600;
+      padding: 8px 11px;
+      border-radius: 8px;
+      transition: 0.3s;
+      white-space: nowrap;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      background: #e5f3eb;
+      color: #087f4f;
+    }
+
+    .nav-links a.active {
+      background: #e5f3eb;
+      color: #087f4f;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+      max-width: 1100px;
+      margin: 45px auto 30px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .hero .arabic {
+      font-size: 30px;
+      color: #0b5d3b;
+      direction: rtl;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      font-size: 34px;
+      color: #0b5d3b;
+      margin-bottom: 8px;
+    }
+
+    .hero .subtitle {
+      font-size: 18px;
+      color: #607268;
+    }
+
+
+    /* =====================================================
+       CONTAINER
+       ===================================================== */
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h3 {
+      font-size: 27px;
+      color: #0b5d3b;
+      margin-bottom: 5px;
+    }
+
+    .section-title p {
+      color: #718078;
+    }
+
+
+    /* =====================================================
+       INTRO
+       ===================================================== */
+
+    .intro {
+      max-width: 900px;
+      margin: 0 auto 35px;
+      padding: 25px;
+      text-align: center;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    .intro .arabic {
+      font-size: 26px;
+      color: #0b5d3b;
+      direction: rtl;
+      margin-bottom: 15px;
+    }
+
+    .intro p {
+      color: #53645a;
+    }
+
+
+    /* =====================================================
+       VISI MISI / CARDS
+       ===================================================== */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-bottom: 45px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      border-top: 4px solid #0b5d3b;
+    }
+
+    .card h3 {
+      color: #0b5d3b;
+      margin-top: 0;
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #455A64;
+    }
+
+    .card ul {
+      padding-left: 20px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+      color: #455A64;
+    }
+
+
+    /* =====================================================
+       NILAI RAMADHAN
+       ===================================================== */
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 45px;
+    }
+
+    .value {
+      background: white;
+      text-align: center;
+      padding: 25px 15px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+
+    .value:hover {
+      transform: translateY(-5px);
+    }
+
+    .value-icon {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .value h3 {
+      margin: 5px 0;
+      color: #0b5d3b;
+    }
+
+    .value p {
+      font-size: 14px;
+      color: #607d8b;
+    }
+
+
+    /* =====================================================
+       STRUKTUR KEPANITIAAN
+       ===================================================== */
+
+    .structure {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      overflow-x: auto;
+      margin-bottom: 45px;
+    }
+
+    .structure-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .structure-table th,
+    .structure-table td {
+      padding: 13px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    .structure-table th {
+      background: #0b5d3b;
+      color: white;
+    }
+
+    .structure-table tr:last-child td {
+      border-bottom: none;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      background: #0b5d3b;
+      color: white;
+      text-align: center;
+      padding: 35px 20px 25px;
+      margin-top: 30px;
+    }
+
+    footer h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+
+    footer .footer-subtitle {
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: white;
+      text-decoration: none;
+      padding: 9px 16px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.08);
+      transition: 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
+    }
+
+    /* Logo Instagram */
+    .instagram-icon {
+      width: 25px;
+      height: 25px;
+      border: 2px solid white;
+      border-radius: 7px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .instagram-icon::before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border: 2px solid white;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    .instagram-icon::after {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      top: 3px;
+      right: 3px;
+    }
+
+    /* Logo YouTube */
+    .youtube-icon {
+      width: 30px;
+      height: 21px;
+      background: white;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .youtube-icon::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-left: 9px solid #0b5d3b;
+      margin-left: 2px;
+    }
+
+    /* Logo Email */
+    .email-icon {
+      width: 27px;
+      height: 20px;
+      border: 2px solid white;
+      border-radius: 4px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .email-icon::after,
+    .email-icon::before {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 2px;
+      background: white;
+      top: 6px;
+    }
+
+    .email-icon::before {
+      left: 0;
+      transform: rotate(31deg);
+      transform-origin: left;
+    }
+
+    .email-icon::after {
+      right: 0;
+      transform: rotate(-31deg);
+      transform-origin: right;
+    }
+
+    footer .copyright {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1150px) {
+
+      .nav-container {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+        padding: 7px 8px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .values {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+
+    @media (max-width: 700px) {
+
+      header h1 {
+        font-size: 22px;
+      }
+
+      header .arabic {
+        font-size: 25px;
+      }
+
+      .hero h2 {
+        font-size: 27px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        gap: 3px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        padding: 6px 7px;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .social-links {
+        flex-direction: column;
+      }
+
+      .social-link {
+        width: 240px;
+        justify-content: center;
+      }
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-<!-- ========================================================= HEADER ========================================================= -->
 
-<div id="header"> Panitia Ramadhan dan Idul Fitri 1448 H </div>
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
 
-<!-- ========================================================= NAVBAR ========================================================= -->
+  <header>
 
-<div id="navbar">
+    <div class="arabic">
+      رَمَضَانُ شَهْرُ الْقُرْآنِ
+    </div>
 
-<!-- LOGO -->
+    <h1>
+      Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H
+    </h1>
 
-<div id="logo"> <img src="logo_arridhwan.jpg" alt="Logo Masjid Ar Ridhwan"> </div>
+    <p>
+      Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
 
-<!-- MENU -->
+  </header>
 
-<div id="menu"> <ul>
 
-  <li>
-    <a href="../puri.html">Home</a>
-  </li>
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
 
-  <li>
-    <a href="javascript:void(0)">Tentang ▼</a>
-    <ul>
-      <li>
-        <a href="profil.html">Profil PHBI 1448 H</a>
-      </li>
-    </ul>
-  </li>
+  <nav>
 
-  <li>
-    <a href="javascript:void(0)">Zakat ▼</a>
-    <ul>
-      <li>
-        <a href="mustahiq.html">Pengusulan Mustahiq</a>
-      </li>
-      <li>
-        <a href="penyaluran.html">Penyaluran</a>
-      </li>
-      <li>
-        <a href="rekap.html">Rekapitulasi</a>
-      </li>
-      <li>
-        <a href="zakatmal.html">Kalkulator Zakat Mal</a>
-      </li>
-    </ul>
-  </li>
+    <div class="nav-container">
 
-  <li>
-    <a href="javascript:void(0)">Kegiatan ▼</a>
-    <ul>
-      <li>
-        <a href="penceramah.html">Penceramah Tarawih</a>
-      </li>
-      <li>
-        <a href="ifthor.html">Ifthor Jama'i</a>
-      </li>
-      <li>
-        <a href="idulfitri.html">Idul Fitri</a>
-      </li>
-    </ul>
-  </li>
+      <div class="logo">
 
-</ul>
+        <img
+          src="logo_arridhwan.jpg"
+          alt="Logo Masjid Ar Ridhwan"
+        >
 
-</div>
+        <span>PHBI 1448 H</span>
 
-</div>
+      </div>
+
+
+      <div class="nav-links">
+
+        <!-- 1. HOME -->
+        <a href="../puri.html">
+          Home
+        </a>
+
+        <!-- 2. TENTANG (AKTIF) -->
+        <a href="profil.html" class="active">
+          Tentang
+        </a>
+
+        <!-- 3. PENCERAMAH -->
+        <a href="penceramah.html">
+          Penceramah
+        </a>
+
+        <!-- 4. IFTHOR -->
+        <a href="ifthor.html">
+          Ifthor
+        </a>
+
+        <!-- 5. PENGAJUAN MUSTAHIQ -->
+        <a href="mustahiq.html">
+          Pengajuan Mustahiq
+        </a>
+
+        <!-- 6. PENYALURAN ZAKAT / QURBAN -->
+        <a href="penyaluran.html">
+          Penyaluran Zakat / Qurban
+        </a>
+
+        <!-- 7. LAPORAN -->
+        <a href="rekap.html">
+          Laporan
+        </a>
+
+        <!-- 8. IDUL FITRI / IDUL ADHA -->
+        <a href="idulfitri.html">
+          Idul Fitri / Idul Adha
+        </a>
+
+        <!-- 9. WAKAF -->
+        <a href="wakaf.html">
+          Wakaf
+        </a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section class="hero">
+
+    <div class="arabic">
+      وَتَعَاوَنُوْا عَلَى الْبِرِّ وَالتَّقْوَىٰ
+    </div>
+
+    <h2>
+      Profil Panitia PHBI 1448 H
+    </h2>
+
+    <p class="subtitle">
+      Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
+
+  </section>
+
+
+  <!-- =====================================================
+       INTRO
+       ===================================================== -->
+
+  <section class="intro">
+
+    <div class="arabic">
+      بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+    </div>
+
+    <p>
+      <strong>Panitia Ramadhan, Idul Fitri, dan Idul Adha (PHBI) 1448 H</strong>
+      Masjid Ar Ridhwan dibentuk sebagai wujud kebersamaan
+      warga Puri Nirwana 1 dalam menyukseskan seluruh
+      rangkaian kegiatan Ramadhan hingga Idul Adha.
+    </p>
+
+  </section>
+
+
+  <!-- =====================================================
+       KONTEN
+       ===================================================== -->
+
+  <div class="container">
+
+    <!-- VISI MISI -->
+    <div class="cards">
+
+      <div class="card">
+        <h3>🎯 Visi</h3>
+        <p>
+          Menjadi panitia yang amanah, profesional, dan
+          menjadi sarana mempererat ukhuwah islamiyah
+          warga Puri Nirwana 1 selama Ramadhan 1448 H.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📋 Misi</h3>
+        <ul>
+          <li>Menyelenggarakan kegiatan Ramadhan yang tertib dan khidmat.</li>
+          <li>Meningkatkan partisipasi warga dalam kegiatan keagamaan.</li>
+          <li>Menyalurkan zakat, infaq, dan shadaqah secara amanah.</li>
+          <li>Membangun kebersamaan dan kepedulian sosial.</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <!-- NILAI -->
+    <div class="section-title">
+      <h3>Nilai-Nilai Kami</h3>
+      <p>Prinsip yang menjadi landasan kepanitiaan</p>
+    </div>
+
+    <div class="values">
+
+      <div class="value">
+        <div class="value-icon">🤝</div>
+        <h3>Ukhuwah</h3>
+        <p>Mempererat persaudaraan antar warga.</p>
+      </div>
+
+      <div class="value">
+        <div class="value-icon">🛡️</div>
+        <h3>Amanah</h3>
+        <p>Menjalankan tugas dengan penuh tanggung jawab.</p>
+      </div>
+
+      <div class="value">
+        <div class="value-icon">💡</div>
+        <h3>Profesional</h3>
+        <p>Bekerja tertata, terencana, dan transparan.</p>
+      </div>
+
+      <div class="value">
+        <div class="value-icon">❤️</div>
+        <h3>Kepedulian</h3>
+        <p>Peduli terhadap sesama dan lingkungan.</p>
+      </div>
+
+    </div>
+
+
+    <!-- STRUKTUR -->
+    <div class="section-title">
+      <h3>Struktur Kepanitiaan</h3>
+      <p>Susunan pengurus PHBI 1448 H</p>
+    </div>
+
+    <div class="structure">
+
+      <table class="structure-table">
+
+        <thead>
+          <tr>
+            <th>Jabatan</th>
+            <th>Nama</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Ketua Panitia</td>
+            <td>H. Sugeng Widodo</td>
+          </tr>
+          <tr>
+            <td>Sekretaris</td>
+            <td>Bpk. Suyanto</td>
+          </tr>
+          <tr>
+            <td>Bendahara</td>
+            <td>Hj. Hasmunah</td>
+          </tr>
+          <tr>
+            <td>Bidang Dakwah</td>
+            <td>H. Suyadi</td>
+          </tr>
+          <tr>
+            <td>Bidang Ifthor</td>
+            <td>Hj. Hasmunah</td>
+          </tr>
+          <tr>
+            <td>Bidang Zakat</td>
+            <td>Bpk. Suyanto</td>
+          </tr>
+          <tr>
+            <td>Bidang Wakaf</td>
+            <td>H. Sugeng Widodo</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+
 
 <!-- ========================================================= MAIN CONTENT ========================================================= -->
 
@@ -281,7 +994,7 @@
   </div>
 
   <div class="program">
-    <h3>🌙 Malam Lailatul Qadar</h3>
+    <h3>🌙 Malam Al-Qadar</h3>
     <p>
       Menghidupkan sepuluh malam terakhir Ramadhan dengan
       berbagai kegiatan ibadah dan peningkatan amal.
@@ -323,48 +1036,52 @@
     <tbody>
 
       <tr>
-        <td>Pembina</td>
-        <td>........................................</td>
+        <td>Pengarah</td>
+        <td> H. Zulkarnaen</td>
       </tr>
 
       <tr>
         <td>Ketua Panitia</td>
-        <td>........................................</td>
+        <td>H. Arif Aditiya</td>
       </tr>
 
       <tr>
         <td>Wakil Ketua</td>
-        <td>........................................</td>
+        <td>Arief  Gandi</td>
       </tr>
 
       <tr>
         <td>Sekretaris</td>
-        <td>........................................</td>
+        <td>Ayu Mulyahati</td>
       </tr>
 
       <tr>
         <td>Bendahara</td>
-        <td>........................................</td>
+        <td>H. Trimarno</td>
+      </tr>
+       <tr>
+        <td>Wakil Bendahara</td>
+        <td>H. Sucipto</td>
       </tr>
 
       <tr>
         <td>Bidang Dakwah</td>
-        <td>........................................</td>
+        <td>H. Suyadi</td>
       </tr>
 
       <tr>
         <td>Bidang Zakat</td>
-        <td>........................................</td>
+        <td>Juleni</td>
       </tr>
 
       <tr>
         <td>Bidang Konsumsi</td>
-        <td>........................................</td>
+        <td>Hj. Hasmunah</td>
       </tr>
 
       <tr>
         <td>Bidang Dokumentasi & Publikasi</td>
-        <td>........................................</td>
+        <td>Hamdi</td>
       </tr>
 
     </tbody>
@@ -380,7 +1097,7 @@
 <section class="quote-section">
 
 <div class="arabic">
-  إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ
+  وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ ۖ وَلَا تَعَاوَنُوا عَلَى الْإِثْمِ وَالْعُدْوَانِ ۚ وَاتَّقُوا اللَّهَ ۖ إِنَّ اللَّهَ شَدِيدُ الْعِقَابِ
 </div>
 
 <div id="quote">
@@ -388,21 +1105,79 @@
 </div>
 
 <div id="quote-source">
-  — Hadis Riwayat Bukhari dan Muslim
+  "Dan tolong-menolonglah kamu dalam (mengerjakan) kebajikan dan takwa, dan jangan tolong-menolong dalam berbuat dosa dan permusuhan. 
+  Bertakwalah kepada Allah, sesungguhnya Allah sangat berat siksaan-Nya." (QS. Al-Ma'idah: 2)
 </div>
 
 </section>
 
 </main>
 
-<!-- ========================================================= FOOTER ========================================================= -->
+<!-- =====================================================
+       FOOTER
+       ===================================================== -->
 
-<div id="credit"> phbi1448@2026 </div>
+  <footer>
 
-<div id="footer-banner"> <b><i>Menjalin Ukhuwah, Menggapai Mardhatillah</i></b> </div>
+    <h3>
+      Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H
+    </h3>
 
-<!-- ========================================================= JAVASCRIPT ========================================================= -->
+    <p class="footer-subtitle">
+      Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
 
-<script> // ========================================================= // QUOTE DINAMIS // ========================================================= const quotes = [ { text: "Setiap amal bergantung pada niatnya.", source: "Hadis Riwayat Bukhari dan Muslim" }, { text: "Barangsiapa berpuasa Ramadhan karena iman dan mengharap pahala, niscaya diampuni dosa-dosanya yang telah lalu.", source: "Hadis Riwayat Bukhari dan Muslim" }, { text: "Dan berbuat baiklah. Sesungguhnya Allah menyukai orang-orang yang berbuat baik.", source: "QS. Al-Baqarah: 195" }, { text: "Sesungguhnya orang-orang yang beriman itu bersaudara.", source: "QS. Al-Hujurat: 10" }, { text: "Dan barangsiapa yang mengerjakan kebaikan seberat zarrah, niscaya dia akan melihat balasannya.", source: "QS. Az-Zalzalah: 7" }, { text: "Bulan Ramadhan adalah kesempatan untuk memperbanyak ibadah, memperkuat ukhuwah, dan memperluas manfaat.", source: "Semangat Ramadhan Masjid Ar Ridhwan" } ]; let quoteIndex = 0; const quoteElement = document.getElementById("quote"); const sourceElement = document.getElementById("quote-source"); function changeQuote() { quoteElement.style.opacity = 0; setTimeout(function() { quoteIndex++; if (quoteIndex >= quotes.length) { quoteIndex = 0; } quoteElement.textContent = quotes[quoteIndex].text; sourceElement.textContent = "— " + quotes[quoteIndex].source; quoteElement.style.opacity = 1; }, 400); } setInterval(changeQuote, 5000); </script>
 
-</body> </html>
+    <!-- SOCIAL MEDIA -->
+
+    <div class="social-links">
+
+      <!-- INSTAGRAM -->
+      <a
+        class="social-link"
+        href="https://www.instagram.com/arridhwandkm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="instagram-icon"></span>
+        <span>@arridhwandkm</span>
+      </a>
+
+      <!-- YOUTUBE -->
+      <a
+        class="social-link"
+        href="https://www.youtube.com/@dakwaharridhwan4872"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="youtube-icon"></span>
+        <span>Dakwah Ar Ridhwan</span>
+      </a>
+
+      <!-- EMAIL -->
+      <a
+        class="social-link"
+        href="mailto:arridhwan.dkm@gmail.com"
+      >
+        <span class="email-icon"></span>
+        <span>arridhwan.dkm@gmail.com</span>
+      </a>
+
+    </div>
+
+
+    <p>
+      Menjalin Ukhuwah · Menggapai Mardhatillah
+    </p>
+
+
+    <div class="copyright">
+      © 2026/2027 Panitia Ramadhan, Idul Fitri, dan Idul Adha
+      Masjid Ar Ridhwan
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
