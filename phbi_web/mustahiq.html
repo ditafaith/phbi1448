@@ -1,226 +1,456 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <title>Pengusulan Mustahiq — PHBI 1447 H</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Stylesheet untuk Search Bar -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengajuan Mustahiq | PHBI 1448 H</title>
 
   <style>
-    html, body {
-      margin: 0; padding: 0; font-family: Arial; background: #f5f5f5;
-    }
-
-    /* HEADER */
-    #header {
-      width: 100%; height: 40px;
-      background-color: #263238; color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: bold; font-size: 16px;
-      position: fixed; top: 0; left: 0;
-      z-index: 2000;
-    }
-
-    /* NAVBAR */
-    #navbar {
-      position: fixed;
-      top: 40px; left: 0;
-      width: 100%; height: 60px;
-      background: #37474F;
-      display: flex; align-items: center;
-      padding: 0 10px;
-      z-index: 1800;
-    }
-
-    #logo img {
-      height: 40px;
-      margin-right: 20px;
-      border-radius: 4px;
-    }
-
-    /* MENU */
-    #menu { flex: 1; }
-    #menu ul {
-      list-style: none;
-      margin: 0; padding: 0;
-      display: flex;
-    }
-    #menu ul li { position: relative; }
-    #menu > ul > li > a {
-      padding: 10px 18px;
-      display: block;
-      color: white;
-      text-decoration: none;
-    }
-    #menu ul li:hover { background: #455A64; }
-
-    /* DROPDOWN */
-    #menu ul li ul {
-      display: none;
-      position: absolute;
-      top: 60px;
-      background: #455A64;
-      min-width: 200px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0;
-      z-index: 9999;
     }
-    #menu ul li:hover ul,
-    #menu ul li:focus-within ul {
-      display: block;
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9f6, #e8f3ec);
+      color: #24352b;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    #menu ul li ul li a {
-      padding: 10px; display: block; color: white; 
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+    header {
+      background: linear-gradient(135deg, #0b5d3b, #087f4f);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    header .arabic {
+      font-size: 30px;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    header h1 {
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+    nav {
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 35px;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #0b5d3b;
+      white-space: nowrap;
+    }
+
+    .logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-links a {
       text-decoration: none;
-    }
-    #menu ul li ul li:hover { background: #546E7A; }
-
-    /* SEARCH BAR */
-    #searchContainer { width: 260px; }
-
-    /* KONTEN */
-    #content {
-      margin-top: 120px;
-      padding: 20px;
-      margin-bottom: 80px;
+      color: #24543b;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: 0.3s;
+      white-space: nowrap;
+      font-size: 14px;
     }
 
-    h2 {
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: #e5f3eb;
+      color: #087f4f;
+    }
+
+    /* =====================================================
+       KONTEN UTAMA
+       ===================================================== */
+    main {
+      flex: 1;
+      max-width: 920px;
+      width: 92%;
+      margin: 35px auto 50px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .page-title h2 {
+      font-size: 26px;
+      color: #0b5d3b;
+      margin-bottom: 6px;
+    }
+
+    .page-title p {
+      color: #607268;
+      font-size: 15px;
+    }
+
+    /* =====================================================
+       KOTAK INFORMASI 8 ASNAF (QS. AT-TAUBAH: 60)
+       ===================================================== */
+    .info-guideline {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      border: 1px solid #dceede;
+    }
+
+    .guideline-header {
       text-align: center;
       margin-bottom: 15px;
-      color: #263238;
+    }
+
+    .guideline-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0b5d3b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .guideline-header .verse-quote {
+      font-size: 13px;
+      color: #607268;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .guideline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .guideline-item {
+      background: #f7faf8;
+      border: 1px solid #e3efe7;
+      border-radius: 12px;
+      padding: 14px 10px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .guideline-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11, 93, 59, 0.08);
+    }
+
+    .guideline-icon {
+      font-size: 22px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .guideline-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0b5d3b;
+      margin-bottom: 4px;
+    }
+
+    .guideline-desc {
+      font-size: 11.5px;
+      color: #4b5e53;
+      line-height: 1.35;
+    }
+
+    /* Catatan Tambahan Pengusulan */
+    .guideline-note {
+      margin-top: 15px;
+      padding: 10px 14px;
+      background: #f0f8f3;
+      border-left: 3px solid #0b5d3b;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+      color: #344e3e;
+    }
+
+    /* =====================================================
+       GOOGLE FORM EMBED
+       ===================================================== */
+    .form-container {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+      border: 1px solid #e1eee6;
+      padding: 10px;
     }
 
     iframe {
       width: 100%;
-      height: 1300px;
+      height: 1200px;
       border: none;
-      border-radius: 6px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.2);
-      background: white;
+      border-radius: 12px;
+      display: block;
     }
 
-    /* FOOTER KECIL */
-    #credit {
-      position: fixed;
-      bottom: 42px;
-      right: 10px;
-      z-index: 1500;
-      font-size: 12px;
-      padding: 4px 6px;
-      background:white;
-      border-radius:4px;
-      box-shadow:0 0 4px rgba(0,0,0,0.3);
-    }
-
-    /* FOOTER-BANNER */
-    #footer-banner {
-      width: 100%;
-      background: #0b3d0b;
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+    footer {
+      background: #0b5d3b;
       color: white;
       text-align: center;
-      padding: 12px 0;
-      font-size: 16px;
-      position: fixed;
-      bottom: 0; left: 0;
-      z-index: 2000;
+      padding: 35px 20px 25px;
+    }
+
+    footer h3 {
+      margin-bottom: 6px;
+      font-size: 20px;
+    }
+
+    footer .footer-subtitle {
+      opacity: 0.9;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.08);
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    footer .copyright {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    /* Responsif Tablet & HP */
+    @media (max-width: 900px) {
+      .guideline-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 10px; }
+      .guideline-grid { grid-template-columns: 1fr; }
     }
   </style>
-
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div id="header">Peta Dakwah PHBI 1447 H</div>
+  <!-- HEADER -->
+  <header>
+    <div class="arabic">رَمَضَانُ شَهْرُ الْقُرْآنِ</div>
+    <h1>Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H</h1>
+    <p>Masjid Ar Ridhwan · Puri Nirwana 1</p>
+  </header>
 
-<!-- NAVBAR -->
-<div id="navbar">
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo_arridhwan.jpg" alt="Logo Masjid Ar Ridhwan">
+        <span>PHBI 1448 H</span>
+      </div>
 
-  <!-- LOGO (path sejajar) -->
-  <div id="logo">
-    <img src="./logo_arridhwan.jpg" alt="Logo Ar Ridhwan">
-  </div>
+      <div class="nav-links">
+        <a href="../puri.html">Home</a>
+        <a href="profile.html">Tentang</a>
+        <a href="penceramah.html">Penceramah</a>
+        <a href="ifthor.html">Ifthor</a>
+        <a href="mustahiq.html" class="active">Pengajuan Mustahiq</a>
+        <a href="penyaluran.html">Penyaluran Zakat / Qurban</a>
+        <a href="rekap.html">Laporan</a>
+        <a href="fitri.html">Idul Fitri / Idul Adha</a>
+        <a href="wakaf.html">Wakaf</a>
+      </div>
+    </div>
+  </nav>
 
-  <!-- MENU -->
-  <div id="menu">
-    <ul>
+  <!-- KONTEN -->
+  <main>
+    <div class="page-title">
+      <h2>Formulir Pengusulan Mustahiq Zakat</h2>
+      <p>Ramadhan 1448 H · Masjid Ar Ridhwan</p>
+    </div>
 
-      <li><a href="../puri.html">Home</a></li>
+    <!-- INFORMASI KETENTUAN 8 ASNAF -->
+    <section class="info-guideline">
+      <div class="guideline-header">
+        <h3>📖 8 Golongan Penerima Zakat (Mustahiq)</h3>
+        <p class="verse-quote">"Sesungguhnya zakat itu hanyalah untuk orang-orang fakir, orang miskin, amil zakat, mualaf yang dilunakkan hatinya, untuk (memerdekakan) hamba sahaya, untuk (membebaskan) orang yang berutang, untuk jalan Allah, dan untuk orang yang sedang dalam perjalanan..." (QS. At-Taubah: 60)</p>
+      </div>
 
-      <li>
-        <a href="javascript:void(0)">Tentang ▼</a>
-        <ul>
-          <li><a href="profil.html">Profil PHBI 1447 H</a></li>
-        </ul>
-      </li>
+      <div class="guideline-grid">
+        <!-- 1. Fakir -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🏚️</div>
+          <div class="guideline-title">1. Fakir</div>
+          <div class="guideline-desc">Tidak memiliki harta/pekerjaan dan tidak mampu mencukupi kebutuhan pokok hidup.</div>
+        </div>
 
-      <li>
-        <a href="javascript:void(0)">Zakat ▼</a>
-        <ul>
-          <li><a href="mustahiq.html">Pengusulan Mustahiq</a></li>
-          <li><a href="penyaluran.html">Penyaluran</a></li>
-          <li><a href="rekap.html">Rekapitulasi</a></li>
-          <li><a href="zakatmal.html">Kalkulator Zakat Mal</a></li>
-        </ul>
-      </li>
+        <!-- 2. Miskin -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🥣</div>
+          <div class="guideline-title">2. Miskin</div>
+          <div class="guideline-desc">Memiliki penghasilan atau harta, namun belum mencukupi kebutuhan pokok sehari-hari.</div>
+        </div>
 
-      <li>
-        <a href="javascript:void(0)">Kegiatan ▼</a>
-        <ul>
-          <li><a href="penceramah.html">Penceramah Tarawih</a></li>
-          <li><a href="ifthor.html">Ifthor Jama'i</a></li>
-          <li><a href="idulfitri.html">Idul Fitri</a></li>
-        </ul>
-      </li>
+        <!-- 3. Amil -->
+        <div class="guideline-item">
+          <div class="guideline-icon">📋</div>
+          <div class="guideline-title">3. Amil</div>
+          <div class="guideline-desc">Petugas/panitia yang ditunjuk mengelola penghimpunan dan penyaluran zakat.</div>
+        </div>
 
-    </ul>
-  </div>
+        <!-- 4. Mualaf -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🌱</div>
+          <div class="guideline-title">4. Mualaf</div>
+          <div class="guideline-desc">Orang yang baru masuk Islam atau yang perlu dikuatkan keimanan dan hatinya.</div>
+        </div>
 
-  <!-- SEARCH -->
-  <div id="searchContainer"></div>
+        <!-- 5. Riqab -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🔓</div>
+          <div class="guideline-title">5. Riqab</div>
+          <div class="guideline-desc">Upaya memerdekakan budak / pembebasan dari perbudakan dan penindasan.</div>
+        </div>
 
-</div>
+        <!-- 6. Gharimin -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🧾</div>
+          <div class="guideline-title">6. Gharimin</div>
+          <div class="guideline-desc">Orang yang berutang demi kebutuhan pokok halal dan kesulitan melunasinya.</div>
+        </div>
 
-<!-- KONTEN -->
-<div id="content">
+        <!-- 7. Fisabilillah -->
+        <div class="guideline-item">
+          <div class="guideline-icon">⚔️</div>
+          <div class="guideline-title">7. Fisabilillah</div>
+          <div class="guideline-desc">Pihak yang berjuang di jalan Allah untuk kemaslahatan dakwah dan umat Islam.</div>
+        </div>
 
-  <h2>Formulir Pengusulan Mustahiq</h2>
+        <!-- 8. Ibnu Sabil -->
+        <div class="guideline-item">
+          <div class="guideline-icon">🧳</div>
+          <div class="guideline-title">8. Ibnu Sabil</div>
+          <div class="guideline-desc">Musafir yang kehabisan bekal dalam perjalanan ketaatan/bukan maksiat.</div>
+        </div>
+      </div>
 
-  <!-- GOOGLE FORM EMBED -->
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScS0wBKSE2jv-y7ucqGzZcX9Ah4zUah3WXWho6b7LZJbbtMTg/viewform?usp=header?embedded=true">
-    Memuat Formulir...
-  </iframe>
+      <div class="guideline-note">
+        💡 <strong>Catatan Pengusulan:</strong> Mohon pastikan calon penerima yang diusulkan melalui formulir di bawah ini memenuhi kriteria salah satu asnaf di atas, diprioritaskan warga di lingkungan sekitar Masjid Ar Ridhwan.
+      </div>
+    </section>
 
-</div>
+    <!-- FORMULIR PENGAJUAN -->
+    <div class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScS0wBKSE2jv-y7ucqGzZcX9Ah4zUah3WXWho6b7LZJbbtMTg/viewform?embedded=true">
+        Memuat Formulir Pengusulan Mustahiq...
+      </iframe>
+    </div>
+  </main>
 
-<!-- FOOTER KECIL -->
-<div id="credit">phbi1447@2025</div>
+  <!-- FOOTER -->
+  <footer>
+    <h3>Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H</h3>
+    <p class="footer-subtitle">Masjid Ar Ridhwan · Puri Nirwana 1</p>
 
-<!-- FOOTER-BANNER -->
-<div id="footer-banner">
-  <b><i>Menjalin Ukhuwah, Menggapai Mardhatillah</i></b>
-</div>
+    <div class="social-links">
+      <a class="social-link" href="https://www.instagram.com/arridhwandkm" target="_blank" rel="noopener noreferrer">
+        Instagram: @arridhwandkm
+      </a>
+      <a class="social-link" href="https://www.youtube.com/@dakwaharridhwan4872" target="_blank" rel="noopener noreferrer">
+        YouTube: Dakwah Ar Ridhwan
+      </a>
+      <a class="social-link" href="mailto:arridhwan.dkm@gmail.com">
+        arridhwan.dkm@gmail.com
+      </a>
+    </div>
 
-<!-- SEARCH BAR SCRIPT (LEAFLET GEOCODER) -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <p style="font-size: 14px; margin-top: 10px;">
+      Menjalin Ukhuwah · Menggapai Mardhatillah
+    </p>
 
-<script>
-  // Search bar: membuat map dummy
-  var tempDiv = document.createElement('div');
-  tempDiv.style.display = "none";
-  document.body.appendChild(tempDiv);
-
-  var tempMap = L.map(tempDiv).setView([0, 0], 1);
-  var geocoder = L.Control.geocoder({ defaultMarkGeocode: true }).addTo(tempMap);
-
-  // Memindahkan geocoder ke searchContainer
-  var searchElement = geocoder.getContainer();
-  document.getElementById("searchContainer").appendChild(searchElement);
-</script>
+    <div class="copyright">
+      © 2026/2027 Panitia Ramadhan, Idul Fitri, dan Idul Adha Masjid Ar Ridhwan
+    </div>
+  </footer>
 
 </body>
 </html>
-
