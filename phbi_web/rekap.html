@@ -157,7 +157,7 @@
     }
 
     .summary-card .num {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       color: #0b5d3b;
       line-height: 1.2;
@@ -221,7 +221,7 @@
     }
 
     /* =====================================================
-       TABEL LAPORAN (STYLE PERSIS DAFTAR PENCERAMAH)
+       TABEL LAPORAN (STYLE DAFTAR PENCERAMAH)
        ===================================================== */
     .table-container {
       background: #ffffff;
@@ -266,11 +266,29 @@
       background-color: #f0f8f3;
     }
 
-    #status-loading {
+    .status-loading {
       text-align: center;
       padding: 30px;
       color: #557060;
       font-size: 14px;
+    }
+
+    /* Container Format Akuntansi (Rp di Kiri, Angka di Kanan) */
+    .currency-cell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .currency-cell .symbol {
+      font-weight: 500;
+      color: #607268;
+    }
+
+    .currency-cell .amount {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
     }
 
     /* Placeholder Box Idul Adha */
@@ -407,11 +425,11 @@
     <div class="summary-grid">
       <div class="summary-card">
         <div class="num" id="metric-ramadhan">-</div>
-        <div class="label">Total Kas Masuk Ramadhan</div>
+        <div class="label">Total Masuk Ramadhan</div>
       </div>
       <div class="summary-card">
-        <div class="num">210 Paket Beras</div>
-        <div class="label">Penyaluran Zakat Fitrah</div>
+        <div class="num" id="metric-zis">Tersinkron</div>
+        <div class="label">Penerimaan ZIS & Fidyah</div>
       </div>
       <div class="summary-card">
         <div class="num" id="metric-saldo">-</div>
@@ -434,16 +452,16 @@
           <thead>
             <tr>
               <th style="width: 6%; text-align: center;">No</th>
-              <th style="width: 20%;">Tanggal</th>
-              <th style="width: 32%;">Uraian</th>
-              <th style="width: 14%; text-align: right;">Penerimaan</th>
-              <th style="width: 14%; text-align: right;">Pengeluaran</th>
-              <th style="width: 14%; text-align: right;">Saldo</th>
+              <th style="width: 18%;">Tanggal</th>
+              <th style="width: 31%;">Uraian</th>
+              <th style="width: 15%; text-align: right;">Penerimaan</th>
+              <th style="width: 15%; text-align: right;">Pengeluaran</th>
+              <th style="width: 15%; text-align: right;">Saldo</th>
             </tr>
           </thead>
           <tbody id="table-ramadhan-body">
             <tr>
-              <td colspan="6" id="status-loading">
+              <td colspan="6" class="status-loading">
                 ⏳ Memuat laporan kas Ramadhan & Ifthor dari Google Sheets...
               </td>
             </tr>
@@ -452,51 +470,27 @@
       </div>
     </div>
 
-    <!-- TAB 2: ZIS & FIDYAH -->
+    <!-- TAB 2: ZIS & FIDYAH (DYNAMIC GOOGLE SPREADSHEET) -->
     <div id="tab-zis" class="tab-content">
       <div class="table-container">
         <table>
           <thead>
-            <tr>
-              <th style="width: 10%; text-align: center;">No</th>
-              <th style="width: 45%;">Jenis ZIS</th>
-              <th style="width: 25%; text-align: center;">Penerimaan</th>
-              <th style="width: 20%; text-align: center;">Penyaluran</th>
+            <tr id="table-zis-header">
+              <th style="width: 6%; text-align: center;">No</th>
+              <th style="width: 18%;">Tanggal</th>
+              <th style="width: 31%;">Uraian</th>
+              <th style="width: 15%; text-align: right;">Penerimaan</th>
+              <th style="width: 15%; text-align: right;">Pengeluaran</th>
+              <th style="width: 15%; text-align: right;">Saldo</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table-zis-body">
             <tr>
-              <td class="text-center">1</td>
-              <td><strong>Zakat Fitrah Beras</strong></td>
-              <td class="text-center">450 Liter / 180 Paket</td>
-              <td class="text-center">100% (210 Paket)</td>
-            </tr>
-            <tr>
-              <td class="text-center">2</td>
-              <td><strong>Zakat Fitrah Uang</strong></td>
-              <td class="text-center">Rp 15.600.000</td>
-              <td class="text-center">Dikonversi Beras</td>
-            </tr>
-            <tr>
-              <td class="text-center">3</td>
-              <td><strong>Zakat Mal</strong></td>
-              <td class="text-center">Rp 24.300.000</td>
-              <td class="text-center">Santunan Mustahiq</td>
-            </tr>
-            <tr>
-              <td class="text-center">4</td>
-              <td><strong>Fidyah & Infaq Shadaqah</strong></td>
-              <td class="text-center">Rp 4.750.000</td>
-              <td class="text-center">Paket Sembako</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="4" class="text-center" style="color: #0b5d3b; font-weight: bold; padding: 14px; background: #f1f8f4;">
-                Alhamdulillah, seluruh hak asnaf telah ditunaikan sebelum pelaksanaan Shalat Idul Fitri.
+              <td colspan="6" class="status-loading">
+                ⏳ Memuat laporan Zakat, Infak & Fidyah dari Google Sheets...
               </td>
             </tr>
-          </tfoot>
+          </tbody>
         </table>
       </div>
     </div>
@@ -557,7 +551,7 @@
 
   <!-- =====================================================
        FOOTER
-       ===================================================== -->
+       ===================================================== */ -->
 
   <footer>
 
@@ -622,11 +616,12 @@
 
   <!-- SCRIPT SWITCH TAB & GOOGLE SHEET FETCHER -->
   <script>
-    // ID Spreadsheet Laporan Kas Ramadhan
+    // ID Spreadsheet Ramadhan & ZIS
     const RAMADHAN_SHEET_ID = '1rUaNO0kGbMf-Eh__jq7O9f1Q2tGwELvmN_oFTr7T_68';
-    const CSV_URL = `https://docs.google.com/spreadsheets/d/${RAMADHAN_SHEET_ID}/gviz/tq?tqx=out:csv`;
+    const ZIS_SHEET_ID = '1jBhgXY3FAcZjjwGptFwO5s_cF23YMScT88wGaCPxKwE';
 
     let isRamadhanLoaded = false;
+    let isZisLoaded = false;
 
     // Fungsi Switch Tab
     function switchTab(tabId, btn) {
@@ -639,15 +634,32 @@
       btn.classList.add('active');
       document.getElementById('tab-' + tabId).classList.add('active');
 
-      // Muat data jika tab ramadhan dipilih
+      // Panggil loader saat tab bersangkutan aktif
       if (tabId === 'ramadhan' && !isRamadhanLoaded) {
         loadRamadhanFromSheet();
+      } else if (tabId === 'zis' && !isZisLoaded) {
+        loadZisFromSheet();
       }
     }
 
-    // Fungsi Pengambil Data Spreadsheet
+    // Helper Format Akuntansi Rp di Kiri, Angka di Kanan
+    function formatRupiahCell(val) {
+      if (!val || val === '-' || val.trim() === '') {
+        return `<div class="currency-cell"><span class="symbol"></span><span class="amount">-</span></div>`;
+      }
+      let cleanVal = val.replace(/[Rp$\s]/gi, '').trim();
+      return `
+        <div class="currency-cell">
+          <span class="symbol">Rp</span>
+          <span class="amount">${cleanVal}</span>
+        </div>
+      `;
+    }
+
+    // Loader Tab 1: Ramadhan & Ifthor
     async function loadRamadhanFromSheet() {
       const tbody = document.getElementById('table-ramadhan-body');
+      const CSV_URL = `https://docs.google.com/spreadsheets/d/${RAMADHAN_SHEET_ID}/gviz/tq?tqx=out:csv`;
 
       try {
         const response = await fetch(CSV_URL);
@@ -662,18 +674,13 @@
         }
 
         tbody.innerHTML = '';
-
         let nomor = 1;
         let lastSaldo = '-';
-        let totalPenerimaan = 0;
 
-        // Looping data (melewati baris header index 0)
         for (let i = 1; i < rows.length; i++) {
           const row = rows[i];
           if (!row || row.length === 0 || !row.some(val => val.trim() !== '')) continue;
 
-          // Mapping 5 Kolom:
-          // Kolom 0: Tanggal | Kolom 1: Uraian | Kolom 2: Penerimaan | Kolom 3: Pengeluaran | Kolom 4: Saldo
           const tanggal = row[0] ? row[0].trim() : '-';
           const uraian = row[1] ? row[1].trim() : '-';
           const penerimaan = row[2] ? row[2].trim() : '-';
@@ -687,33 +694,88 @@
             <td class="text-center">${nomor++}</td>
             <td><strong>${tanggal}</strong></td>
             <td>${uraian}</td>
-            <td class="text-right">${penerimaan}</td>
-            <td class="text-right">${pengeluaran}</td>
-            <td class="text-right" style="font-weight: 600; color: #0b5d3b;">${saldo}</td>
+            <td>${formatRupiahCell(penerimaan)}</td>
+            <td>${formatRupiahCell(pengeluaran)}</td>
+            <td style="font-weight: 600; color: #0b5d3b;">${formatRupiahCell(saldo)}</td>
           `;
           tbody.appendChild(tr);
         }
 
-        // Update ringkasan metric card di atas
         if (lastSaldo !== '-') {
-          document.getElementById('metric-saldo').innerText = lastSaldo;
+          let cleanSaldo = lastSaldo.replace(/[Rp$\s]/gi, '').trim();
+          document.getElementById('metric-saldo').innerText = "Rp " + cleanSaldo;
         }
         document.getElementById('metric-ramadhan').innerText = "Tersinkron";
-
         isRamadhanLoaded = true;
       } catch (err) {
         console.error(err);
         tbody.innerHTML = `
           <tr>
             <td colspan="6" style="text-align:center; color:red; padding:20px;">
-              Gagal memuat data dari Google Sheets. Pastikan link Google Sheet disetel 
-              <b>"Anyone with the link can view" (Siapa saja yang memiliki link dapat melihat)</b>.
+              Gagal memuat data dari Google Sheets. Pastikan akses Google Sheet disetel 
+              <b>"Anyone with the link can view"</b>.
             </td>
           </tr>`;
       }
     }
 
-    // Parser CSV dengan handling tanda kutip
+    // Loader Tab 2: Zakat, Infak & Fidyah (ZIS)
+    async function loadZisFromSheet() {
+      const tbody = document.getElementById('table-zis-body');
+      const CSV_URL = `https://docs.google.com/spreadsheets/d/${ZIS_SHEET_ID}/gviz/tq?tqx=out:csv`;
+
+      try {
+        const response = await fetch(CSV_URL);
+        if (!response.ok) throw new Error("Gagal mengambil data dari Google Sheets.");
+
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        if (rows.length <= 1) {
+          tbody.innerHTML = '<tr><td colspan="6" class="text-center">Belum ada data laporan ZIS yang diinput.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = '';
+        let nomor = 1;
+
+        for (let i = 1; i < rows.length; i++) {
+          const row = rows[i];
+          if (!row || row.length === 0 || !row.some(val => val.trim() !== '')) continue;
+
+          // Mapping data kolom Spreadsheet ZIS
+          const tanggal = row[0] ? row[0].trim() : '-';
+          const uraian = row[1] ? row[1].trim() : '-';
+          const penerimaan = row[2] ? row[2].trim() : '-';
+          const pengeluaran = row[3] ? row[3].trim() : '-';
+          const saldo = row[4] ? row[4].trim() : '-';
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="text-center">${nomor++}</td>
+            <td><strong>${tanggal}</strong></td>
+            <td>${uraian}</td>
+            <td>${formatRupiahCell(penerimaan)}</td>
+            <td>${formatRupiahCell(pengeluaran)}</td>
+            <td style="font-weight: 600; color: #0b5d3b;">${formatRupiahCell(saldo)}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+
+        isZisLoaded = true;
+      } catch (err) {
+        console.error(err);
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align:center; color:red; padding:20px;">
+              Gagal memuat data ZIS dari Google Sheets. Pastikan akses Google Sheet disetel 
+              <b>"Anyone with the link can view"</b>.
+            </td>
+          </tr>`;
+      }
+    }
+
+    // Helper Parser CSV
     function parseCSV(text) {
       const lines = text.split(/\r\n|\n/);
       return lines.map(line => {
@@ -731,7 +793,7 @@
       }).filter(r => r.length > 0);
     }
 
-    // Muat langsung saat halaman pertama kali dibuka karena tab default adalah Ramadhan & Ifthor
+    // Muat data Ramadhan secara default saat halaman pertama dibuka
     document.addEventListener('DOMContentLoaded', () => {
       loadRamadhanFromSheet();
     });
