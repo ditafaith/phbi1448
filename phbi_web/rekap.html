@@ -470,29 +470,29 @@
       </div>
     </div>
 
-    <!-- TAB 2: ZIS & FIDYAH (DYNAMIC GOOGLE SPREADSHEET) -->
-    <div id="tab-zis" class="tab-content">
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr id="table-zis-header">
-              <th style="width: 6%; text-align: center;">No</th>
-              <th style="width: 31%;">Uraian</th>
-              <th style="width: 15%; text-align: right;">Penerimaan</th>
-              <th style="width: 15%; text-align: right;">Pengeluaran</th>
-              <th style="width: 15%; text-align: right;">Saldo</th>
-            </tr>
-          </thead>
-          <tbody id="table-zis-body">
-            <tr>
-              <td colspan="6" class="status-loading">
-                ⏳ Memuat laporan Zakat, Infak & Fidyah dari Google Sheets...
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <!-- TAB 2: ZIS & FIDYAH -->
+<div id="tab-zis" class="tab-content">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 8%; text-align: center;">No</th>
+          <th style="width: 37%;">Jenis ZIS / Uraian</th>
+          <th style="width: 18%; text-align: right;">Penerimaan</th>
+          <th style="width: 18%; text-align: right;">Penyaluran</th>
+          <th style="width: 19%; text-align: right;">Saldo</th>
+        </tr>
+      </thead>
+      <tbody id="table-zis-body">
+        <tr>
+          <td colspan="5" class="status-loading">
+            ⏳ Memuat laporan Zakat, Infak & Fidyah dari Google Sheets...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
     <!-- TAB 3: IDUL FITRI -->
     <div id="tab-idulfitri" class="tab-content">
@@ -731,7 +731,7 @@
         const rows = parseCSV(csvText);
 
         if (rows.length <= 1) {
-          tbody.innerHTML = '<tr><td colspan="6" class="text-center">Belum ada data laporan ZIS yang diinput.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="5" class="text-center">Belum ada data laporan ZIS yang diinput.</td></tr>';
           return;
         }
 
@@ -742,9 +742,13 @@
           const row = rows[i];
           if (!row || row.length === 0 || !row.some(val => val.trim() !== '')) continue;
 
-          // Mapping data kolom Spreadsheet ZIS
-          const tanggal = row[0] ? row[0].trim() : '-';
-          const uraian = row[1] ? row[1].trim() : '-';
+          // Mapping berdasarkan susunan kolom spreadsheet ZIS Anda:
+          // Kolom A (index 0): Nomor di Sheet (diabaikan, pakai nomor++ otomatis)
+          // Kolom B (index 1): Uraian / Jenis ZIS
+          // Kolom C (index 2): Penerimaan
+          // Kolom D (index 3): Penyaluran / Pengeluaran
+          // Kolom E (index 4): Saldo
+          const uraian = row[1] ? row[1].trim() : (row[0] || '-');
           const penerimaan = row[2] ? row[2].trim() : '-';
           const pengeluaran = row[3] ? row[3].trim() : '-';
           const saldo = row[4] ? row[4].trim() : '-';
@@ -752,8 +756,7 @@
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td class="text-center">${nomor++}</td>
-            <td><strong>${tanggal}</strong></td>
-            <td>${uraian}</td>
+            <td><strong>${uraian}</strong></td>
             <td>${formatRupiahCell(penerimaan)}</td>
             <td>${formatRupiahCell(pengeluaran)}</td>
             <td style="font-weight: 600; color: #0b5d3b;">${formatRupiahCell(saldo)}</td>
@@ -766,7 +769,7 @@
         console.error(err);
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" style="text-align:center; color:red; padding:20px;">
+            <td colspan="5" style="text-align:center; color:red; padding:20px;">
               Gagal memuat data ZIS dari Google Sheets. Pastikan akses Google Sheet disetel 
               <b>"Anyone with the link can view"</b>.
             </td>
