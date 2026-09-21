@@ -375,17 +375,25 @@
           const row = rows[i];
           if (!row || row.length === 0 || !row[0].trim()) continue;
 
-          // Asumsi urutan kolom: Kolom 0 = Tanggal, Kolom 1 = Imam, Kolom 2 = Penceramah
-          const tanggal = row[0] ? row[0].trim() : '-';
-          const imam = row[1] ? row[1].trim() : '-';
-          const penceramah = row[2] ? row[2].trim() : '-';
+          // Asumsi Spreadsheet:
+          // Kolom A (index 0) = Hari (contoh: Senin)
+          // Kolom B (index 1) = Tanggal (contoh: 8 Februari 2027)
+          // Kolom C (index 2) = Imam (contoh: Ust. Azmi)
+          // Kolom D (index 3) = Penceramah (contoh: Ust. Agus Salim, Lc.)
+          
+          const hari = row[0] ? row[0].trim() : '';
+          const tgl = row[1] ? row[1].trim() : '';
+          const hariTanggal = hari && tgl ? `${hari}, ${tgl}` : (hari || tgl || '-');
+
+          const imam = row[2] ? row[2].trim() : '-';
+          const penceramah = row[3] ? row[3].trim() : '-';
 
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td class="text-center">${nomor++}</td>
-            <td><strong>${tanggal}</strong></td>
-            <td>${imam || '-'}</td>
-            <td>${penceramah || '-'}</td>
+            <td><strong>${hariTanggal}</strong></td>
+            <td>${imam}</td>
+            <td>${penceramah}</td>
           `;
           tbody.appendChild(tr);
         }
