@@ -175,6 +175,151 @@
       color: #53645a;
     }
 
+    /* =====================================================
+   SUSUNAN ACARA
+   ===================================================== */
+
+.event-flow {
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  padding: 25px 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+}
+
+.event-flow-title {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.event-flow-title h3 {
+  color: #0b5d3b;
+  font-size: 27px;
+  margin-bottom: 5px;
+}
+
+.event-flow-title p {
+  color: #718078;
+  font-size: 15px;
+}
+
+/* Alur horizontal */
+.event-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+/* Setiap tahapan */
+.event-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  min-width: 130px;
+}
+
+/* Garis penghubung */
+.event-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 25px;
+  right: -10px;
+  color: #0b5d3b;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* Lingkaran icon */
+.event-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e5f3eb;
+  border: 2px solid #b9dfca;
+  border-radius: 50%;
+
+  font-size: 27px;
+
+  transition: 0.3s;
+}
+
+.event-step:hover .event-icon {
+  background: #0b5d3b;
+  border-color: #0b5d3b;
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Judul tahapan */
+.event-step h4 {
+  color: #0b5d3b;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+/* Keterangan tambahan */
+.event-step p {
+  color: #718078;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   RESPONSIVE SUSUNAN ACARA
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .event-flow {
+    padding: 25px 15px;
+  }
+
+  .event-steps {
+    flex-wrap: wrap;
+    row-gap: 30px;
+  }
+
+  .event-step {
+    flex: 0 0 33.333%;
+  }
+
+  .event-step:nth-child(3)::after {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .event-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 10px;
+  }
+
+  .event-step {
+    flex: none;
+    min-width: 0;
+  }
+
+  .event-step::after {
+    display: none !important;
+  }
+
+  .event-flow-title h3 {
+    font-size: 23px;
+  }
+
+}
 
     /* =====================================================
        SCHEDULE
@@ -761,6 +906,145 @@
 
   </section>
 
+  <!-- =====================================================
+     SUSUNAN ACARA
+     ===================================================== -->
+
+<section class="event-flow">
+
+  <div class="event-flow-title">
+
+    <h3>
+      📋 Susunan Acara
+    </h3>
+
+    <p>
+      Rangkaian kegiatan Ifthor & Kajian Tematik
+    </p>
+
+  </div>
+
+
+  <div class="event-steps">
+
+
+    <!-- 1. PEMBUKAAN -->
+
+    <div class="event-step">
+
+      <div class="event-icon">
+        🎤
+      </div>
+
+      <h4>
+        Pembukaan
+      </h4>
+
+      <p>
+        Pembukaan acara
+      </p>
+
+    </div>
+
+
+    <!-- 2. PENGANTAR DKM -->
+
+    <div class="event-step">
+
+      <div class="event-icon">
+        🕌
+      </div>
+
+      <h4>
+        Pengantar Singkat DKM
+      </h4>
+
+      <p>
+        Sambutan dan pengantar
+      </p>
+
+    </div>
+
+
+    <!-- 3. DOA -->
+
+    <div class="event-step">
+
+      <div class="event-icon">
+        🤲
+      </div>
+
+      <h4>
+        Do'a
+      </h4>
+
+      <p>
+        Do'a bersama
+      </p>
+
+    </div>
+
+
+    <!-- 4. MATERI -->
+
+    <div class="event-step">
+
+      <div class="event-icon">
+        📖
+      </div>
+
+      <h4>
+        Materi
+      </h4>
+
+      <p>
+        Kajian tematik
+      </p>
+
+    </div>
+
+
+    <!-- 5. TANYA JAWAB -->
+
+    <div class="event-step">
+
+      <div class="event-icon">
+        💬
+      </div>
+
+      <h4>
+        Tanya-Jawab
+      </h4>
+
+      <p>
+        Diskusi dan interaksi
+      </p>
+
+    </div>
+
+
+    <!-- 6. PENUTUP -->
+
+    <div class="event-step">
+
+      <div class="event-icon">
+        🏠
+      </div>
+
+      <h4>
+        Penutup
+      </h4>
+
+      <p>
+        Penutupan kegiatan
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
 
   <!-- =====================================================
        JADWAL
