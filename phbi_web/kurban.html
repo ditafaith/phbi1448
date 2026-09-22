@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Hewan Kurban | PHBI 1448 H</title>
+
+
+  <style>
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+
+      font-family: "Segoe UI", Arial, sans-serif;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f5f9f6,
+          #e8f3ec
+        );
+
+      color: #24352b;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    header {
+
+      background:
+        linear-gradient(
+          135deg,
+          #0b5d3b,
+          #087f4f
+        );
+
+      color: white;
+
+      text-align: center;
+
+      padding: 30px 20px;
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,0.15);
+
+    }
+
+
+    header .arabic {
+
+      font-size: 32px;
+
+      margin-bottom: 8px;
+
+      direction: rtl;
+
+    }
+
+
+    header h1 {
+
+      font-size: 28px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    header p {
+
+      font-size: 16px;
+
+      opacity: 0.95;
+
+    }
+
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    nav {
+
+      background: #ffffff;
+
+      box-shadow:
+        0 3px 10px rgba(0,0,0,0.08);
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+    }
+
+
+    .nav-container {
+
+      max-width: 1400px;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 35px;
+
+      padding: 10px 20px;
+
+    }
+
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-weight: bold;
+
+      color: #0b5d3b;
+
+      white-space: nowrap;
+
+    }
+
+
+    .logo img {
+
+      width: 48px;
+
+      height: 48px;
+
+      object-fit: contain;
+
+      border-radius: 50%;
+
+    }
+
+
+    .nav-links {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 4px;
+
+      justify-content: center;
+
+      align-items: center;
+
+    }
+
+
+    .nav-links a {
+
+      text-decoration: none;
+
+      color: #24543b;
+
+      font-weight: 600;
+
+      padding: 8px 11px;
+
+      border-radius: 8px;
+
+      transition: 0.3s;
+
+      white-space: nowrap;
+
+      font-size: 15px;
+
+    }
+
+
+    .nav-links a:hover {
+
+      background: #e5f3eb;
+
+      color: #087f4f;
+
+    }
+
+
+    .nav-links a.active {
+
+      background: #e5f3eb;
+
+      color: #087f4f;
+
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+
+      max-width: 1100px;
+
+      margin: 45px auto 30px;
+
+      padding: 20px;
+
+      text-align: center;
+
+    }
+
+
+    .hero .arabic {
+
+      font-size: 30px;
+
+      color: #0b5d3b;
+
+      direction: rtl;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .hero h2 {
+
+      font-size: 34px;
+
+      color: #0b5d3b;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .hero .subtitle {
+
+      font-size: 18px;
+
+      color: #607268;
+
+    }
+
+
+    .location-row {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 15px;
+
+    }
+
+
+    .location {
+
+      display: inline-block;
+
+      padding: 8px 18px;
+
+      background: #dff1e7;
+
+      color: #0b5d3b;
+
+      border-radius: 30px;
+
+      font-weight: 600;
+
+    }
+
+
+    /* =====================================================
+       INTRO
+       ===================================================== */
+
+    .intro {
+
+      max-width: 900px;
+
+      margin: 0 auto 35px;
+
+      padding: 28px;
+
+      text-align: center;
+
+      background: white;
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+
+    }
+
+
+    .intro p {
+
+      color: #53645a;
+
+    }
+
+
+    .intro strong {
+
+      color: #0b5d3b;
+
+    }
+
+
+    /* =====================================================
+       SECTION
+       ===================================================== */
+
+    .section {
+
+      max-width: 1200px;
+
+      margin: 0 auto 45px;
+
+      padding: 20px;
+
+    }
+
+
+    .section-title {
+
+      text-align: center;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .section-title h3 {
+
+      font-size: 27px;
+
+      color: #0b5d3b;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .section-title p {
+
+      color: #718078;
+
+    }
+
+
+    /* =====================================================
+       TABEL HEWAN KURBAN
+       ===================================================== */
+
+    .table-wrapper {
+
+      background: white;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 6px 20px rgba(0,0,0,0.08);
+
+    }
+
+
+    .qurban-table {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+    }
+
+
+    .qurban-table thead {
+
+      background:
+        linear-gradient(
+          135deg,
+          #0b5d3b,
+          #087f4f
+        );
+
+      color: white;
+
+    }
+
+
+    .qurban-table th {
+
+      padding: 17px 15px;
+
+      font-size: 16px;
+
+      text-align: center;
+
+    }
+
+
+    .qurban-table td {
+
+      padding: 18px 15px;
+
+      text-align: center;
+
+      border-bottom:
+        1px solid #e5eee8;
+
+      color: #344e3e;
+
+      font-weight: 600;
+
+    }
+
+
+    .qurban-table tbody tr:last-child td {
+
+      border-bottom: none;
+
+    }
+
+
+    .qurban-table tbody tr:hover {
+
+      background: #f4faf6;
+
+    }
+
+
+    .class-badge {
+
+      display: inline-block;
+
+      padding: 5px 12px;
+
+      border-radius: 20px;
+
+      background: #e5f3eb;
+
+      color: #0b5d3b;
+
+      font-weight: 700;
+
+      margin-bottom: 3px;
+
+    }
+
+
+    .weight {
+
+      display: block;
+
+      color: #718078;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+    }
+
+
+    .price {
+
+      color: #0b5d3b;
+
+      font-size: 18px;
+
+      font-weight: 800;
+
+    }
+
+
+    /* =====================================================
+       BIAYA
+       ===================================================== */
+
+    .cost-note {
+
+      margin-top: 18px;
+
+      padding: 17px 20px;
+
+      background: #fffdf4;
+
+      border:
+        1px solid #eadfb5;
+
+      border-radius: 12px;
+
+      text-align: center;
+
+      color: #685f3d;
+
+    }
+
+
+    .cost-note strong {
+
+      color: #806c22;
+
+    }
+
+
+    /* =====================================================
+       KRITERIA SYARIAH
+       ===================================================== */
+
+    .syariah-box {
+
+      background: white;
+
+      border-radius: 20px;
+
+      padding: 30px;
+
+      box-shadow:
+        0 6px 20px rgba(0,0,0,0.07);
+
+    }
+
+
+    .syariah-header {
+
+      text-align: center;
+
+      margin-bottom: 28px;
+
+    }
+
+
+    .syariah-header h3 {
+
+      color: #0b5d3b;
+
+      font-size: 26px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .syariah-header p {
+
+      color: #718078;
+
+    }
+
+
+    .criteria-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+
+    }
+
+
+    .criteria-card {
+
+      text-align: center;
+
+      padding: 22px 15px;
+
+      background: #f5faf7;
+
+      border-radius: 16px;
+
+      border:
+        1px solid #dceee3;
+
+      transition: 0.3s;
+
+    }
+
+
+    .criteria-card:hover {
+
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 8px 18px rgba(0,0,0,0.08);
+
+    }
+
+
+    .criteria-icon {
+
+      width: 58px;
+
+      height: 58px;
+
+      margin: 0 auto 12px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background: #dff1e7;
+
+      border-radius: 50%;
+
+      font-size: 28px;
+
+    }
+
+
+    .criteria-card h4 {
+
+      color: #0b5d3b;
+
+      margin-bottom: 7px;
+
+      font-size: 16px;
+
+    }
+
+
+    .criteria-card p {
+
+      color: #66756c;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* =====================================================
+       AJAKAN BERKURBAN
+       ===================================================== */
+
+    .qurban-message {
+
+      max-width: 1000px;
+
+      margin: 0 auto 50px;
+
+      padding: 35px 30px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0b5d3b,
+          #087f4f
+        );
+
+      color: white;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,0.12);
+
+    }
+
+
+    .qurban-message .message-icon {
+
+      font-size: 45px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .qurban-message h3 {
+
+      font-size: 27px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .qurban-message p {
+
+      max-width: 800px;
+
+      margin: auto;
+
+      opacity: 0.95;
+
+      font-size: 16px;
+
+    }
+
+
+    .distribution {
+
+      margin-top: 20px;
+
+      display: inline-block;
+
+      padding: 10px 20px;
+
+      background:
+        rgba(255,255,255,0.13);
+
+      border:
+        1px solid rgba(255,255,255,0.3);
+
+      border-radius: 30px;
+
+      font-weight: 600;
+
+    }
+
+
+    /* =====================================================
+       KOORDINATOR
+       ===================================================== */
+
+    .contact-box {
+
+      max-width: 900px;
+
+      margin: 0 auto 55px;
+
+      padding: 30px;
+
+      background: white;
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+
+      text-align: center;
+
+    }
+
+
+    .contact-box h3 {
+
+      color: #0b5d3b;
+
+      margin-bottom: 8px;
+
+      font-size: 23px;
+
+    }
+
+
+    .contact-box p {
+
+      color: #65746b;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .whatsapp-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      background: #25D366;
+
+      color: white;
+
+      padding: 12px 25px;
+
+      border-radius: 30px;
+
+      text-decoration: none;
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+      transition: 0.3s;
+
+    }
+
+
+    .whatsapp-link:hover {
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 5px 15px
+        rgba(37,211,102,0.3);
+
+    }
+
+
+    .wa-icon {
+
+      font-size: 22px;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+
+      background: #0b5d3b;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 35px 20px 25px;
+
+      margin-top: 30px;
+
+    }
+
+
+    footer h3 {
+
+      margin-bottom: 8px;
+
+      font-size: 21px;
+
+    }
+
+
+    footer .footer-subtitle {
+
+      opacity: 0.9;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .social-links {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+
+      margin: 20px 0;
+
+    }
+
+
+    .social-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color: white;
+
+      text-decoration: none;
+
+      padding: 9px 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+      border-radius: 30px;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      transition: 0.3s;
+
+    }
+
+
+    .social-link:hover {
+
+      background:
+        rgba(255,255,255,0.18);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* =====================================================
+       INSTAGRAM ICON
+       ===================================================== */
+
+    .instagram-icon {
+
+      width: 25px;
+
+      height: 25px;
+
+      border:
+        2px solid white;
+
+      border-radius: 7px;
+
+      position: relative;
+
+      display: inline-block;
+
+    }
+
+
+    .instagram-icon::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 9px;
+
+      height: 9px;
+
+      border:
+        2px solid white;
+
+      border-radius: 50%;
+
+      top: 5px;
+
+      left: 5px;
+
+    }
+
+
+    .instagram-icon::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 3px;
+
+      height: 3px;
+
+      background: white;
+
+      border-radius: 50%;
+
+      top: 3px;
+
+      right: 3px;
+
+    }
+
+
+    /* =====================================================
+       YOUTUBE ICON
+       ===================================================== */
+
+    .youtube-icon {
+
+      width: 30px;
+
+      height: 21px;
+
+      background: white;
+
+      border-radius: 6px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    .youtube-icon::after {
+
+      content: "";
+
+      width: 0;
+
+      height: 0;
+
+      border-top:
+        6px solid transparent;
+
+      border-bottom:
+        6px solid transparent;
+
+      border-left:
+        9px solid #0b5d3b;
+
+      margin-left: 2px;
+
+    }
+
+
+    /* =====================================================
+       EMAIL ICON
+       ===================================================== */
+
+    .email-icon {
+
+      width: 27px;
+
+      height: 20px;
+
+      border:
+        2px solid white;
+
+      border-radius: 4px;
+
+      display: inline-block;
+
+      position: relative;
+
+    }
+
+
+    .email-icon::after,
+    .email-icon::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 13px;
+
+      height: 2px;
+
+      background: white;
+
+      top: 6px;
+
+    }
+
+
+    .email-icon::before {
+
+      left: 0;
+
+      transform:
+        rotate(31deg);
+
+      transform-origin:
+        left;
+
+    }
+
+
+    .email-icon::after {
+
+      right: 0;
+
+      transform:
+        rotate(-31deg);
+
+      transform-origin:
+        right;
+
+    }
+
+
+    footer .copyright {
+
+      margin-top: 20px;
+
+      padding-top: 15px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.2);
+
+      font-size: 14px;
+
+      opacity: 0.8;
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1150px) {
+
+      .nav-container {
+
+        gap: 15px;
+
+      }
+
+
+      .nav-links a {
+
+        font-size: 14px;
+
+        padding: 7px 8px;
+
+      }
+
+
+      .criteria-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      header h1 {
+
+        font-size: 22px;
+
+      }
+
+
+      header .arabic {
+
+        font-size: 25px;
+
+      }
+
+
+      .hero h2 {
+
+        font-size: 27px;
+
+      }
+
+
+      .nav-container {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+      }
+
+
+      .nav-links {
+
+        gap: 3px;
+
+      }
+
+
+      .nav-links a {
+
+        font-size: 13px;
+
+        padding: 6px 7px;
+
+      }
+
+
+      .location-row {
+
+        flex-direction: column;
+
+        align-items: center;
+
+      }
+
+
+      .criteria-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .table-wrapper {
+
+        overflow-x: auto;
+
+      }
+
+
+      .qurban-table {
+
+        min-width: 650px;
+
+      }
+
+
+      .qurban-message {
+
+        margin-left: 20px;
+
+        margin-right: 20px;
+
+        padding: 30px 20px;
+
+      }
+
+
+      .social-links {
+
+        flex-direction: column;
+
+      }
+
+
+      .social-link {
+
+        width: 240px;
+
+        justify-content: center;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header>
+
+    <div class="arabic">
+      رمضان شهر مبارك
+    </div>
+
+    <h1>
+      Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H
+    </h1>
+
+    <p>
+      Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
+
+  </header>
+
+
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+
+  <nav>
+
+    <div class="nav-container">
+
+
+      <div class="logo">
+
+        <img
+          src="logo_arridhwan.jpg"
+          alt="Logo Masjid Ar Ridhwan"
+        >
+
+        <span>
+          PHBI 1448 H
+        </span>
+
+      </div>
+
+
+      <div class="nav-links">
+
+
+        <!-- 1. HOME -->
+
+        <a href="../puri.html">
+          Home
+        </a>
+
+
+        <!-- 2. TENTANG -->
+
+        <a href="profile.html">
+          Tentang
+        </a>
+
+
+        <!-- 3. PENCERAMAH -->
+
+        <a href="penceramah.html">
+          Penceramah
+        </a>
+
+
+        <!-- 4. IFTHOR -->
+
+        <a href="ifthor.html">
+          Ifthor
+        </a>
+
+
+        <!-- 5. PENGAJUAN MUSTAHIQ -->
+
+        <a href="mustahiq.html">
+          Pengajuan Mustahiq
+        </a>
+
+
+        <!-- 6. PENYALURAN ZAKAT / QURBAN -->
+
+        <a href="penyaluran.html">
+          Penyaluran Zakat / Qurban
+        </a>
+
+
+        <!-- 7. LAPORAN -->
+
+        <a href="rekap.html">
+          Laporan
+        </a>
+
+
+        <!-- 8. IDUL FITRI / IDUL ADHA -->
+
+        <a href="fitri.html">
+          Idul Fitri / Idul Adha
+        </a>
+
+
+        <!-- 9. WAKAF -->
+
+        <a href="wakaf.html">
+          Wakaf
+        </a>
+
+
+        <!-- 10. HEWAN KURBAN -->
+
+        <a
+          href="hewan.html"
+          class="active"
+        >
+          🐄 Hewan Kurban
+        </a>
+
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section class="hero">
+
+    <div class="arabic">
+      أُضْحِيَّةٌ مُبَارَكَةٌ
+    </div>
+
+    <h2>
+      Hewan Kurban 1448 H
+    </h2>
+
+    <p class="subtitle">
+      Bersama Berkurban · Berbagi Kebahagiaan
+    </p>
+
+
+    <div class="location-row">
+
+      <div class="location">
+        🐄 Sapi Kurban
+      </div>
+
+      <div class="location">
+        📍 Masjid Ar Ridhwan
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       INTRO
+       ===================================================== -->
+
+  <section class="intro">
+
+    <p>
+
+      Panitia Ramadhan, Idul Fitri, dan Idul Adha
+      Masjid Ar Ridhwan membuka kesempatan bagi
+      Bapak/Ibu dan kaum muslimin untuk ikut serta
+      dalam <strong>ibadah kurban Idul Adha 1448 H</strong>.
+
+    </p>
+
+
+    <p style="margin-top: 12px;">
+
+      InsyaAllah hewan kurban akan disiapkan dan
+      dirawat dengan baik hingga pelaksanaan
+      penyembelihan pada hari H.
+
+    </p>
+
+  </section>
+
+
+  <!-- =====================================================
+       TABEL SAPI
+       ===================================================== -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <h3>
+        🐄 Pilihan Sapi Kurban
+      </h3>
+
+      <p>
+        Pilihan kelas dan biaya kepesertaan kurban
+      </p>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table class="qurban-table">
+
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Kelas & Bobot
+            </th>
+
+            <th>
+              Jenis Sapi
+            </th>
+
+            <th>
+              Biaya per Orang
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+
+          <!-- KELAS A -->
+
+          <tr>
+
+            <td>
+
+              <span class="class-badge">
+                Kelas A
+              </span>
+
+              <span class="weight">
+                ± 300 Kg
+              </span>
+
+            </td>
+
+
+            <td>
+              Sapi Banteng (Bima)
+            </td>
+
+
+            <td>
+
+              <span class="price">
+                Rp 3.225.000
+              </span>
+
+            </td>
+
+          </tr>
+
+
+          <!-- KELAS B -->
+
+          <tr>
+
+            <td>
+
+              <span class="class-badge">
+                Kelas B
+              </span>
+
+              <span class="weight">
+                ± 350 Kg
+              </span>
+
+            </td>
+
+
+            <td>
+              Sapi Banteng (Bima)
+            </td>
+
+
+            <td>
+
+              <span class="price">
+                Rp 3.725.000
+              </span>
+
+            </td>
+
+          </tr>
+
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="cost-note">
+
+      💰
+      <strong>
+        Informasi Biaya:
+      </strong>
+
+      Biaya sudah termasuk
+      <strong>
+        infak operasional dan biaya pemotongan.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       JAMINAN / KRITERIA HEWAN
+       ===================================================== -->
+
+  <section class="section">
+
+    <div class="syariah-box">
+
+
+      <div class="syariah-header">
+
+        <h3>
+          🕌 InsyaAllah Memenuhi Kriteria Syari
+        </h3>
+
+        <p>
+          Hewan kurban dipersiapkan dan dipantau hingga hari pelaksanaan
+        </p>
+
+      </div>
+
+
+      <div class="criteria-grid">
+
+
+        <!-- 1 -->
+
+        <div class="criteria-card">
+
+          <div class="criteria-icon">
+            ☑️
+          </div>
+
+          <h4>
+            Sesuai Kriteria Syari
+          </h4>
+
+          <p>
+            Hewan kurban disiapkan dengan memperhatikan
+            kriteria yang sesuai dengan ketentuan syariat.
+          </p>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="criteria-card">
+
+          <div class="criteria-icon">
+            🐄
+          </div>
+
+          <h4>
+            Dirawat Selama Masa Tunggu
+          </h4>
+
+          <p>
+            Hewan akan dirawat dan dipantau kondisinya
+            selama masa tunggu hingga hari penyembelihan.
+          </p>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="criteria-card">
+
+          <div class="criteria-icon">
+            🌾
+          </div>
+
+          <h4>
+            Diberi Makan
+          </h4>
+
+          <p>
+            Kebutuhan pakan dan perawatan hewan
+            diperhatikan selama masa pemeliharaan.
+          </p>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="criteria-card">
+
+          <div class="criteria-icon">
+            🛡️
+          </div>
+
+          <h4>
+            Jaminan Hari H
+          </h4>
+
+          <p>
+            Apabila pada hari H sapi mengalami sakit,
+            penyedia siap mengganti dengan sapi yang sesuai.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       AJAKAN BERKURBAN
+       ===================================================== -->
+
+  <section class="qurban-message">
+
+    <div class="message-icon">
+      🤲
+    </div>
+
+
+    <h3>
+      Mari Berkurban di Masjid Ar Ridhwan
+    </h3>
+
+
+    <p>
+
+      Mari bersama-sama menunaikan ibadah kurban
+      sekaligus berbagi kebahagiaan dengan sesama.
+
+      InsyaAllah daging kurban akan disalurkan
+      kepada masyarakat di lingkungan
+      <strong>Puri Nirwana 1</strong>.
+
+    </p>
+
+
+    <div class="distribution">
+
+      ❤️ Berkurban · Berbagi · Menguatkan Ukhuwah
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       KONTAK KOORDINATOR
+       ===================================================== -->
+
+  <section class="contact-box">
+
+    <h3>
+      📱 Koordinator Pengadaan Hewan Kurban
+    </h3>
+
+
+    <p>
+
+      Untuk informasi dan pendaftaran
+      kepesertaan kurban, silakan menghubungi:
+
+    </p>
+
+
+    <p>
+
+      <strong>
+        Koordinator Pengadaan Hewan Kurban
+      </strong>
+
+    </p>
+
+
+    <p>
+      👇 Klik tombol di bawah untuk terhubung melalui WhatsApp 👇
+    </p>
+
+
+    <a
+      class="whatsapp-link"
+      href="https://wa.me/6287770225727"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <span class="wa-icon">
+        ☎
+      </span>
+
+      WhatsApp
+      +62 877-7022-5727
+
+    </a>
+
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer>
+
+
+    <h3>
+      Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H
+    </h3>
+
+
+    <p class="footer-subtitle">
+      Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
+
+
+    <!-- SOCIAL MEDIA -->
+
+    <div class="social-links">
+
+
+      <!-- INSTAGRAM -->
+
+      <a
+        class="social-link"
+        href="https://www.instagram.com/arridhwandkm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <span class="instagram-icon"></span>
+
+        <span>
+          @arridhwandkm
+        </span>
+
+      </a>
+
+
+      <!-- YOUTUBE -->
+
+      <a
+        class="social-link"
+        href="https://www.youtube.com/@dakwaharridhwan4872"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <span class="youtube-icon"></span>
+
+        <span>
+          Dakwah Ar Ridhwan
+        </span>
+
+      </a>
+
+
+      <!-- EMAIL -->
+
+      <a
+        class="social-link"
+        href="mailto:arridhwan.dkm@gmail.com"
+      >
+
+        <span class="email-icon"></span>
+
+        <span>
+          arridhwan.dkm@gmail.com
+        </span>
+
+      </a>
+
+
+    </div>
+
+
+    <p>
+      Menjalin Ukhuwah · Menggapai Mardhatillah
+    </p>
+
+
+    <div class="copyright">
+
+      © 2026/2027 Panitia Ramadhan, Idul Fitri, dan Idul Adha
+      Masjid Ar Ridhwan
+
+    </div>
+
+
+  </footer>
+
+
+</body>
+
+</html>
