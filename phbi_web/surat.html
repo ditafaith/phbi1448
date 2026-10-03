@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Surat Panitia Ramadhan 1448 H | Masjid Ar Ridhwan</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:linear-gradient(135deg,#f5f9f6,#e8f3ec);
+    color:#24352b;
+    line-height:1.6;
+    min-height:100vh;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    background:linear-gradient(135deg,#0b5d3b,#087f4f);
+    color:#fff;
+    text-align:center;
+    padding:30px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+header .arabic{
+    font-size:30px;
+    margin-bottom:8px;
+    direction:rtl;
+}
+
+header h1{
+    font-size:26px;
+    margin-bottom:5px;
+}
+
+header p{
+    font-size:15px;
+    opacity:.95;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav{
+    background:#fff;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:35px;
+    padding:10px 20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:bold;
+    color:#0b5d3b;
+    white-space:nowrap;
+}
+
+.logo img{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+    border-radius:50%;
+}
+
+.nav-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+    justify-content:center;
+    align-items:center;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#24543b;
+    font-weight:600;
+    padding:8px 12px;
+    border-radius:8px;
+    transition:.3s;
+    white-space:nowrap;
+    font-size:14px;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    background:#e5f3eb;
+    color:#087f4f;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+    max-width:1250px;
+    width:94%;
+    margin:35px auto 55px;
+}
+
+.page-title{
+    text-align:center;
+    margin-bottom:24px;
+}
+
+.page-title h2{
+    font-size:27px;
+    color:#0b5d3b;
+    margin-bottom:5px;
+}
+
+.page-title p{
+    color:#607268;
+    font-size:15px;
+}
+
+/* =========================================================
+   WORKSPACE
+========================================================= */
+
+.workspace{
+    display:grid;
+    grid-template-columns:350px minmax(0,1fr);
+    gap:22px;
+    align-items:start;
+}
+
+.control-card{
+    background:#fff;
+    border:1px solid #dceede;
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 4px 18px rgba(0,0,0,.05);
+    position:sticky;
+    top:90px;
+}
+
+.control-card h3{
+    color:#0b5d3b;
+    margin-bottom:15px;
+}
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.tabs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.tab{
+    border:1px solid #cfe2d5;
+    background:#f7faf8;
+    color:#286044;
+    padding:11px 9px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:13px;
+}
+
+.tab.active{
+    background:#0b5d3b;
+    color:#fff;
+    border-color:#0b5d3b;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-section{
+    display:none;
+}
+
+.form-section.active{
+    display:block;
+}
+
+.field{
+    margin-bottom:14px;
+}
+
+.field label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    color:#345244;
+    margin-bottom:6px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    padding:10px 11px;
+    border:1px solid #cddfd3;
+    border-radius:9px;
+    background:#fff;
+    color:#24352b;
+    font:inherit;
+    outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:#0b7c4d;
+    box-shadow:0 0 0 3px rgba(11,124,77,.1);
+}
+
+.field textarea{
+    resize:vertical;
+    min-height:80px;
+}
+
+.help{
+    font-size:11.5px;
+    color:#718077;
+    margin-top:4px;
+}
+
+.generate-box{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid #e2ebe5;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn{
+    width:100%;
+    border:0;
+    border-radius:9px;
+    padding:11px 13px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:8px;
+    font-size:13px;
+}
+
+.btn-primary{
+    background:#0b5d3b;
+    color:#fff;
+}
+
+.btn-secondary{
+    background:#e8f3ec;
+    color:#0b5d3b;
+}
+
+.btn-dark{
+    background:#263b31;
+    color:#fff;
+}
+
+.btn:hover{
+    filter:brightness(.96);
+}
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.preview-wrap{
+    background:#dfe7e2;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:inset 0 0 0 1px #d2ddd6;
+    overflow:auto;
+}
+
+.preview-label{
+    text-align:center;
+    color:#52665a;
+    font-size:12px;
+    margin-bottom:12px;
+    font-weight:600;
+}
+
+/* =========================================================
+   A4 PAPER
+========================================================= */
+
+.paper{
+    width:794px;
+    min-height:1123px;
+    margin:0 auto;
+    background:#fff;
+    color:#111;
+    padding:70px 70px 60px;
+    box-shadow:0 5px 25px rgba(0,0,0,.16);
+    position:relative;
+
+    font-family:"Times New Roman",Times,serif;
+    font-size:16px;
+    line-height:1.6;
+}
+
+/* =========================================================
+   KOP SURAT
+========================================================= */
+
+.kop{
+    display:flex;
+    align-items:center;
+    border-bottom:3px solid #111;
+    padding-bottom:10px;
+    margin-bottom:3px;
+}
+
+.kop-logo{
+    width:82px;
+    height:82px;
+    object-fit:contain;
+    margin-right:18px;
+}
+
+.kop-text{
+    text-align:center;
+    flex:1;
+    padding-right:100px;
+}
+
+.kop-text .small{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+.kop-text .big{
+    font-size:25px;
+    font-weight:700;
+    letter-spacing:.7px;
+}
+
+.kop-text .address{
+    font-size:13px;
+}
+
+.kop-line{
+    border-top:1px solid #111;
+    margin-bottom:27px;
+}
+
+/* =========================================================
+   SURAT
+========================================================= */
+
+.letter-meta{
+    margin-bottom:25px;
+}
+
+.meta-row{
+    display:flex;
+}
+
+.meta-label{
+    width:92px;
+}
+
+.meta-colon{
+    width:15px;
+}
+
+.recipient{
+    margin-bottom:25px;
+}
+
+.recipient p{
+    margin-bottom:2px;
+}
+
+.content p{
+    margin-bottom:13px;
+    text-align:justify;
+}
+
+/* =========================================================
+   INFORMASI KEGIATAN
+========================================================= */
+
+.event-table{
+    margin:8px 0 15px 25px;
+}
+
+.event-row{
+    display:grid;
+    grid-template-columns:135px 15px 1fr;
+}
+
+.website{
+    color:#0066cc;
+    text-decoration:none;
+}
+
+.website:hover{
+    text-decoration:underline;
+}
+
+.closing{
+    margin-top:18px;
+}
+
+/* =========================================================
+   SIGNATURE
+========================================================= */
+
+.signature{
+    width:240px;
+    text-align:center;
+    margin-left:auto;
+    margin-top:35px;
+}
+
+.signature .title{
+    margin-bottom:5px;
+}
+
+.barcode{
+    width:145px;
+    height:70px;
+    object-fit:contain;
+    margin:5px auto 3px;
+    display:block;
+}
+
+.signature .name{
+    font-weight:700;
+    text-decoration:underline;
+}
+
+.signature .position{
+    font-size:15px;
+}
+
+/* =========================================================
+   FOOTER SURAT
+========================================================= */
+
+.letter-footer-note{
+    position:absolute;
+    bottom:28px;
+    left:70px;
+    right:70px;
+    text-align:center;
+    font-size:10px;
+    color:#777;
+    border-top:1px solid #ddd;
+    padding-top:6px;
+}
+
+/* =========================================================
+   SPONSOR
+========================================================= */
+
+.sponsor-note{
+    font-size:12px;
+    color:#607268;
+    background:#f4f8f5;
+    border-radius:9px;
+    padding:10px;
+    margin-top:8px;
+}
+
+/* =========================================================
+   FOOTER WEBSITE
+========================================================= */
+
+footer{
+    background:#0b5d3b;
+    color:#fff;
+    text-align:center;
+    padding:32px 20px 18px;
+}
+
+footer h3{
+    font-size:18px;
+    margin-bottom:4px;
+}
+
+.footer-subtitle{
+    opacity:.9;
+    font-size:14px;
+}
+
+.social-links{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    margin:18px 0;
+}
+
+.social-link{
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.copyright{
+    margin-top:15px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,.18);
+    font-size:11px;
+    opacity:.75;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
+
+    .workspace{
+        grid-template-columns:1fr;
+    }
+
+    .control-card{
+        position:relative;
+        top:auto;
+    }
+
+    .preview-wrap{
+        padding:10px;
+    }
+}
+
+@media(max-width:700px){
+
+    header h1{
+        font-size:20px;
+    }
+
+    header .arabic{
+        font-size:24px;
+    }
+
+    .nav-container{
+        gap:10px;
+    }
+
+    .logo{
+        display:none;
+    }
+
+    .nav-links a{
+        font-size:12px;
+        padding:7px 8px;
+    }
+
+    .paper{
+        width:794px;
+    }
+
+    .preview-wrap{
+        overflow-x:auto;
+    }
+
+    .tabs{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body{
+        background:#fff;
+    }
+
+    .workspace > .control-card,
+    .page-title,
+    nav,
+    header,
+    footer,
+    .preview-label{
+        display:none !important;
+    }
+
+    .preview-wrap{
+        padding:0;
+        background:#fff;
+        box-shadow:none;
+    }
+
+    .paper{
+        box-shadow:none;
+        margin:0;
+    }
+
+    main{
+        width:auto;
+        margin:0;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header>
+
+    <div class="arabic">
+        بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    </div>
+
+    <h1>
+        Panitia Ramadhan 1448 H
+    </h1>
+
+    <p>
+        Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
+
+</header>
+
+
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
+
+<nav>
+
+    <div class="nav-container">
+
+        <div class="logo">
+            <img src="logo_arridhwan.jpg" alt="Logo Masjid Ar Ridhwan">
+            <span>PHBI 1448 H</span>
+        </div>
+
+        <div class="nav-links">
+
+        <!-- 1. HOME --><a href="../puri.html">🏠 Home</a>
+        <!-- 2. TENTANG --><a href="profile.html">ℹ️ Tentang</a>
+        <!-- 3. PENCERAMAH --><a href="penceramah.html">🎙️ Penceramah</a>
+        <!-- 4. IFTHOR --><a href="ifthor.html">🍽️ Ifthor</a>
+        <!-- 5. PENGAJUAN MUSTAHIQ --><a href="mustahiq.html">🤲 Pengajuan Mustahiq</a>
+        <!-- 6. PENYALURAN ZAKAT / QURBAN --><a href="penyaluran.html">🤝 Penyaluran Zakat/ Qurban</a>
+        <!-- 7. LAPORAN --><a href="rekap.html">📊 Laporan</a>
+        <!-- 8. IDUL FITRI / IDUL ADHA --><a href="fitri.html">☪️ Idul Fitri/ Adha</a>
+        <!-- 9. WAKAF --><a href="wakaf.html">🕌 Wakaf</a>
+        <!-- 10. HEWAN KURBAN --> <a href="kurban.html">🐂 Hewan Kurban</a>
+        <!-- 11. ESTIMATOR DAGING --><a href="daging.html">🥩 Estimator Daging</a>
+        <!-- 12. PROPOSAL --><a href="proposal.html">📄 Proposal</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main>
+
+    <div class="page-title">
+
+        <h2>
+            Generator Surat Panitia
+        </h2>
+
+        <p>
+            Buat surat resmi dalam format PDF atau JPG tanpa perlu
+            mengetik ulang di Microsoft Word.
+        </p>
+
+    </div>
+
+
+    <div class="workspace">
+
+
+        <!-- =================================================
+             PANEL KONTROL
+        ================================================== -->
+
+        <section class="control-card">
+
+
+            <!-- TABS -->
+
+            <div class="tabs">
+
+                <button
+                    class="tab active"
+                    id="tabPenceramah"
+                    onclick="switchTab('penceramah')">
+
+                    Surat Penceramah
+
+                </button>
+
+
+                <button
+                    class="tab"
+                    id="tabSponsor"
+                    onclick="switchTab('sponsor')">
+
+                    Permohonan Sponsorship
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORM PENCERAMAH
+            ================================================== -->
+
+            <div
+                class="form-section active"
+                id="formPenceramah">
+
+                <h3>
+                    Data Surat Penceramah
+                </h3>
+
+
+                <div class="field">
+
+                    <label for="nomorPenceramah">
+                        Nomor Surat
+                    </label>
+
+                    <input
+                        id="nomorPenceramah"
+                        value="001/PAN-PHBI/AR-R/1448 H"
+                        oninput="updateLetter()">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="tanggalSurat">
+                        Tanggal Surat
+                    </label>
+
+                    <input
+                        type="date"
+                        id="tanggalSurat"
+                        oninput="updateLetter()">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="namaPenceramah">
+                        Nama Penceramah
+                    </label>
+
+                    <input
+                        id="namaPenceramah"
+                        placeholder="Contoh: Ustadz Ahmad Fauzi"
+                        oninput="updateLetter()">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="peran">
+                        Permohonan sebagai
+                    </label>
+
+                    <select
+                        id="peran"
+                        onchange="updateLetter()">
+
+                        <option value="Imam dan/atau Penceramah">
+                            Imam dan/atau Penceramah
+                        </option>
+
+                        <option value="Imam">
+                            Imam
+                        </option>
+
+                        <option value="Penceramah">
+                            Penceramah
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="tanggalAcara">
+                        Tanggal Undangan / Pelaksanaan
+                    </label>
+
+                    <input
+                        type="date"
+                        id="tanggalAcara"
+                        oninput="updateLetter()">
+
+                    <div class="help">
+                        Hari akan otomatis ditampilkan pada surat.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORM SPONSORSHIP
+            ================================================== -->
+
+            <div
+                class="form-section"
+                id="formSponsor">
+
+                <h3>
+                    Data Surat Sponsorship
+                </h3>
+
+
+                <div class="field">
+
+                    <label for="nomorSponsor">
+                        Nomor Surat
+                    </label>
+
+                    <input
+                        id="nomorSponsor"
+                        value="001/PAN-PHBI/AR-R/1448 H"
+                        oninput="updateSponsor()">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="tanggalSponsor">
+                        Tanggal Surat
+                    </label>
+
+                    <input
+                        type="date"
+                        id="tanggalSponsor"
+                        oninput="updateSponsor()">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="pihakSponsor">
+                        Yth. / Nama Perusahaan / Instansi
+                    </label>
+
+                    <input
+                        id="pihakSponsor"
+                        placeholder="Contoh: PT Maju Bersama"
+                        oninput="updateSponsor()">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="keteranganSponsor">
+                        Keperluan Sponsorship
+                    </label>
+
+                    <textarea
+                        id="keteranganSponsor"
+                        placeholder="Dukungan kegiatan Ramadhan 1448 H"
+                        oninput="updateSponsor()">
+                    </textarea>
+
+                </div>
+
+
+                <div class="sponsor-note">
+
+                    Format isi sponsorship dibuat sebagai
+                    template awal dan dapat disesuaikan
+                    dengan kebutuhan panitia.
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BUTTON GENERATOR
+            ================================================== -->
+
+            <div class="generate-box">
+
+                <button
+                    class="btn btn-primary"
+                    onclick="downloadPDF()">
+
+                    ⬇ Download PDF
+
+                </button>
+
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="downloadJPG()">
+
+                    🖼 Download JPG
+
+                </button>
+
+
+                <button
+                    class="btn btn-dark"
+                    onclick="window.print()">
+
+                    🖨 Cetak / Simpan PDF
+
+                </button>
+
+
+                <div
+                    class="help"
+                    style="margin-top:9px">
+
+                    Pastikan file
+                    <b>arridhwan.jpg</b>
+                    dan
+                    <b>barcode.jpg</b>
+                    berada di folder yang sama dengan
+                    <b>surat.html</b>.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PREVIEW SURAT
+        ================================================== -->
+
+        <section class="preview-wrap">
+
+            <div class="preview-label">
+
+                PRATINJAU SURAT · Ukuran A4
+
+            </div>
+
+
+            <article
+                class="paper"
+                id="letterPaper">
+
+
+                <!-- =================================================
+                     KOP SURAT
+                ================================================== -->
+
+                <div class="kop">
+
+                    <img
+                        class="kop-logo"
+                        src="arridhwan.jpg"
+                        alt="Logo Masjid Ar Ridhwan">
+
+
+                    <div class="kop-text">
+
+                        <div class="small">
+                            PANITIA RAMADHAN 1448 H
+                        </div>
+
+                        <div class="big">
+                            MASJID AR RIDHWAN
+                        </div>
+
+                        <div class="address">
+                            Puri Nirwana 1
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="kop-line"></div>
+
+
+                <!-- =================================================
+                     NOMOR DAN TANGGAL
+                ================================================== -->
+
+                <div class="letter-meta">
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Nomor
+                        </span>
+
+                        <span class="meta-colon">
+                            :
+                        </span>
+
+                        <span id="outNomor">
+                            001/PAN-PHBI/AR-R/1448 H
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-row">
+
+                        <span class="meta-label">
+                            Tanggal
+                        </span>
+
+                        <span class="meta-colon">
+                            :
+                        </span>
+
+                        <span id="outTanggal">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PENERIMA
+                ================================================== -->
+
+                <div class="recipient">
+
+                    <p>
+                        Yth.
+                    </p>
+
+                    <p>
+                        <b id="outNama">
+                            Bapak/Ibu Penceramah
+                        </b>
+                    </p>
+
+                    <p>
+                        di Tempat
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     ISI SURAT PENCERAMAH
+                ================================================== -->
+
+                <div
+                    class="content"
+                    id="contentPenceramah">
+
+
+                    <p>
+                        Assalamu'alaikum warahmatullahi wabarakatuh.
+                    </p>
+
+
+                    <p>
+                        Sehubungan dengan kegiatan
+                        <b>Ramadhan 1448 H</b>
+                        yang diselenggarakan oleh Panitia
+                        Ramadhan Masjid Ar Ridhwan, dengan ini
+                        kami memohon kesediaan
+                        <b id="outNama2">
+                            Bapak/Ibu Penceramah
+                        </b>
+                        untuk berkenan menjadi
+                        <b id="outPeran">
+                            Imam dan/atau Penceramah
+                        </b>.
+                    </p>
+
+
+                    <p>
+                        Adapun pelaksanaan yang kami mohon
+                        kesediaannya adalah sebagai berikut:
+                    </p>
+
+
+                    <!-- INFORMASI HARI/TANGGAL/DURASI -->
+
+                    <div class="event-table">
+
+
+                        <div class="event-row">
+
+                            <span>
+                                Hari
+                            </span>
+
+                            <span>
+                                :
+                            </span>
+
+                            <b id="outHari">
+                                —
+                            </b>
+
+                        </div>
+
+
+                        <div class="event-row">
+
+                            <span>
+                                Tanggal
+                            </span>
+
+                            <span>
+                                :
+                            </span>
+
+                            <b id="outTanggalAcara">
+                                —
+                            </b>
+
+                        </div>
+
+
+                        <div class="event-row">
+
+                            <span>
+                                Durasi Ceramah
+                            </span>
+
+                            <span>
+                                :
+                            </span>
+
+                            <span>
+                                ± 15 menit
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <p>
+                        Besar harapan kami kiranya Bapak/Ibu
+                        berkenan memenuhi permohonan ini.
+                        Atas perhatian, kesediaan, dan kerja
+                        samanya, kami sampaikan terima kasih.
+                    </p>
+
+
+                    <p>
+
+                        Informasi kegiatan dan rangkaian
+                        Ramadhan 1448 H dapat dilihat melalui
+                        website panitia:
+
+                        <a
+                            class="website"
+                            href="https://s.id/phbi1448h"
+                            target="_blank">
+
+                            s.id/phbi1448h
+
+                        </a>.
+
+                    </p>
+
+
+                    <p class="closing">
+
+                        Wassalamu'alaikum warahmatullahi
+                        wabarakatuh.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     ISI SURAT SPONSORSHIP
+                ================================================== -->
+
+                <div
+                    class="content"
+                    id="contentSponsor"
+                    style="display:none">
+
+
+                    <p>
+                        Assalamu'alaikum warahmatullahi wabarakatuh.
+                    </p>
+
+
+                    <p>
+
+                        Sehubungan dengan kegiatan
+                        <b>Ramadhan 1448 H</b>
+                        yang diselenggarakan oleh Panitia
+                        Ramadhan Masjid Ar Ridhwan, kami
+                        bermaksud mengajukan permohonan dukungan
+                        sponsorship kepada
+                        <b id="outPihakSponsor">
+                            Bapak/Ibu/Perusahaan/Instansi
+                        </b>
+                        untuk mendukung kegiatan tersebut.
+
+                    </p>
+
+
+                    <p>
+
+                        Dukungan sponsorship diharapkan dapat
+                        membantu kelancaran pelaksanaan kegiatan
+                        Ramadhan, dakwah, sosial, dan pelayanan
+                        jamaah selama bulan Ramadhan 1448 H.
+                        Adapun bentuk dukungan yang diharapkan
+                        dapat disesuaikan dengan kebijakan dan
+                        kemampuan pihak sponsor.
+
+                    </p>
+
+
+                    <p>
+
+                        Demikian permohonan ini kami sampaikan.
+                        Besar harapan kami atas dukungan dan kerja
+                        sama yang dapat diberikan. Atas perhatian
+                        dan kebaikannya, kami sampaikan terima kasih.
+
+                    </p>
+
+
+                    <p>
+
+                        Informasi kegiatan dapat dilihat melalui
+                        website panitia:
+
+                        <a
+                            class="website"
+                            href="https://s.id/phbi1448h"
+                            target="_blank">
+
+                            s.id/phbi1448h
+
+                        </a>.
+
+                    </p>
+
+
+                    <p class="closing">
+
+                        Wassalamu'alaikum warahmatullahi
+                        wabarakatuh.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     TANDA TANGAN
+                ================================================== -->
+
+                <div class="signature">
+
+                    <div class="title">
+                        Ketua Panitia,
+                    </div>
+
+
+                    <img
+                        class="barcode"
+                        src="barcode.jpg"
+                        alt="Tanda tangan"
+                        onerror="this.style.opacity='.15';this.title='Upload barcode.jpg'">
+
+
+                    <div class="name">
+                        Arif Aditiya
+                    </div>
+
+
+                    <div class="position">
+                        Ketua Panitia Ramadhan 1448 H
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER SURAT -->
+
+                <div class="letter-footer-note">
+
+                    Panitia Ramadhan 1448 H
+                    · Masjid Ar Ridhwan
+                    · Puri Nirwana 1
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER WEBSITE
+======================================================= -->
+
+<footer>
+
+    <h3>
+        Panitia Ramadhan 1448 H
+    </h3>
+
+    <p class="footer-subtitle">
+        Masjid Ar Ridhwan · Puri Nirwana 1
+    </p>
+
+
+    <div class="social-links">
+
+        <a
+            class="social-link"
+            href="https://www.instagram.com/arridhwandkm"
+            target="_blank">
+
+            Instagram: @arridhwandkm
+
+        </a>
+
+
+        <a
+            class="social-link"
+            href="https://www.youtube.com/@dakwaharridhwan4872"
+            target="_blank">
+
+            YouTube: Dakwah Ar Ridhwan
+
+        </a>
+
+
+        <a
+            class="social-link"
+            href="mailto:arridhwan.dkm@gmail.com">
+
+            arridhwan.dkm@gmail.com
+
+        </a>
+
+    </div>
+
+
+    <p>
+        Menjalin Ukhuwah · Menggapai Mardhatillah
+    </p>
+
+
+    <div class="copyright">
+
+        © 2026/2027 Panitia Ramadhan Masjid Ar Ridhwan
+
+    </div>
+
+</footer>
+
+
+<!-- =======================================================
+     LIBRARY PDF & JPG
+======================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<script>
+
+/* =========================================================
+   DATA HARI DAN BULAN
+========================================================= */
+
+const months = [
+    'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+];
+
+
+const days = [
+    'Minggu',
+    'Senin',
+    'Selasa',
+    'Rabu',
+    'Kamis',
+    'Jumat',
+    'Sabtu'
+];
+
+
+let currentTab = 'penceramah';
+
+
+/* =========================================================
+   FORMAT TANGGAL
+========================================================= */
+
+function formatDate(value){
+
+    if(!value){
+        return '—';
+    }
+
+    const d = new Date(value + 'T00:00:00');
+
+    return (
+        d.getDate()
+        + ' '
+        + months[d.getMonth()]
+        + ' '
+        + d.getFullYear()
+    );
+
+}
+
+
+/* =========================================================
+   FORMAT HARI
+========================================================= */
+
+function formatDay(value){
+
+    if(!value){
+        return '—';
+    }
+
+    const d = new Date(value + 'T00:00:00');
+
+    return days[d.getDay()];
+
+}
+
+
+/* =========================================================
+   SET TEXT
+========================================================= */
+
+function setText(id,text){
+
+    const element = document.getElementById(id);
+
+    if(element){
+        element.textContent = text;
+    }
+
+}
+
+
+/* =========================================================
+   SWITCH TAB
+========================================================= */
+
+function switchTab(type){
+
+    currentTab = type;
+
+
+    document
+        .getElementById('tabPenceramah')
+        .classList
+        .toggle('active',type === 'penceramah');
+
+
+    document
+        .getElementById('tabSponsor')
+        .classList
+        .toggle('active',type === 'sponsor');
+
+
+    document
+        .getElementById('formPenceramah')
+        .classList
+        .toggle('active',type === 'penceramah');
+
+
+    document
+        .getElementById('formSponsor')
+        .classList
+        .toggle('active',type === 'sponsor');
+
+
+    document
+        .getElementById('contentPenceramah')
+        .style.display =
+        type === 'penceramah'
+        ? 'block'
+        : 'none';
+
+
+    document
+        .getElementById('contentSponsor')
+        .style.display =
+        type === 'sponsor'
+        ? 'block'
+        : 'none';
+
+
+    if(type === 'penceramah'){
+
+        updateLetter();
+
+    }
+    else{
+
+        updateSponsor();
+
+    }
+
+}
+
+
+/* =========================================================
+   UPDATE SURAT PENCERAMAH
+========================================================= */
+
+function updateLetter(){
+
+    if(currentTab !== 'penceramah'){
+        return;
+    }
+
+
+    const nama =
+        document
+        .getElementById('namaPenceramah')
+        .value
+        .trim()
+        ||
+        'Bapak/Ibu Penceramah';
+
+
+    const nomor =
+        document
+        .getElementById('nomorPenceramah')
+        .value
+        .trim()
+        ||
+        '—';
+
+
+    const tanggalSurat =
+        document
+        .getElementById('tanggalSurat')
+        .value;
+
+
+    const tanggalAcara =
+        document
+        .getElementById('tanggalAcara')
+        .value;
+
+
+    const peran =
+        document
+        .getElementById('peran')
+        .value;
+
+
+    setText(
+        'outNomor',
+        nomor
+    );
+
+
+    setText(
+        'outTanggal',
+        formatDate(tanggalSurat)
+    );
+
+
+    setText(
+        'outNama',
+        nama
+    );
+
+
+    setText(
+        'outNama2',
+        nama
+    );
+
+
+    setText(
+        'outPeran',
+        peran
+    );
+
+
+    setText(
+        'outHari',
+        formatDay(tanggalAcara)
+    );
+
+
+    setText(
+        'outTanggalAcara',
+        formatDate(tanggalAcara)
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE SURAT SPONSOR
+========================================================= */
+
+function updateSponsor(){
+
+    if(currentTab !== 'sponsor'){
+        return;
+    }
+
+
+    const nomor =
+        document
+        .getElementById('nomorSponsor')
+        .value
+        .trim()
+        ||
+        '—';
+
+
+    const tanggal =
+        document
+        .getElementById('tanggalSponsor')
+        .value;
+
+
+    const pihak =
+        document
+        .getElementById('pihakSponsor')
+        .value
+        .trim()
+        ||
+        'Bapak/Ibu/Perusahaan/Instansi';
+
+
+    setText(
+        'outNomor',
+        nomor
+    );
+
+
+    setText(
+        'outTanggal',
+        formatDate(tanggal)
+    );
+
+
+    setText(
+        'outNama',
+        pihak
+    );
+
+
+    setText(
+        'outPihakSponsor',
+        pihak
+    );
+
+}
+
+
+/* =========================================================
+   TUNGGU GAMBAR SELESAI DIMUAT
+========================================================= */
+
+async function waitImages(){
+
+    const images =
+        [
+            ...document.querySelectorAll(
+                '#letterPaper img'
+            )
+        ];
+
+
+    await Promise.all(
+
+        images.map(
+
+            image => {
+
+                if(image.complete){
+                    return Promise.resolve();
+                }
+
+
+                return new Promise(
+                    resolve => {
+
+                        image.onload = resolve;
+                        image.onerror = resolve;
+
+                    }
+                );
+
+            }
+
+        )
+
+    );
+
+}
+
+
+/* =========================================================
+   BERSIHKAN NAMA FILE
+========================================================= */
+
+function getFileBaseName(){
+
+    if(currentTab === 'penceramah'){
+
+        let nama =
+            document
+            .getElementById('namaPenceramah')
+            .value
+            .trim();
+
+
+        if(!nama){
+            nama = 'penceramah';
+        }
+
+
+        /*
+         * Menghapus karakter yang tidak boleh
+         * digunakan sebagai nama file.
+         */
+
+        nama =
+            nama
+            .replace(/[\\/:*?"<>|]/g,'')
+            .replace(/\s+/g,' ')
+            .trim();
+
+
+        return nama || 'penceramah';
+
+    }
+
+
+    return 'surat-sponsorship';
+
+}
+
+
+/* =========================================================
+   DOWNLOAD JPG
+========================================================= */
+
+async function downloadJPG(){
+
+    await waitImages();
+
+
+    const paper =
+        document.getElementById(
+            'letterPaper'
+        );
+
+
+    const canvas =
+        await html2canvas(
+            paper,
+            {
+                scale:2,
+                useCORS:true,
+                backgroundColor:'#ffffff'
+            }
+        );
+
+
+    const link =
+        document.createElement('a');
+
+
+    link.download =
+        getFileBaseName()
+        +
+        '.jpg';
+
+
+    link.href =
+        canvas.toDataURL(
+            'image/jpeg',
+            .95
+        );
+
+
+    link.click();
+
+}
+
+
+/* =========================================================
+   DOWNLOAD PDF
+========================================================= */
+
+async function downloadPDF(){
+
+    await waitImages();
+
+
+    const paper =
+        document.getElementById(
+            'letterPaper'
+        );
+
+
+    const canvas =
+        await html2canvas(
+            paper,
+            {
+                scale:2,
+                useCORS:true,
+                backgroundColor:'#ffffff'
+            }
+        );
+
+
+    const image =
+        canvas.toDataURL(
+            'image/jpeg',
+            .95
+        );
+
+
+    const {
+        jsPDF
+    } = window.jspdf;
+
+
+    const pdf =
+        new jsPDF(
+            'p',
+            'mm',
+            'a4'
+        );
+
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+
+    pdf.addImage(
+        image,
+        'JPEG',
+        0,
+        0,
+        pageWidth,
+        pageHeight
+    );
+
+
+    pdf.save(
+        getFileBaseName()
+        +
+        '.pdf'
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+(function init(){
+
+    const today =
+        new Date();
+
+
+    /*
+     * Tanggal hari ini
+     */
+
+    const iso =
+        today
+        .toISOString()
+        .slice(0,10);
+
+
+    document
+        .getElementById(
+            'tanggalSurat'
+        )
+        .value = iso;
+
+
+    document
+        .getElementById(
+            'tanggalSponsor'
+        )
+        .value = iso;
+
+
+    updateLetter();
+
+})();
+
+</script>
+
+</body>
+</html>
