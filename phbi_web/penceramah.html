@@ -548,6 +548,7 @@
 
           const imam = row[2] ? row[2].trim() : '-';
           const penceramah = row[3] ? row[3].trim() : '-';
+          const tema = row[4] ? row[4].trim() : '-';
 
           const tr = document.createElement('tr');
           tr.innerHTML = `
@@ -555,6 +556,7 @@
             <td><strong>${hariTanggal}</strong></td>
             <td>${imam}</td>
             <td>${penceramah}</td>
+            <td>${tema}</td>
           `;
           tbody.appendChild(tr);
         }
