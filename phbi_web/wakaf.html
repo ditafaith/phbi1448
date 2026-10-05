@@ -731,6 +731,8 @@
     }
   }
 
+
+.report-tabs{display:flex;justify-content:center;gap:10px;margin:25px auto 18px;flex-wrap:wrap}.report-tab{border:1px solid #cfe5d7;background:#fff;color:#24543b;border-radius:12px;padding:12px 24px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:.25s}.report-tab:hover{background:#f0f8f3;transform:translateY(-1px)}.report-tab.active{color:#fff;background:linear-gradient(135deg,#0b5d3b,#087f4f);border-color:#0b5d3b}.report-panel{display:none;animation:fadeIn .25s ease}.report-panel.active{display:block}.wakaf-form{max-width:720px;margin:0 auto;text-align:left}.form-card{background:#fff;border:1px solid #dceede;border-radius:16px;padding:24px;box-shadow:0 4px 18px rgba(0,0,0,.05)}.form-card h3{text-align:center;color:#0b5d3b;font-size:20px;margin-bottom:5px}.form-intro{text-align:center;color:#607268;font-size:13px;margin-bottom:22px}.form-group{margin-bottom:17px}.form-label,.form-group label{display:block;color:#345244;font-size:13px;font-weight:700;margin-bottom:7px}.form-input{width:100%;border:1px solid #cfe2d5;border-radius:10px;padding:11px 13px;font:inherit;color:#24352b;background:#fbfdfb;outline:none}.form-input:focus{border-color:#0b7c4d;box-shadow:0 0 0 3px rgba(11,124,77,.1);background:#fff}.radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.radio-option{position:relative}.radio-option input{position:absolute;opacity:0;pointer-events:none}.radio-option label{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid #cfe2d5;border-radius:10px;background:#f8fbf9;color:#345244;cursor:pointer;font-size:13px;font-weight:700;text-align:center}.radio-option input:checked+label{background:#e5f3eb;border-color:#0b7f4f;color:#0b5d3b;box-shadow:0 0 0 2px rgba(11,127,79,.08)}.amount-wrap{position:relative}.amount-prefix{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:#607268;font-weight:700;pointer-events:none}.amount-input{padding-left:42px}.form-submit{width:100%;border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(135deg,#0b5d3b,#087f4f);color:#fff;font:inherit;font-size:14px;font-weight:800;cursor:pointer}.form-submit:disabled{opacity:.65;cursor:wait}.form-status{margin-top:14px;border-radius:10px;padding:10px 13px;font-size:12.5px;display:none}.form-status.success{display:block;background:#e9f7ee;color:#17663f;border:1px solid #bfe2cc}.form-status.error{display:block;background:#fff0f0;color:#a13a3a;border:1px solid #efc5c5}.form-status.info{display:block;background:#eef6ff;color:#315d8a;border:1px solid #c8def5}.transparency-note{margin-top:16px;padding:13px 15px;border-radius:11px;background:#f4f9f6;color:#607268;font-size:12px;line-height:1.5}.report-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}.refresh-report{border:1px solid #cfe5d7;background:#fff;color:#0b5d3b;border-radius:9px;padding:8px 12px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}@media(max-width:768px){.radio-grid{grid-template-columns:1fr}.form-card{padding:18px}.report-tab{width:100%;max-width:330px}}
 </style>
 
 
@@ -965,15 +967,7 @@
         </a>
       </section>
     </section>
-
-    <!-- ======LAPORAN WAKAF========= -->
-<section class="report-box"> <div class="report-icon">📊</div> <h3>Laporan Wakaf</h3> 
-  <p> Data penerimaan wakaf ditampilkan langsung dari Google Sheets. 
-    Silakan refresh halaman untuk melihat pembaruan terbaru. </p> 
-  <div class="table-status" id="reportStatus"> ⏳ Memuat data laporan wakaf... </div> 
-  <div class="table-wrapper"> <table id="wakafReportTable"> <thead></thead> <tbody></tbody> </table> </div>
-<div class="report-footer"> <a class="report-btn" href="https://docs.google.com/spreadsheets/d/1NF4_HHcC3vrLVIFsWkCI2GFu98LMpW76s-7IFVsDERI/edit?usp=sharing" target="_blank" rel="noopener noreferrer"> 📋 Buka Google Sheets </a> </div> </section>
-  </main>
+<section class="report-box" id="wakafTransparency"><div class="report-icon">🤲</div><h3>Transparansi Data Muwakif</h3><p>Data wakaf ditampilkan langsung dari Google Sheets dan konfirmasi wakaf dapat dilakukan melalui formulir mandiri.</p><div class="report-tabs"><button class="report-tab active" type="button" data-report-target="reportPanel">📊 Laporan</button><button class="report-tab" type="button" data-report-target="confirmPanel">✅ Konfirmasi Mandiri</button></div><section id="reportPanel" class="report-panel active"><div class="report-summary"><div class="table-status" id="reportStatus">⏳ Memuat data laporan wakaf...</div><button type="button" class="refresh-report" onclick="loadWakafReport()">🔄 Perbarui Laporan</button></div><div class="table-wrapper"><table id="wakafReportTable"><thead></thead><tbody></tbody></table></div></section><section id="confirmPanel" class="report-panel"><div class="form-card"><h3>Konfirmasi Wakaf Mandiri</h3><p class="form-intro">Silakan masukkan data wakaf sesuai transaksi yang telah dilakukan. Data akan dikirim ke Google Form dan tercatat pada laporan wakaf.</p><form id="wakafConfirmForm" class="wakaf-form" onsubmit="submitWakafConfirmation(event)"><div class="form-group"><label for="tanggalWakaf">📅 Tanggal Wakaf</label><input class="form-input" type="date" id="tanggalWakaf" required></div><div class="form-group"><label for="namaLengkap">👤 Nama Lengkap</label><input class="form-input" type="text" id="namaLengkap" placeholder="Masukkan nama lengkap" required></div><div class="form-group"><span class="form-label">💳 Jenis Transaksi</span><div class="radio-grid"><div class="radio-option"><input type="radio" id="transaksiTunai" name="jenisTransaksi" value="Tunai" required><label for="transaksiTunai">💵 Tunai</label></div><div class="radio-option"><input type="radio" id="transaksiTransfer" name="jenisTransaksi" value="Transfer"><label for="transaksiTransfer">🏦 Transfer</label></div></div></div><div class="form-group"><label for="nominalWakaf">💰 Nominal Wakaf</label><div class="amount-wrap"><span class="amount-prefix">Rp</span><input class="form-input amount-input" type="number" id="nominalWakaf" min="1" step="1" placeholder="Contoh: 100000" required></div></div><div class="form-group"><span class="form-label">🕌 Pilihan Wakaf</span><div class="radio-grid"><div class="radio-option"><input type="radio" id="wakafRenovasi" name="pilihanWakaf" value="Renovasi Masjid" required><label for="wakafRenovasi">🕌 Renovasi Masjid</label></div><div class="radio-option"><input type="radio" id="wakafSound" name="pilihanWakaf" value="Sound System"><label for="wakafSound">🎛️ Sound System</label></div></div></div><button type="submit" class="form-submit" id="submitWakafBtn">Kirim Konfirmasi Wakaf</button><div id="formStatus" class="form-status"></div></form><div class="transparency-note">🔐 <strong>Transparansi:</strong> konfirmasi ini digunakan sebagai pencatatan mandiri dari wakif. Data yang berhasil dikirim akan masuk ke Google Sheets sebagai sumber laporan wakaf.</div></div></section></section></main>
 
   <!-- FOOTER -->
   <footer>
@@ -1048,77 +1042,13 @@
       });
     });
   });
-
-  // =====================================================
-  // LAPORAN WAKAF DARI GOOGLE SHEETS
-  // =====================================================
-  const spreadsheetId = "1NF4_HHcC3vrLVIFsWkCI2GFu98LMpW76s-7IFVsDERI";
-  const spreadsheetUrl =
-    "https://docs.google.com/spreadsheets/d/" + spreadsheetId;
-
-  function loadWakafReport() {
-    const status = document.getElementById("reportStatus");
-    const table = document.getElementById("wakafReportTable");
-    const thead = table.querySelector("thead");
-    const tbody = table.querySelector("tbody");
-
-    status.textContent = "⏳ Memuat data laporan wakaf...";
-    thead.innerHTML = "";
-    tbody.innerHTML = "";
-
-    const query = new google.visualization.Query(spreadsheetUrl);
-    query.setQuery("SELECT *");
-
-    query.send(function(response) {
-      if (response.isError()) {
-        console.error(response.getMessage(), response.getDetailedMessage());
-        status.textContent =
-          "⚠️ Data belum dapat ditampilkan. Pastikan Google Sheets dapat diakses secara publik.";
-        return;
-      }
-
-      const data = response.getDataTable();
-      const columns = data.getNumberOfColumns();
-      const rows = data.getNumberOfRows();
-
-      // Header
-      const headerRow = document.createElement("tr");
-
-      for (let c = 0; c < columns; c++) {
-        const th = document.createElement("th");
-        th.textContent = data.getColumnLabel(c) || ("Kolom " + (c + 1));
-        headerRow.appendChild(th);
-      }
-
-      thead.appendChild(headerRow);
-
-      // Isi tabel
-      for (let r = 0; r < rows; r++) {
-        const tr = document.createElement("tr");
-
-        for (let c = 0; c < columns; c++) {
-          const td = document.createElement("td");
-          const value = data.getFormattedValue(r, c);
-
-          td.textContent = value;
-          tr.appendChild(td);
-        }
-
-        tbody.appendChild(tr);
-      }
-
-      status.textContent =
-        "✅ Menampilkan " + rows + " data dari laporan wakaf.";
-    });
-  }
-
-  // Google Visualization API tersedia setelah library selesai dimuat.
-  google.charts.load("current", {
-    packages: ["table"]
-  });
-
-  google.charts.setOnLoadCallback(loadWakafReport);
-</script>
+const reportTabs=document.querySelectorAll('.report-tab');const reportPanels=document.querySelectorAll('.report-panel');reportTabs.forEach(tab=>tab.addEventListener('click',()=>{reportTabs.forEach(x=>x.classList.remove('active'));reportPanels.forEach(x=>x.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.reportTarget).classList.add('active');if(tab.dataset.reportTarget==='reportPanel')loadWakafReport()}));
+const spreadsheetId='1F9HUDR27NEVIKH3lAg-VKdgjl7gvQVc0opfqqnzAdGk';const spreadsheetUrl='https://docs.google.com/spreadsheets/d/'+spreadsheetId;
+function loadWakafReport(){const status=document.getElementById('reportStatus'),table=document.getElementById('wakafReportTable'),thead=table.querySelector('thead'),tbody=table.querySelector('tbody');status.textContent='⏳ Memuat data laporan wakaf...';thead.innerHTML='';tbody.innerHTML='';const query=new google.visualization.Query(spreadsheetUrl);query.setQuery('SELECT *');query.send(response=>{if(response.isError()){console.error(response.getMessage(),response.getDetailedMessage());status.textContent='⚠️ Data belum dapat ditampilkan. Pastikan Google Sheets dapat diakses secara publik.';return}const data=response.getDataTable(),cols=data.getNumberOfColumns(),rows=data.getNumberOfRows(),trh=document.createElement('tr');for(let c=0;c<cols;c++){const th=document.createElement('th');th.textContent=data.getColumnLabel(c)||('Kolom '+(c+1));trh.appendChild(th)}thead.appendChild(trh);for(let r=0;r<rows;r++){const tr=document.createElement('tr');for(let c=0;c<cols;c++){const td=document.createElement('td');td.textContent=data.getFormattedValue(r,c);tr.appendChild(td)}tbody.appendChild(tr)}status.textContent='✅ Menampilkan '+rows+' data dari laporan wakaf.'})}
+/* Google Form configuration: isi setelah Form dibuat dan ditautkan ke Sheet. */
+const GOOGLE_FORM_ACTION='https://docs.google.com/forms/d/e/1FAIpQLSdfb73TfPOPoFiJVyo5ny_Ypg49Phj7req_N7O4xvSySMpo_w/formResponse';const ENTRY_TANGGAL_WAKAF='entry.972731549';const ENTRY_NAMA_LENGKAP='entry.1637951444';const ENTRY_JENIS_TRANSAKSI='entry.848348903';const ENTRY_NOMINAL_WAKAF='entry.204446309';const ENTRY_PILIHAN_WAKAF='entry.1891428062';
+function submitWakafConfirmation(e){e.preventDefault();const status=document.getElementById('formStatus'),btn=document.getElementById('submitWakafBtn');if([GOOGLE_FORM_ACTION,ENTRY_TANGGAL_WAKAF,ENTRY_NAMA_LENGKAP,ENTRY_JENIS_TRANSAKSI,ENTRY_NOMINAL_WAKAF,ENTRY_PILIHAN_WAKAF].some(x=>x.startsWith('GANTI_'))){status.className='form-status error';status.textContent='⚠️ Google Form belum dikonfigurasi pada script. Isi URL formResponse dan entry ID terlebih dahulu.';return}const tanggal=document.getElementById('tanggalWakaf').value,nama=document.getElementById('namaLengkap').value.trim(),jenis=document.querySelector('input[name="jenisTransaksi"]:checked')?.value,nominal=document.getElementById('nominalWakaf').value,pilihan=document.querySelector('input[name="pilihanWakaf"]:checked')?.value;if(!tanggal||!nama||!jenis||!nominal||!pilihan){status.className='form-status error';status.textContent='⚠️ Mohon lengkapi seluruh data.';return}btn.disabled=true;btn.textContent='⏳ Mengirim...';status.className='form-status info';status.textContent='⏳ Mengirim konfirmasi wakaf...';let iframe=document.getElementById('googleFormTarget');if(!iframe){iframe=document.createElement('iframe');iframe.id='googleFormTarget';iframe.name='googleFormTarget';iframe.style.display='none';document.body.appendChild(iframe)}const post=document.createElement('form');post.method='POST';post.action=GOOGLE_FORM_ACTION;post.target='googleFormTarget';post.style.display='none';[[ENTRY_TANGGAL_WAKAF,tanggal],[ENTRY_NAMA_LENGKAP,nama],[ENTRY_JENIS_TRANSAKSI,jenis],[ENTRY_NOMINAL_WAKAF,nominal],[ENTRY_PILIHAN_WAKAF,pilihan]].forEach(([n,v])=>{const i=document.createElement('input');i.type='hidden';i.name=n;i.value=v;post.appendChild(i)});document.body.appendChild(post);post.submit();setTimeout(()=>{status.className='form-status success';status.textContent='✅ Konfirmasi berhasil dikirim. Terima kasih atas kepercayaan Anda.';document.getElementById('wakafConfirmForm').reset();btn.disabled=false;btn.textContent='Kirim Konfirmasi Wakaf';setTimeout(()=>{document.querySelector('[data-report-target="reportPanel"]').click();setTimeout(loadWakafReport,1500)},1500);post.remove()},2000)}
+google.charts.load('current',{packages:['table']});google.charts.setOnLoadCallback(loadWakafReport);</script>
 
 </body>
 </html>
