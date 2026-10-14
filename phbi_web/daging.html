@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estimasi Jumlah Daging | PHBI 1448 H</title>
+  <title>Wakaf Masjid Ar Ridhwan | PHBI 1448 H</title>
   <style>
     * {
       box-sizing: border-box;
@@ -478,7 +477,14 @@
       .social-links { flex-direction: column; }
       .social-link { width: 240px; justify-content: center; }
     }
-  </style>
+  
+/* Tampilan opsi Tunai yang sedang dinonaktifkan.
+   Hapus/ubah aturan ini jika opsi Tunai diaktifkan kembali. */
+.radio-option input[type="radio"]:disabled + label {
+  opacity: .45;
+  cursor: not-allowed;
+}
+</style>
   
 <style>
   /* =====================================================
@@ -732,143 +738,72 @@
     }
   }
 
+
+.report-tabs{display:flex;justify-content:center;gap:10px;margin:25px auto 18px;flex-wrap:wrap}.report-tab{border:1px solid #cfe5d7;background:#fff;color:#24543b;border-radius:12px;padding:12px 24px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:.25s}.report-tab:hover{background:#f0f8f3;transform:translateY(-1px)}.report-tab.active{color:#fff;background:linear-gradient(135deg,#0b5d3b,#087f4f);border-color:#0b5d3b}.report-panel{display:none;animation:fadeIn .25s ease}.report-panel.active{display:block}.wakaf-form{max-width:720px;margin:0 auto;text-align:left}.form-card{background:#fff;border:1px solid #dceede;border-radius:16px;padding:24px;box-shadow:0 4px 18px rgba(0,0,0,.05)}.form-card h3{text-align:center;color:#0b5d3b;font-size:20px;margin-bottom:5px}.form-intro{text-align:center;color:#607268;font-size:13px;margin-bottom:22px}.form-group{margin-bottom:17px}.form-label,.form-group label{display:block;color:#345244;font-size:13px;font-weight:700;margin-bottom:7px}.form-input{width:100%;border:1px solid #cfe2d5;border-radius:10px;padding:11px 13px;font:inherit;color:#24352b;background:#fbfdfb;outline:none}.form-input:focus{border-color:#0b7c4d;box-shadow:0 0 0 3px rgba(11,124,77,.1);background:#fff}.radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.radio-option{position:relative}.radio-option input{position:absolute;opacity:0;pointer-events:none}.radio-option label{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid #cfe2d5;border-radius:10px;background:#f8fbf9;color:#345244;cursor:pointer;font-size:13px;font-weight:700;text-align:center}.radio-option input:checked+label{background:#e5f3eb;border-color:#0b7f4f;color:#0b5d3b;box-shadow:0 0 0 2px rgba(11,127,79,.08)}.amount-wrap{position:relative}.amount-prefix{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:#607268;font-weight:700;pointer-events:none}.amount-input{padding-left:42px}.form-submit{width:100%;border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(135deg,#0b5d3b,#087f4f);color:#fff;font:inherit;font-size:14px;font-weight:800;cursor:pointer}.form-submit:disabled{opacity:.65;cursor:wait}.transfer-proof-group[hidden]{display:none}.transfer-proof-group input[type=file]{padding:10px;background:#fbfdfb}.date-note{display:block;margin-top:6px;color:#607268;font-size:12px}.form-status{margin-top:14px;border-radius:10px;padding:10px 13px;font-size:12.5px;display:none}.form-status.success{display:block;background:#e9f7ee;color:#17663f;border:1px solid #bfe2cc}.form-status.error{display:block;background:#fff0f0;color:#a13a3a;border:1px solid #efc5c5}.form-status.info{display:block;background:#eef6ff;color:#315d8a;border:1px solid #c8def5}.transparency-note{margin-top:16px;padding:13px 15px;border-radius:11px;background:#f4f9f6;color:#607268;font-size:12px;line-height:1.5}.report-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}.refresh-report{border:1px solid #cfe5d7;background:#fff;color:#0b5d3b;border-radius:9px;padding:8px 12px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}@media(max-width:768px){.radio-grid{grid-template-columns:1fr}.form-card{padding:18px}.report-tab{width:100%;max-width:330px}}
+
 </style>
 
 
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <style>
-    /* =====================================================
-       KONTEN ESTIMASI DAGING
-       ===================================================== */
-    .estimate-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 30px;
-      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.06);
-      border: 1px solid #dceede;
-      max-width: 760px;
-      margin: 0 auto;
-    }
+<style>
+/* Estimator page */
+.estimator-main { max-width: 1050px; margin: 32px auto 48px; padding: 0 20px; }
+.estimator-heading { text-align:center; margin-bottom:24px; }
+.estimator-heading h2 { margin-bottom:8px; }
+.estimator-heading p { color:#5f6b65; margin:0; }
+.estimator-tabs { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:24px 0; }
+.estimator-tab { border:1px solid #c9d8ce; background:#f4f8f5; color:#244c35; padding:12px 22px; border-radius:10px; font-weight:700; cursor:pointer; }
+.estimator-tab.active { background:#176b3a; border-color:#176b3a; color:white; }
+.estimator-panel { background:#fff; border:1px solid #dfe7e1; border-radius:16px; padding:clamp(18px,3vw,30px); box-shadow:0 5px 20px rgba(20,60,35,.07); }
+.estimator-panel h3 { margin-top:0; color:#245638; }
+.zakat-verse {text-align: center;}
+.zakat-verse-label,
+.zakat-verse-text,
+.zakat-verse-reference {text-align: center;}
+.zakat-verse { margin:0 0 24px; padding:20px 22px; border:1px solid #d4e8d9; border-left:5px solid #0b7f4f; border-radius:12px; background:linear-gradient(135deg,#f3faf5,#fff); }
+.zakat-verse-label { color:#0b5d3b; font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; margin-bottom:10px; }
+.zakat-verse-text { color:#344b3c; font-size:15px; line-height:1.8; }
+.zakat-verse-reference { color:#0b5d3b; font-size:13px; font-weight:700; margin-top:12px; }
+.estimator-form { display:grid; grid-template-columns:minmax(0,1fr); gap:18px; max-width:680px; margin:22px auto 0; }
+.estimator-field label, .estimator-field .field-label { display:block; font-weight:700; margin-bottom:8px; }
+.estimator-field input[type=number], .estimator-field select { box-sizing:border-box; width:100%; border:1px solid #cbd5ce; border-radius:9px; padding:12px 13px; font:inherit; background:#fff; }
+.estimator-field input:focus, .estimator-field select:focus { outline:2px solid #a6d5b5; border-color:#287b47; }
+.estimator-units { display:flex; flex-direction:column; gap:10px; align-items:stretch; width:100%; }
+.estimator-units label { display:flex; gap:10px; align-items:center; margin:0; font-weight:500; cursor:pointer; width:100%; min-height:46px; padding:10px 13px; border:1px solid #cbd5ce; border-radius:9px; background:#fff; }
+.estimator-results { margin-top:24px; padding:20px; border-radius:12px; background:#f1f8f3; border:1px solid #d1e5d7; }
+.estimator-results h4 { margin:0 0 14px; color:#245638; }
+.estimator-result-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.estimator-result-item { background:white; padding:14px; border-radius:10px; border:1px solid #e0ebe3; }
+.estimator-result-item span { display:block; color:#58665d; font-size:.9rem; margin-bottom:6px; }
+.estimator-result-item strong { display:block; font-size:1.15rem; color:#194f2d; overflow-wrap:anywhere; }
+.estimator-note { margin:16px 0 0; color:#5b675f; font-size:.9rem; }
+.estimator-placeholder { text-align:center; padding:45px 18px; color:#68756c; }
+.estimator-placeholder p { margin-bottom:0; }
+@media(max-width:650px) { .estimator-form {grid-template-columns:minmax(0,1fr); width:100%;} .estimator-result-grid {grid-template-columns:1fr;} .estimator-main {padding:0 14px;} .estimator-panel {padding:18px 14px;} }
 
-    .estimate-intro {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .estimate-intro .estimate-icon {
-      font-size: 46px;
-      margin-bottom: 8px;
-    }
-
-    .estimate-intro h3 {
-      color: #0b5d3b;
-      font-size: 22px;
-      margin-bottom: 5px;
-    }
-
-    .estimate-intro p {
-      color: #607268;
-      font-size: 14px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      color: #24543b;
-      margin-bottom: 8px;
-      font-size: 15px;
-    }
-
-    .form-group select,
-    .form-group input {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid #cfe0d5;
-      border-radius: 10px;
-      background: #fbfdfb;
-      color: #24352b;
-      font-size: 16px;
-      font-family: inherit;
-      outline: none;
-      transition: 0.25s;
-    }
-
-    .form-group select:focus,
-    .form-group input:focus {
-      border-color: #087f4f;
-      box-shadow: 0 0 0 3px rgba(8, 127, 79, 0.10);
-      background: #ffffff;
-    }
-
-    .meat-info {
-      margin-top: 8px;
-      color: #006dcc;
-      font-size: 14px;
-      font-weight: 600;
-      background: #f1f8ff;
-      border-left: 4px solid #006dcc;
-      padding: 10px 12px;
-      border-radius: 6px;
-    }
-
-    .result-box {
-      margin-top: 26px;
-      background: #eaf7ef;
-      border: 1px solid #bfe3cc;
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .result-box .result-label {
-      display: block;
-      color: #4b5e53;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .result-box .result-value {
-      display: block;
-      color: #0b5d3b;
-      font-size: 30px;
-      font-weight: 800;
-    }
-
-    .result-box .result-note {
-      display: block;
-      color: #607268;
-      font-size: 13px;
-      margin-top: 4px;
-    }
-
-    .input-note {
-      color: #718077;
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    @media (max-width: 768px) {
-      .estimate-card {
-        padding: 22px 18px;
-      }
-
-      .estimate-intro h3 {
-        font-size: 20px;
-      }
-
-      .result-box .result-value {
-        font-size: 26px;
-      }
-    }
-  </style>
+/* Estimator daging: scoped agar tidak mengubah tampilan estimator zakat */
+#panel-daging .meat-estimate-card { background:#fff; border:1px solid #dceede; border-radius:16px; padding:clamp(18px,3vw,30px); max-width:760px; margin:0 auto; }
+#panel-daging .meat-estimate-intro { text-align:center; margin-bottom:28px; }
+#panel-daging .meat-estimate-icon { font-size:46px; margin-bottom:8px; }
+#panel-daging .meat-estimate-intro h3 { color:#0b5d3b; font-size:22px; margin:0 0 5px; }
+#panel-daging .meat-estimate-intro p { color:#607268; font-size:14px; }
+#panel-daging .meat-form-group { margin-bottom:20px; }
+#panel-daging .meat-form-group label { display:block; font-weight:700; color:#24543b; margin-bottom:8px; font-size:15px; }
+#panel-daging .meat-form-group select, #panel-daging .meat-form-group input { box-sizing:border-box; width:100%; padding:13px 14px; border:1px solid #cfe0d5; border-radius:10px; background:#fbfdfb; color:#24352b; font-size:16px; font-family:inherit; outline:none; }
+#panel-daging .meat-form-group select:focus, #panel-daging .meat-form-group input:focus { border-color:#087f4f; box-shadow:0 0 0 3px rgba(8,127,79,.10); background:#fff; }
+#panel-daging .meat-info { margin-top:8px; color:#006dcc; font-size:14px; font-weight:600; background:#f1f8ff; border-left:4px solid #006dcc; padding:10px 12px; border-radius:6px; }
+#panel-daging .meat-result-box { margin-top:26px; background:#eaf7ef; border:1px solid #bfe3cc; border-radius:14px; padding:20px; text-align:center; }
+#panel-daging .meat-result-label, #panel-daging .meat-result-value, #panel-daging .meat-result-note { display:block; }
+#panel-daging .meat-result-label { color:#4b5e53; font-size:14px; margin-bottom:5px; }
+#panel-daging .meat-result-value { color:#0b5d3b; font-size:30px; font-weight:800; }
+#panel-daging .meat-result-note { color:#607268; font-size:13px; margin-top:4px; }
+#panel-daging .meat-input-note { color:#718077; font-size:12px; margin-top:5px; }
+@media(max-width:650px) { #panel-daging .meat-estimate-card {padding:22px 18px;} #panel-daging .meat-estimate-intro h3 {font-size:20px;} #panel-daging .meat-result-value {font-size:26px;} }
+</style>
 
 </head>
 <body>
-
 
   <!-- HEADER -->
   <header>
@@ -895,83 +830,96 @@
         <!-- 7. LAPORAN --><a href="rekap.html">📊 Laporan</a>
         <!-- 8. IDUL FITRI / IDUL ADHA --><a href="fitri.html">☪️ Idul Fitri/ Adha</a>
         <!-- 9. WAKAF --><a href="wakaf.html">🕌 Wakaf</a>
-        <!-- 10. HEWAN KURBAN --> <a href="kurban.html">🐂 Hewan Kurban</a>
-        <!-- 11. ESTIMATOR DAGING --><a href="daging.html">🥩 Estimator Daging</a>
-        <!-- 11. ESTIMATOR ZAKAT --><a href="estimator.html">📝 Estimator Zakat</a>
+        <!-- 10. HEWAN KURBAN --> <a href="kurban.html">🐂 Hewan Kurban</a> 
+        <!-- 11. ESTIMATOR DAGING --><a href="phbi_web/estimator.html">🥩 Estimator Zakat & Daging</a>
+        <!-- 12. PROPOSAL --><a href="proposal.html">📄 Proposal</a>
       </div>
     </div>
   </nav>
 
-
   <!-- KONTEN UTAMA -->
-  <main>
-    <div class="page-title">
-      <h2>Estimasi Jumlah Daging</h2>
-      <p>Perkiraan jumlah daging berdasarkan jenis dan berat hidup sapi.</p>
+  <main class="estimator-main">
+  <div class="estimator-heading">
+    <h2>Estimator Zakat dan Daging</h2>
+    <p>Perkiraan kebutuhan zakat fitrah berdasarkan satuan, harga beras, dan jumlah jiwa.</p>
+  </div>
+
+  <div class="estimator-tabs" role="tablist" aria-label="Pilihan estimator">
+    <button class="estimator-tab active" id="tab-zakat" type="button" role="tab" aria-selected="true" aria-controls="panel-zakat">🧮 Estimator Zakat</button>
+    <button class="estimator-tab" id="tab-daging" type="button" role="tab" aria-selected="false" aria-controls="panel-daging">🥩 Estimator Daging</button>
+  </div>
+
+  <section class="estimator-panel" id="panel-zakat" role="tabpanel" aria-labelledby="tab-zakat">
+    <div class="zakat-verse">
+      <div class="zakat-verse-label">Dustur Ilahi</div>
+      <p class="zakat-verse-text">“Ambillah zakat dari harta mereka (guna) menyucikan dan membersihkan mereka, dan doakanlah mereka karena sesungguhnya doamu adalah ketenteraman bagi mereka. Allah Maha Mendengar lagi Maha Mengetahui."</p>
+      <p class="zakat-verse-reference">QS. At-Taubah [9]: 103</p>
+    </div>
+    <h3>Estimator Zakat Fitrah</h3>
+    <div class="estimator-form">
+      <div class="estimator-field">
+        <span class="field-label">Satuan zakat</span>
+        <div class="estimator-units">
+          <label><input type="radio" name="zakat-unit" value="kg" checked> Kilogram (kg)</label>
+          <label><input type="radio" name="zakat-unit" value="liter"> Liter</label>
+        </div>
+      </div>
+      <div class="estimator-field">
+        <label for="rice-price">Harga beras per kg (Rp)</label>
+        <input id="rice-price" type="number" min="0" step="1" inputmode="numeric" placeholder="contoh 15000 (tanpa titik/koma)">
+      </div>
+      <div class="estimator-field">
+        <label for="family-count">Jumlah jiwa</label>
+        <select id="family-count">
+          <option value="1">1 jiwa</option><option value="2">2 jiwa</option><option value="3">3 jiwa</option><option value="4">4 jiwa</option><option value="5">5 jiwa</option><option value="6">6 jiwa</option><option value="7">7 jiwa</option><option value="8">8 jiwa</option><option value="9">9 jiwa</option><option value="10">10 jiwa</option>
+        </select>
+      </div>
     </div>
 
-    <section class="estimate-card">
-      <div class="estimate-intro">
-        <div class="estimate-icon">🐄</div>
+    <div class="estimator-results" aria-live="polite" aria-atomic="true">
+      <h4>Hasil Estimasi</h4>
+      <div class="estimator-result-grid">
+        <div class="estimator-result-item"><span>Zakat per jiwa</span><strong id="per-person-quantity">2,5 kg</strong></div>
+        <div class="estimator-result-item"><span>Total zakat</span><strong id="total-quantity">2,5 kg</strong></div>
+        <div class="estimator-result-item"><span>Estimasi nilai uang</span><strong id="total-money">Rp37.500</strong></div>
+      </div>
+      <p class="estimator-note" id="zakat-note">Perhitungan menggunakan 2,5 kg beras per jiwa dan harga beras yang Anda masukkan.</p>
+    </div>
+  </section>
+
+  <section class="estimator-panel" id="panel-daging" role="tabpanel" aria-labelledby="tab-daging" hidden>
+    <div class="meat-estimate-card">
+      <div class="meat-estimate-intro">
+        <div class="meat-estimate-icon">🐄</div>
         <h3>Kalkulator Estimasi Daging</h3>
-        <p>
-          Masukkan jenis sapi dan berat hidup untuk mendapatkan
-          estimasi maksimal jumlah daging.
-        </p>
+        <p>Masukkan tipe sapi dan berat hidup untuk mendapatkan estimasi maksimal jumlah daging.</p>
       </div>
 
-      <!-- 1. TIPE SAPI -->
-      <div class="form-group">
+      <div class="meat-form-group">
         <label for="tipeSapi">1. Tipe Sapi</label>
-
         <select id="tipeSapi">
           <option value="">-- Pilih tipe sapi --</option>
           <option value="jawa">Sapi Jawa</option>
           <option value="banteng">Sapi Banteng</option>
         </select>
-
-        <div class="meat-info" id="infoDaging">
-          Silakan pilih tipe sapi untuk melihat estimasi persentase daging.
-        </div>
+        <div class="meat-info" id="infoDaging">Silakan pilih tipe sapi untuk melihat estimasi persentase daging.</div>
       </div>
 
-      <!-- 2. BERAT HIDUP -->
-      <div class="form-group">
+      <div class="meat-form-group">
         <label for="beratHidup">2. Berat Hidup (kg)</label>
-
-        <input
-          type="number"
-          id="beratHidup"
-          inputmode="decimal"
-          min="0"
-          step="0.1"
-          placeholder="Masukkan berat hidup, misalnya 400"
-          autocomplete="off"
-        >
-
-        <div class="input-note">
-          Hanya angka yang dapat dimasukkan.
-        </div>
+        <input type="number" id="beratHidup" inputmode="decimal" min="0" step="0.1" placeholder="Masukkan berat hidup, misalnya 400" autocomplete="off">
+        <div class="meat-input-note">Hanya angka yang dapat dimasukkan.</div>
       </div>
 
-      <!-- 3. HASIL MAKSIMAL -->
-      <div class="result-box">
-        <span class="result-label">
-          Estimasi Maksimal Daging
-        </span>
-
-        <span class="result-value" id="hasilDaging">
-          0 kg
-        </span>
-
-        <span class="result-note" id="hasilKeterangan">
-          Pilih tipe sapi dan masukkan berat hidup.
-        </span>
+      <div class="meat-result-box" aria-live="polite" aria-atomic="true">
+        <span class="meat-result-label">Estimasi Maksimal Daging</span>
+        <span class="meat-result-value" id="hasilDaging">0 kg</span>
+        <span class="meat-result-note" id="hasilKeterangan">Pilih tipe sapi dan masukkan berat hidup.</span>
       </div>
-    </section>
-  </main>
-  <!-- FOOTER -->
-  <footer>
+    </div>
+  </section>
+</main>
+<footer>
     <h3>Panitia Ramadhan, Idul Fitri, dan Idul Adha 1448 H</h3>
 
     <p class="footer-subtitle">
@@ -1008,179 +956,109 @@
       Masjid Ar Ridhwan
     </div>
   </footer>
-
-
 <script>
-  // =====================================================
-  // KALKULATOR ESTIMASI DAGING
-  // =====================================================
-
-  const tipeSapi = document.getElementById("tipeSapi");
-  const beratHidup = document.getElementById("beratHidup");
-  const infoDaging = document.getElementById("infoDaging");
-  const hasilDaging = document.getElementById("hasilDaging");
-  const hasilKeterangan = document.getElementById("hasilKeterangan");
-
-
-  // -----------------------------------------------------
-  // UPDATE INFORMASI BERDASARKAN TIPE SAPI
-  // -----------------------------------------------------
-  tipeSapi.addEventListener("change", function () {
-
-    if (this.value === "jawa") {
-
-      infoDaging.textContent =
-        "Sapi Jawa: sekitar 25–30% dari berat hidup merupakan daging.";
-
-    } else if (this.value === "banteng") {
-
-      infoDaging.textContent =
-        "Sapi Banteng: sekitar 30–35% dari berat hidup merupakan daging.";
-
-    } else {
-
-      infoDaging.textContent =
-        "Silakan pilih tipe sapi untuk melihat estimasi persentase daging.";
-    }
-
-    hitungDaging();
-  });
-
-
-  // -----------------------------------------------------
-  // INPUT BERAT HIDUP
-  // Hanya angka, titik desimal, dan satu titik desimal
-  // -----------------------------------------------------
-  beratHidup.addEventListener("input", function () {
-
-    // Hapus semua karakter selain angka dan titik
-    let nilai = this.value.replace(/[^0-9.]/g, "");
-
-    // Hanya izinkan satu titik desimal
-    const bagian = nilai.split(".");
-
-    if (bagian.length > 2) {
-      nilai = bagian[0] + "." + bagian.slice(1).join("");
-    }
-
-    this.value = nilai;
-
-    hitungDaging();
-  });
-
-
-  // -----------------------------------------------------
-  // CEGAH HURUF SAAT MENGETIK
-  // -----------------------------------------------------
-  beratHidup.addEventListener("keydown", function (event) {
-
-    const allowedKeys = [
-      "Backspace",
-      "Delete",
-      "Tab",
-      "Escape",
-      "Enter",
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowUp",
-      "ArrowDown",
-      "Home",
-      "End"
-    ];
-
-    if (allowedKeys.includes(event.key)) {
-      return;
-    }
-
-    // Izinkan angka 0–9
-    if (/^[0-9]$/.test(event.key)) {
-      return;
-    }
-
-    // Izinkan satu titik desimal
-    if (event.key === "." && !this.value.includes(".")) {
-      return;
-    }
-
-    // Selain itu ditolak
-    event.preventDefault();
-  });
-
-
-  // -----------------------------------------------------
-  // CEGAH KARAKTER NON-ANGKA SAAT PASTE
-  // -----------------------------------------------------
-  beratHidup.addEventListener("paste", function (event) {
-
-    event.preventDefault();
-
-    const pastedText =
-      (event.clipboardData || window.clipboardData)
-      .getData("text");
-
-    let nilai = pastedText.replace(/[^0-9.]/g, "");
-
-    const bagian = nilai.split(".");
-
-    if (bagian.length > 2) {
-      nilai = bagian[0] + "." + bagian.slice(1).join("");
-    }
-
-    this.value = nilai;
-
-    hitungDaging();
-  });
-
-
-  // -----------------------------------------------------
-  // HITUNG MAKSIMAL DAGING
-  // Sapi Jawa    = 30%
-  // Sapi Banteng = 35%
-  // -----------------------------------------------------
-  function hitungDaging() {
-
-    const berat = parseFloat(beratHidup.value);
-
-    let persentase = 0;
-
-    if (tipeSapi.value === "jawa") {
-      persentase = 0.30;
-    }
-
-    if (tipeSapi.value === "banteng") {
-      persentase = 0.35;
-    }
-
-
-    if (!berat || berat <= 0 || persentase === 0) {
-
-      hasilDaging.textContent = "0 kg";
-
-      if (!tipeSapi.value) {
-        hasilKeterangan.textContent =
-          "Pilih tipe sapi dan masukkan berat hidup.";
-      } else if (!berat || berat <= 0) {
-        hasilKeterangan.textContent =
-          "Masukkan berat hidup untuk menghitung estimasi.";
-      }
-
-      return;
-    }
-
-
-    const hasil = berat * persentase;
-
-    hasilDaging.textContent =
-      hasil.toLocaleString("id-ID", {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2
-      }) + " kg";
-
-    hasilKeterangan.textContent =
-      "Perhitungan menggunakan batas maksimal " +
-      (persentase * 100) +
-      "% dari berat hidup.";
+(function(){
+  const unitInputs = document.querySelectorAll('input[name="zakat-unit"]');
+  const priceInput = document.getElementById('rice-price');
+  const peopleInput = document.getElementById('family-count');
+  const priceLabel = document.querySelector('label[for="rice-price"]');
+  const perPerson = document.getElementById('per-person-quantity');
+  const totalQuantity = document.getElementById('total-quantity');
+  const totalMoney = document.getElementById('total-money');
+  const note = document.getElementById('zakat-note');
+  const formatRp = value => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(value);
+  const formatNumber = value => new Intl.NumberFormat('id-ID',{maximumFractionDigits:2}).format(value);
+  function calculate(){
+    const unit = document.querySelector('input[name="zakat-unit"]:checked').value;
+    const price = Math.max(0, Number(priceInput.value) || 0);
+    const people = Number(peopleInput.value);
+    const amount = unit === 'liter' ? 3.5 : 2.5;
+    priceLabel.textContent = 'Harga beras per ' + (unit === 'liter' ? 'liter (Rp)' : 'kg (Rp)');
+    perPerson.textContent = formatNumber(amount) + ' ' + unit;
+    totalQuantity.textContent = formatNumber(amount * people) + ' ' + unit;
+    totalMoney.textContent = formatRp(amount * price * people);
+    note.textContent = 'Perhitungan menggunakan ' + formatNumber(amount) + ' ' + unit + ' per jiwa, dikalikan ' + people + ' jiwa dan harga beras per ' + (unit === 'liter' ? 'liter' : 'kg') + ' yang Anda masukkan.';
   }
+  unitInputs.forEach(el => el.addEventListener('change', calculate));
+  priceInput.addEventListener('input', calculate);
+  peopleInput.addEventListener('change', calculate);
+  const tabZakat=document.getElementById('tab-zakat'), tabDaging=document.getElementById('tab-daging');
+  const panelZakat=document.getElementById('panel-zakat'), panelDaging=document.getElementById('panel-daging');
+  function showTab(which){
+    const zakat=which==='zakat';
+    tabZakat.classList.toggle('active',zakat); tabDaging.classList.toggle('active',!zakat);
+    tabZakat.setAttribute('aria-selected',String(zakat)); tabDaging.setAttribute('aria-selected',String(!zakat));
+    panelZakat.hidden=!zakat; panelDaging.hidden=zakat;
+  }
+  tabZakat.addEventListener('click',()=>showTab('zakat'));
+  tabDaging.addEventListener('click',()=>showTab('daging'));
+
+  // Kalkulator estimator daging (mengikuti rumus pada daging.html)
+  const tipeSapi = document.getElementById('tipeSapi');
+  const beratHidup = document.getElementById('beratHidup');
+  const infoDaging = document.getElementById('infoDaging');
+  const hasilDaging = document.getElementById('hasilDaging');
+  const hasilKeterangan = document.getElementById('hasilKeterangan');
+
+  tipeSapi.addEventListener('change', function() {
+    if (this.value === 'jawa') {
+      infoDaging.textContent = 'Sapi Jawa: sekitar 25–30% dari berat hidup merupakan daging.';
+    } else if (this.value === 'banteng') {
+      infoDaging.textContent = 'Sapi Banteng: sekitar 30–35% dari berat hidup merupakan daging.';
+    } else {
+      infoDaging.textContent = 'Silakan pilih tipe sapi untuk melihat estimasi persentase daging.';
+    }
+    hitungDaging();
+  });
+
+  // Bersihkan input agar hanya berisi angka dan satu titik desimal.
+  beratHidup.addEventListener('input', function() {
+    let nilai = this.value.replace(/[^0-9.]/g, '');
+    const bagian = nilai.split('.');
+    if (bagian.length > 2) nilai = bagian[0] + '.' + bagian.slice(1).join('');
+    this.value = nilai;
+    hitungDaging();
+  });
+
+  beratHidup.addEventListener('keydown', function(event) {
+    const allowedKeys = ['Backspace','Delete','Tab','Escape','Enter','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'];
+    if (allowedKeys.includes(event.key) || event.ctrlKey || event.metaKey || /^[0-9]$/.test(event.key)) return;
+    if (event.key === '.' && !this.value.includes('.')) return;
+    event.preventDefault();
+  });
+
+  beratHidup.addEventListener('paste', function(event) {
+    event.preventDefault();
+    const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+    let nilai = pastedText.replace(/[^0-9.]/g, '');
+    const bagian = nilai.split('.');
+    if (bagian.length > 2) nilai = bagian[0] + '.' + bagian.slice(1).join('');
+    this.value = nilai;
+    hitungDaging();
+  });
+
+  function hitungDaging() {
+    const berat = parseFloat(beratHidup.value);
+    let persentase = 0;
+    if (tipeSapi.value === 'jawa') persentase = 0.30;
+    if (tipeSapi.value === 'banteng') persentase = 0.35;
+
+    if (!Number.isFinite(berat) || berat <= 0 || persentase === 0) {
+      hasilDaging.textContent = '0 kg';
+      if (!tipeSapi.value) {
+        hasilKeterangan.textContent = 'Pilih tipe sapi dan masukkan berat hidup.';
+      } else if (!Number.isFinite(berat) || berat <= 0) {
+        hasilKeterangan.textContent = 'Masukkan berat hidup untuk menghitung estimasi.';
+      }
+      return;
+    }
+    const hasil = berat * persentase;
+    hasilDaging.textContent = hasil.toLocaleString('id-ID', {minimumFractionDigits:0, maximumFractionDigits:2}) + ' kg';
+    hasilKeterangan.textContent = 'Perhitungan menggunakan batas maksimal ' + (persentase * 100) + '% dari berat hidup.';
+  }
+  calculate();
+  hitungDaging();
+})();
 </script>
 
 </body>
